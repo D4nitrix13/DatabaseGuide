@@ -61,7 +61,7 @@ sqlite>
 - **`keinos/sqlite3`:** *Nombre de la imagen de Docker utilizada.*
 
 > [!TIP]
-> *En SQLite3, no es necesario configurar una contraseña ni un usuario. Esto se debe a que SQLite es una base de datos embebida y no requiere un servidor independiente para manejar conexiones. Los datos se almacenan en un archivo local, y el acceso se realiza directamente a través de este archivo, eliminando la necesidad de autenticación adicional.*
+> *En SQLite3, no es necesario configurar una contraseña ni un usuario. Esto se debe a que SQLite es una base de datos embebida y no requiere un servidor independiente para manejar conexiones. Los datos se almacenan en un fichero local, y el acceso se realiza directamente a través de este fichero, eliminando la necesidad de autenticación adicional.*
 
 ---
 
@@ -377,7 +377,7 @@ postgres=#
 ### ***SQLite3***
 
 > [!CAUTION]
-> *Para listar todas las bases de datos en SQLite3, recuerda que **SQLite3** no tiene múltiples bases de datos dentro de un mismo servidor, como lo hace MySQL o PostgreSQL. En SQLite3, cada archivo es una base de datos independiente. Por lo tanto, no es necesario listar las bases de datos como en otros sistemas.*
+> *Para listar todas las bases de datos en SQLite3, recuerda que **SQLite3** no tiene múltiples bases de datos dentro de un mismo servidor, como lo hace MySQL o PostgreSQL. En SQLite3, cada fichero es una base de datos independiente. Por lo tanto, no es necesario listar las bases de datos como en otros sistemas.*
 
 - *Por lo tanto, no es posible listar bases de datos en SQLite3 como se haría en otros sistemas de gestión de bases de datos.*
 
@@ -470,7 +470,7 @@ drwxr-x--- 2 mysql mysql     4096 Sep 16 19:55  sys
 -rw-r----- 1 mysql mysql 16777216 Sep 16 19:57  undo_002
 ```
 
-- **El contenido de cada base de datos en esta ubicación contiene los archivos correspondientes a cada tabla y metadatos.**
+- **El contenido de cada base de datos en esta ubicación contiene los ficheros correspondientes a cada tabla y metadatos.**
 
 ---
 

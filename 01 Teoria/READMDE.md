@@ -36,7 +36,7 @@
 > [!NOTE]
 > *Las bases de datos resuelven varios problemas críticos relacionados con la gestión y manipulación de grandes volúmenes de información. A continuación, se detallan algunos de los principales problemas que abordan:*
 
-1. **Organización y Estructura:** *En lugar de almacenar datos en archivos planos o de forma desordenada, las bases de datos permiten organizar la información de manera estructurada, lo que facilita su acceso, búsqueda y modificación.*
+1. **Organización y Estructura:** *En lugar de almacenar datos en ficheros planos o de forma desordenada, las bases de datos permiten organizar la información de manera estructurada, lo que facilita su acceso, búsqueda y modificación.*
 
 2. **Redundancia y Duplicación de Datos:** *Las bases de datos están diseñadas para reducir la duplicación innecesaria de información mediante el uso de relaciones entre tablas y normalización, asegurando que los datos se almacenen de manera eficiente y sin redundancia.*
 

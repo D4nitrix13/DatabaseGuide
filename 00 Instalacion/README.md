@@ -178,7 +178,7 @@ paru -Syu paru-bin
    ```
 
 2. **Copiar las fuentes al directorio:**
-   - *Descarga las fuentes que desees y cópialas al directorio **`~/.local/share/fonts`**. Esto puede incluir archivos en formatos como `.ttf`, `.otf`, o `.woff`.*
+   - *Descarga las fuentes que desees y cópialas al directorio **`~/.local/share/fonts`**. Esto puede incluir ficheros en formatos como `.ttf`, `.otf`, o `.woff`.*
 
    - *Ejemplo de comando para copiar una fuente:*
 
@@ -245,7 +245,7 @@ paru -Syu paru-bin
 
 - *[Descargar XAMPP para Linux](https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/8.0.30/xampp-linux-x64-8.0.30-0-installer.run "https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/8.0.30/xampp-linux-x64-8.0.30-0-installer.run")*
 
-- *Una vez descargado el archivo, sigue estos pasos para instalarlo:*
+- *Una vez descargado el fichero, sigue estos pasos para instalarlo:*
 
 1. **Dar permisos de ejecución al instalador:**
 
@@ -273,7 +273,7 @@ paru -Syu paru-bin
 
 #### ***Paso 3: Añadir XAMPP al PATH del usuario***
 
-- *Para poder ejecutar comandos de XAMPP como `mysql` o `php` desde cualquier lugar en la terminal, debes agregar el directorio de binarios de XAMPP a tu variable `PATH`. Para ello, edita el archivo `.profile` de tu usuario:*
+- *Para poder ejecutar comandos de XAMPP como `mysql` o `php` desde cualquier lugar en la terminal, debes agregar el directorio de binarios de XAMPP a tu variable `PATH`. Para ello, edita el fichero `.profile` de tu usuario:*
 
 1. **Editar `.profile` con tu editor preferido:**
 
@@ -281,7 +281,7 @@ paru -Syu paru-bin
    nvim ~/.profile
    ```
 
-2. **Añadir la siguiente línea al final del archivo:**
+2. **Añadir la siguiente línea al final del fichero:**
 
    ```bash
    PATH="$PATH:/opt/lampp/bin/"
@@ -315,9 +315,9 @@ sudo /opt/lampp/manager-linux-x64.run
 
 ---
 
-#### ***Paso 6: Ubicación de los archivos servidos por Apache***
+#### ***Paso 6: Ubicación de los ficheros servidos por Apache***
 
-- *El directorio donde Apache almacena los archivos para las solicitudes web es:*
+- *El directorio donde Apache almacena los ficheros para las solicitudes web es:*
 
 - **Directorio raíz de XAMPP:** `/opt/lampp/htdocs`
 
@@ -347,7 +347,7 @@ ls -lA /opt/lampp/htdocs
    sudo chown -R $USER:$USER /opt/lampp/htdocs/project
    ```
 
-   - *Con este comando, podrás crear y editar archivos en tu proyecto sin problemas.*
+   - *Con este comando, podrás crear y editar ficheros en tu proyecto sin problemas.*
 
 ---
 

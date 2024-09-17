@@ -172,7 +172,7 @@ docker inspect -f "{{.GraphDriver.Data.MergedDir}}" sqlite3-practicas
 sudo rg --files --glob '*.db' "$(docker inspect -f '{{.GraphDriver.Data.MergedDir}}' sqlite3-practicas)$(docker exec sqlite3-practicas awk -F: '/sqlite/ {print $6}' /etc/passwd)" | xclip -selection clipboard
 ```
 
-- **`sudo rg --files --glob '*.db'`:** *Usa `ripgrep` para buscar archivos con extensión `.db`.*
+- **`sudo rg --files --glob '*.db'`:** *Usa `ripgrep` para buscar ficheros con extensión `.db`.*
 - **`$(docker inspect -f '{{.GraphDriver.Data.MergedDir}}' sqlite3-practicas)`:** *Inserta la ruta del directorio de fusión del contenedor.*
 - **`$(docker exec sqlite3-practicas awk -F: '/sqlite/ {print $6}' /etc/passwd)`:** *Extrae la ruta del directorio de usuario del contenedor para la base de datos SQLite.*
 - **`| xclip -selection clipboard`:** *Copia la salida al portapapeles.*
@@ -388,7 +388,7 @@ CREATE DATABASE
 
 ### ***Crear una base de datos en SQLite***
 
-- *En SQLite, una base de datos es un archivo que contiene toda la estructura y datos de la base. Para crear una base de datos, puedes usar los siguientes comandos:*
+- *En SQLite, una base de datos es un fichero que contiene toda la estructura y datos de la base. Para crear una base de datos, puedes usar los siguientes comandos:*
 
 ```bash
 sqlite> .open /home/vscode/hello_sqlite3.db
