@@ -197,7 +197,7 @@ sudo rg --files --glob '*.db' "$(docker inspect -f '{{.GraphDriver.Data.MergedDi
 
 2. **Instalar las extensiones necesarias en VSCode:**
 
-   - **MySQL**:
+   - **MySQL:**
      - **Nombre:** *MySQL*
      - **ID:** *cweijan.vscode-mysql-client2*
      - **Descripción:** *Database manager for MySQL/MariaDB, PostgreSQL, SQLite, Redis and ElasticSearch.*
@@ -205,7 +205,7 @@ sudo rg --files --glob '*.db' "$(docker inspect -f '{{.GraphDriver.Data.MergedDi
      - **Editor:** *Weijan Chen*
      - **Enlace:** *[VS Marketplace](https://marketplace.visualstudio.com/items?itemName=cweijan.vscode-mysql-client2 "https://marketplace.visualstudio.com/items?itemName=cweijan.vscode-mysql-client2")*
 
-   - **Dev Containers**:
+   - **Dev Containers:**
      - **Nombre:** *Dev Containers*
      - **ID:** *ms-vscode-remote.remote-containers*
      - **Descripción:** *Open any folder or repository inside a Docker container and take advantage of Visual Studio Code's full feature set.*
@@ -383,6 +383,61 @@ CREATE DATABASE
 ```
 
 - *Este comando crea una base de datos llamada `hello_postgresql`. La confirmación aparece como `CREATE DATABASE`.*
+
+---
+
+### ***Ver la Lista de Bases de Datos***
+
+- *Para ver la lista de bases de datos en PostgreSQL, puedes usar el comando `\l` (o `\list`) en el shell de `psql`. Esto te mostrará una tabla con información sobre todas las bases de datos disponibles en el servidor.*
+
+#### ***Comando para Listar Bases de Datos***
+
+```sql
+\l
+```
+
+#### ***Significado de Cada Campo***
+
+**Aquí está el significado de cada campo en la salida del comando `\l`:**
+
+- **Name:** *El nombre de la base de datos.*
+- **Owner:** *El nombre del usuario o rol que es el propietario de la base de datos.*
+- **Encoding:** *El conjunto de caracteres utilizado para la base de datos (por ejemplo, UTF8).*
+- **Locale Provider:** *El proveedor de configuración regional utilizado (generalmente `libc`).*
+- **Collate:** *La configuración regional para ordenar texto (ej., `en_US.utf8`).*
+- **Ctype:** *La configuración regional para clasificación de caracteres (ej., `en_US.utf8`).*
+- **ICU Locale:** *La configuración regional de ICU (International Components for Unicode), si se utiliza.*
+- **ICU Rules:** *Las reglas de clasificación de ICU, si se utilizan.*
+- **Access privileges:** *Los privilegios de acceso asignados a los usuarios para esa base de datos.*
+
+#### ***Ejemplo de Salida***
+
+```sql
+\l
+```
+
+```sql
+postgres=# \l
+                                                          List of databases
+       Name       |  Owner   | Encoding | Locale Provider |  Collate   |   Ctype    | ICU Locale | ICU Rules |   Access privileges
+------------------+----------+----------+-----------------+------------+------------+------------+-----------+-----------------------
+ postgres         | postgres | UTF8     | libc            | en_US.utf8 | en_US.utf8 |            |           |
+ template0        | postgres | UTF8     | libc            | en_US.utf8 | en_US.utf8 |            |           | =c/postgres          +
+                  |          |          |                 |            |            |            |           | postgres=CTc/postgres
+ template1        | postgres | UTF8     | libc            | en_US.utf8 | en_US.utf8 |            |           | =c/postgres          +
+                  |          |          |                 |            |            |            |           | postgres=CTc/postgres
+(3 rows)
+```
+
+- **postgres:** *La base de datos predeterminada de PostgreSQL.*
+- **template0** y **template1:** *Bases de datos de plantilla utilizadas por PostgreSQL para crear nuevas bases de datos. Estas no deben ser modificadas directamente.*
+
+### Notas Adicionales
+
+- **`postgres`:** *Es la base de datos por defecto que se crea durante la instalación de PostgreSQL.*
+- **`template0`** y **`template1`:** *Son bases de datos de plantilla que se usan para crear nuevas bases de datos. No se deben modificar, ya que se utilizan para mantener el estado original de las plantillas.*
+
+*Para obtener más detalles sobre una base de datos específica o sus tablas, puedes conectarte a la base de datos usando `\c <nombre_base_de_datos>` y luego usar comandos como `\dt` para listar las tablas, `\d <nombre_tabla>` para obtener detalles sobre una tabla específica, etc.*
 
 ---
 
