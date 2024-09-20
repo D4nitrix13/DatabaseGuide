@@ -2,9 +2,6 @@
 <!-- GitHub: https://github.com/DanielPerezMoralesDev13 -->
 <!-- Correo electrónico: danielperezdev@proton.me -->
 
-<!-- https://youtu.be/c2M-rlkkT5o?t=1247 -->
-<!-- https://chatgpt.com/c/66ec7f5d-9be0-8003-b191-2caf5254ee87 -->
-
 # ***Sorting And Limiting en MongoDB***
 
 ---
@@ -74,7 +71,7 @@ db.students.find().sort({name: -1})
 school> db.students.find().sort({name: -1})
 ```
 
-```json
+```bash
 [
   {
     _id: ObjectId('66ec92f51ccdd73d3f964033'),
@@ -131,7 +128,7 @@ db.students.find().sort({name: 1})
 school> db.students.find().sort({name: 1})
 ```
 
-```json
+```bash
 [
   {
     _id: ObjectId('66ec94111ccdd73d3f964036'),
@@ -185,7 +182,7 @@ db.students.find().sort({gpa: 1})
 school> db.students.find().sort({gpa: 1})
 ```
 
-```json
+```bash
 [
   {
     _id: ObjectId('66ec94111ccdd73d3f964034'),
@@ -235,7 +232,7 @@ db.students.find().sort({gpa: -1})
 school> db.students.find().sort({gpa: -1})
 ```
 
-```json
+```bash
 [
   {
     _id: ObjectId('66ec94111ccdd73d3f964035'),
@@ -291,7 +288,7 @@ db.students.find().limit(1)
 school> db.students.find().limit(1)
 ```
 
-```json
+```bash
 [
   {
     _id: ObjectId('66ec92f51ccdd73d3f964033'),
@@ -312,7 +309,7 @@ db.students.find().limit(3)
 school> db.students.find().limit(3)
 ```
 
-```json
+```bash
 [
   {
     _id: ObjectId('66ec92f51ccdd73d3f964033'),
@@ -351,7 +348,7 @@ db.students.find().sort({gpa: -1}).limit(1)
 school> db.students.find().sort({gpa: -1}).limit(1)
 ```
 
-```json
+```bash
 [
   {
     _id: ObjectId('66ec94111ccdd73d3f964035'),
@@ -372,7 +369,7 @@ db.students.find().sort({gpa: 1}).limit(1)
 school> db.students.find().sort({gpa: 1}).limit(1)
 ```
 
-```json
+```bash
 [
   {
     _id: ObjectId('66ec94111ccdd73d3f964034'),
@@ -401,7 +398,7 @@ db.students.find().skip(2)
 school> db.students.find().skip(2)
 ```
 
-```json
+```bash
 [
   {
     _id: ObjectId('66ec94111ccdd73d3f964035'),
@@ -445,7 +442,7 @@ db.students.find().sort().skip(2).limit(1)
 school> db.students.find().skip(2).limit(1)
 ```
 
-```json
+```bash
 [
   {
     _id: ObjectId('66ec94111ccdd73d3f964035'),

@@ -49,19 +49,19 @@ school> db.students.insertOne({"name": "Spongebob", age: 30, gpa: 3.2})
 
 - **Ejemplos:**
 
-  - Con comillas dobles en la clave:
+  - **Con comillas dobles en la clave:**
 
     ```sql
     db.students.insertOne({"name": "Spongebob", age: 30, gpa: 3.2})
     ```
 
-  - Con comillas simples en la clave:
+  - **Con comillas simples en la clave:**
 
     ```sql
     db.students.insertOne({'name': "Spongebob", age: 30, gpa: 3.2})
     ```
 
-  - Sin comillas en la clave (solo si no hay espacios):
+  - **Sin comillas en la clave (solo si no hay espacios):**
 
     ```sql
     db.students.insertOne({name: 'Spongebob', age: 30, gpa: 3.2})
@@ -168,3 +168,26 @@ school> db.students.find()
 - **Descripción:** *Muestra todos los documentos en la colección `students` después de realizar las inserciones, incluyendo el documento previamente insertado y los nuevos documentos.*
 
 ---
+
+### ***Listar todas las colecciones en la base de datos activa***
+
+> [!TIP]
+> **Para listar todas las colecciones en una base de datos de MongoDB, puedes usar el comando `show collections` en el shell de MongoDB. Aquí te muestro cómo hacerlo:**
+
+```sql
+show collections
+```
+
+- **Descripción:** *Este comando muestra todas las colecciones en la base de datos activa. Si estás utilizando una base de datos específica, listará solo las colecciones dentro de esa base de datos.*
+
+---
+
+### ***Listar colecciones con el método JavaScript***
+
+- *También puedes listar las colecciones usando el método `getCollectionNames()`:*
+
+```sql
+db.getCollectionNames()
+```
+
+- **Descripción:** *Este comando devuelve una lista de nombres de todas las colecciones dentro de la base de datos actual en un formato de array.*
