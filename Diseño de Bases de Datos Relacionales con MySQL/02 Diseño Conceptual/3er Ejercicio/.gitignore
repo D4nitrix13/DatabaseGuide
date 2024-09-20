@@ -1,0 +1,12 @@
+# Autor: Daniel Benjamin Perez Morales
+# GitHub: https://github.com/DanielPerezMoralesDev13
+# Correo electrónico: danielperezdev@proton.me
+
+# Notas sobre los Ficheros Generados por Draw.io
+
+# `.bkp`: Este tipo de archivo representa una copia de seguridad (backup) del diagrama. Se utiliza para restaurar el estado anterior del archivo en caso de que se necesite recuperar información perdida o revertir cambios no deseados.
+
+# `.dtmp`: Este archivo es un archivo temporal creado por Draw.io durante el proceso de edición. Su propósito es almacenar información provisional mientras trabajas en el diagrama. Normalmente, estos archivos se eliminan automáticamente al cerrar la aplicación, pero pueden ser útiles en caso de un cierre inesperado o error.
+
+*.bkp
+*.dtmp
