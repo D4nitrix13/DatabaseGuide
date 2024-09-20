@@ -5,6 +5,8 @@
 # Inicializar Git LFS en tu repositorio
 # git lfs install
 
+# Borrar Git LFS en tu repositorio
+# git lfs uninstall
 # Rastrear un tipo de fichero específico
 # git lfs track "*.drawio"
 
