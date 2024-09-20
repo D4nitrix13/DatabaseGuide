@@ -22,6 +22,6 @@
 1. **Descarga el instalador desde el siguiente enlace:**
    - *[Descargar DB Browser para Windows (64-bit)](https://download.sqlitebrowser.org/DB.Browser.for.SQLite-v3.13.0-win64.msi "https://download.sqlitebrowser.org/DB.Browser.for.SQLite-v3.13.0-win64.msi")*
 
-2. *Abre el archivo descargado (`.msi`) y sigue las instrucciones del asistente de instalación.*
+2. *Abre el fichero descargado (`.msi`) y sigue las instrucciones del asistente de instalación.*
 
 - *Una vez instalado, podrás abrir y gestionar bases de datos SQLite desde una interfaz gráfica amigable.*

@@ -37,4 +37,4 @@
 
 - *[Descargar SQLite para Linux (64-bit)](https://www.sqlite.org/2024/sqlite-tools-linux-x64-3460100.zip "https://www.sqlite.org/2024/sqlite-tools-linux-x64-3460100.zip")*
 
-- **Sigue las instrucciones específicas de instalación para tu sistema operativo tras descargar el archivo correspondiente.**
+- **Sigue las instrucciones específicas de instalación para tu sistema operativo tras descargar el fichero correspondiente.**

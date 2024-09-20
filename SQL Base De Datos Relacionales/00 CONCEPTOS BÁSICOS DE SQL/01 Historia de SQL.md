@@ -58,7 +58,7 @@
 **Detalles Clave:**
 
 - **Equipo de Desarrollo:** *El equipo de IBM que trabajó en System R, incluyendo a Donald D. Chamberlin y Raymond F. Boyce, fue responsable de desarrollar SQL. Chamberlin y Boyce diseñaron el lenguaje SQL para que facilitara la consulta y manipulación de datos en bases de datos relacionales.*
-- **Propósito de SQL:** *SQL se diseñó para permitir a los usuarios interactuar con las bases de datos relacionales mediante un lenguaje de consulta estructurado y estandarizado. Esto facilitó la gestión de datos y permitió realizar consultas más complejas de manera más eficiente que los enfoques anteriores basados en archivos.*
+- **Propósito de SQL:** *SQL se diseñó para permitir a los usuarios interactuar con las bases de datos relacionales mediante un lenguaje de consulta estructurado y estandarizado. Esto facilitó la gestión de datos y permitió realizar consultas más complejas de manera más eficiente que los enfoques anteriores basados en ficheros.*
 - **Primera Implementación:** *La primera implementación de SQL se realizó en el contexto del sistema System R, y el lenguaje fue adoptado como estándar por ANSI en 1986.*
 
 - *El desarrollo de SQL por IBM y la implementación en System R jugaron un papel crucial en la evolución de las bases de datos relacionales y en la estandarización de las prácticas de gestión de datos.*

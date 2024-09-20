@@ -4,11 +4,11 @@
 
 # ***¿Qué es SQL?***
 
-- *SQL, que significa Structured Query Language (Lenguaje de Consulta Estructurado), es un lenguaje de programación utilizado para gestionar y manipular bases de datos relacionales. A diferencia de los sistemas de bases de datos basados en archivos que almacenan datos en un formato más sencillo, las bases de datos relacionales organizan los datos en tablas que se pueden relacionar entre sí mediante claves y relaciones.*
+- *SQL, que significa Structured Query Language (Lenguaje de Consulta Estructurado), es un lenguaje de programación utilizado para gestionar y manipular bases de datos relacionales. A diferencia de los sistemas de bases de datos basados en ficheros que almacenan datos en un formato más sencillo, las bases de datos relacionales organizan los datos en tablas que se pueden relacionar entre sí mediante claves y relaciones.*
 
 **Antecedentes:**
 
-- *Antes del desarrollo de SQL, la información se almacenaba en bases de datos basadas en archivos, donde los datos se mantenían en archivos separados y se manipulaban de manera menos estructurada. La necesidad de un enfoque más estructurado y eficiente para manejar datos llevó al desarrollo de bases de datos basadas en álgebra relacional.*
+- *Antes del desarrollo de SQL, la información se almacenaba en bases de datos basadas en ficheros, donde los datos se mantenían en ficheros separados y se manipulaban de manera menos estructurada. La necesidad de un enfoque más estructurado y eficiente para manejar datos llevó al desarrollo de bases de datos basadas en álgebra relacional.*
 
 **Desarrollo del SQL:**
 

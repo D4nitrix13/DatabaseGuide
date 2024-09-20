@@ -268,16 +268,16 @@ sqlite> SELECT user_id, name FROM users;
 
 ---
 
-### ***¿Qué es un Archivo `.sql`?***
+### ***¿Qué es un Fichero `.sql`?***
 
 > [!NOTE]
-> *Un archivo con la extensión `.sql` es un archivo de texto que contiene comandos y sentencias en lenguaje SQL (Structured Query Language). Estos archivos son utilizados para almacenar y ejecutar scripts que realizan diversas operaciones en una base de datos. Los comandos en un archivo `.sql` pueden incluir:*
+> *Un fichero con la extensión `.sql` es un fichero de texto que contiene comandos y sentencias en lenguaje SQL (Structured Query Language). Estos ficheros son utilizados para almacenar y ejecutar scripts que realizan diversas operaciones en una base de datos. Los comandos en un fichero `.sql` pueden incluir:*
 
 - **Definición de estructuras de bases de datos:** *Creación y modificación de tablas, índices, y otros objetos de base de datos.*
 - **Manipulación de datos:** *Inserción, actualización, eliminación y consulta de datos.*
 - **Configuración de la base de datos:** *Definición de permisos, transacciones y otras configuraciones de la base de datos.*
 
-**Los archivos `.sql` son comúnmente utilizados para:**
+**Los ficheros `.sql` son comúnmente utilizados para:**
 
 - **Importar o exportar datos:** *Mover datos entre diferentes sistemas de bases de datos.*
 - **Automatizar tareas:** *Ejecutar una serie de comandos SQL de manera secuencial para configurar o actualizar una base de datos.*
@@ -285,9 +285,9 @@ sqlite> SELECT user_id, name FROM users;
 
 ---
 
-### ***Ejemplo de Archivo `.sql`***
+### ***Ejemplo de Fichero `.sql`***
 
-- **A continuación, se muestra un ejemplo de un archivo `.sql` con comentarios que explican su contenido y propósito.**
+- **A continuación, se muestra un ejemplo de un fichero `.sql` con comentarios que explican su contenido y propósito.**
 
 ```sql
 -- Sintaxis Comentarios MySQL
@@ -318,13 +318,13 @@ SELECT user_id, name FROM `hello_mysql`.`users`;
    - **`SELECT user_id, name`:** *Indica que se deben recuperar las columnas `user_id` y `name`.*
    - **`FROM 'hello_mysql'.'users'`:** *Especifica la tabla `users` en la base de datos `hello_mysql`.*
 
-- **Estos comandos SQL son ejemplos básicos de cómo consultar datos de una base de datos utilizando el lenguaje SQL. Los comentarios en el archivo `.sql` proporcionan explicaciones sobre lo que cada comando hace, facilitando su comprensión y mantenimiento.**
+- **Estos comandos SQL son ejemplos básicos de cómo consultar datos de una base de datos utilizando el lenguaje SQL. Los comentarios en el fichero `.sql` proporcionan explicaciones sobre lo que cada comando hace, facilitando su comprensión y mantenimiento.**
 
 ---
 
 ### ***Sintaxis y Comentarios para PostgreSQL***
 
-- **Un archivo `.sql` para PostgreSQL puede incluir tanto comandos SQL como comandos específicos de PostgreSQL que no son parte del estándar SQL. A continuación, se explica cada parte de un archivo `.sql` con comentarios sobre su propósito y sintaxis.**
+- **Un fichero `.sql` para PostgreSQL puede incluir tanto comandos SQL como comandos específicos de PostgreSQL que no son parte del estándar SQL. A continuación, se explica cada parte de un fichero `.sql` con comentarios sobre su propósito y sintaxis.**
 
 ```sql
 -- Sintaxis Comentarios PostgreSQL
@@ -370,13 +370,13 @@ SELECT user_id, name FROM users;
 - **`FROM`:** *Especifica la tabla desde la cual se deben recuperar los datos.*
 - **`user_id`**, **`name`:** *Son nombres de columnas en la tabla `users`.*
 
-- **En resumen, los comentarios en el archivo `.sql` ayudan a entender la función de cada comando SQL y los comandos específicos de PostgreSQL. Estos comentarios son útiles para documentar el propósito de cada instrucción y facilitar la comprensión y el mantenimiento del código.**
+- **En resumen, los comentarios en el fichero `.sql` ayudan a entender la función de cada comando SQL y los comandos específicos de PostgreSQL. Estos comentarios son útiles para documentar el propósito de cada instrucción y facilitar la comprensión y el mantenimiento del código.**
 
 ---
 
 ### ***Sintaxis y Comentarios para SQLite3***
 
-- **Un archivo `.sql` para SQLite3 contiene comandos SQL que se ejecutan en el motor de base de datos SQLite. A continuación, se explican cada una de las sentencias con comentarios.**
+- **Un fichero `.sql` para SQLite3 contiene comandos SQL que se ejecutan en el motor de base de datos SQLite. A continuación, se explican cada una de las sentencias con comentarios.**
 
 ```sql
 -- Sintaxis Comentarios SQLite3
@@ -416,4 +416,4 @@ SELECT user_id, name FROM `users`;
 - **`FROM`:** *Especifica la tabla de la cual se recuperarán los datos.*
 - **`user_id`**, **`name`:** *Son nombres de columnas en la tabla `users`.*
 
-- **En resumen, los comentarios en el archivo `.sql` ayudan a documentar el propósito de cada comando y facilitan la comprensión de las consultas realizadas. Los comentarios son útiles tanto para el mantenimiento del código como para los desarrolladores que revisan el archivo en el futuro.**
+- **En resumen, los comentarios en el fichero `.sql` ayudan a documentar el propósito de cada comando y facilitan la comprensión de las consultas realizadas. Los comentarios son útiles tanto para el mantenimiento del código como para los desarrolladores que revisan el fichero en el futuro.**

@@ -1,0 +1,16 @@
+# Autor: Daniel Benjamin Perez Morales
+# GitHub: https://github.com/DanielPerezMoralesDev13
+# Correo electrónico: danielperezdev@proton.me
+
+# Inicializar Git LFS en tu repositorio
+# git lfs install
+
+# Rastrear un tipo de fichero específico
+# git lfs track "*.drawio"
+
+# Listar ficheros rastreados por LFS
+# git lfs ls-files
+
+# Deshacer el seguimiento de un fichero
+# git lfs untrack "*.drawio"
+
