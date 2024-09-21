@@ -178,6 +178,11 @@ school> db.students.find()
 show collections
 ```
 
+```sql
+school> show collections
+students
+```
+
 - **Descripción:** *Este comando muestra todas las colecciones en la base de datos activa. Si estás utilizando una base de datos específica, listará solo las colecciones dentro de esa base de datos.*
 
 ---
@@ -190,4 +195,73 @@ show collections
 db.getCollectionNames()
 ```
 
+```sql
+db.getCollectionNames()
+[ 'students' ]
+```
+
 - **Descripción:** *Este comando devuelve una lista de nombres de todas las colecciones dentro de la base de datos actual en un formato de array.*
+
+---
+
+### ***Explicación del Comando `db.getCollectionInfos()`:***
+
+- **El comando `db.getCollectionInfos()` en MongoDB se utiliza para obtener información detallada sobre todas las colecciones en la base de datos activa, en este caso, la base de datos `school`. El resultado es un array de objetos que describe cada colección y sus propiedades.**
+
+```sql
+school> db.getCollectionInfos()
+[
+  {
+    name: 'students',
+    type: 'collection',
+    options: {},
+    info: {
+      readOnly: false,
+      uuid: UUID('59822579-67fd-459b-be49-7fadc266717b')
+    },
+    idIndex: { v: 2, key: { _id: 1 }, name: '_id_' }
+  }
+]
+```
+
+---
+
+#### ***name: 'students'***
+
+- **Descripción:** *El nombre de la colección, en este caso `students`.*
+
+---
+
+#### ***type: 'collection'***
+
+- **Descripción:** *Especifica el tipo de objeto, que en este caso es una colección de documentos. MongoDB también puede tener otros tipos como vistas (`view`).*
+
+---
+
+#### ***options: {}***
+
+- **Descripción:** *Un objeto que contiene las opciones de configuración de la colección. En este caso, el objeto está vacío (`{}`), lo que significa que no se especificaron opciones especiales al crear la colección, como un `capped collection` o restricciones de tamaño.*
+
+---
+
+#### ***info***
+
+- **Descripción:** *Un subobjeto que proporciona información adicional sobre la colección.*
+
+- **readOnly: false:** *Esto indica que la colección no es de solo lectura, por lo que se pueden realizar operaciones de escritura (inserción, actualización, etc.) en ella.*
+  
+- **uuid: UUID('59822579-67fd-459b-be49-7fadc266717b'):** *Este es un identificador único universal (UUID) asignado a la colección. Cada colección tiene un UUID único dentro de la base de datos para identificarla.*
+
+---
+
+#### ***idIndex***
+
+- **Descripción:** *Contiene información sobre el índice creado automáticamente para el campo `_id`, que MongoDB genera por defecto para cada colección. Los detalles son:*
+
+- **v: 2:** *La versión del índice.*
+  
+- **key: { _id: 1 }:** *Define que el índice está creado en el campo `_id`, que es el identificador único de cada documento dentro de la colección. El valor `1` indica que el índice está en orden ascendente.*
+
+- **name: '*id*':** *El nombre del índice, que MongoDB asigna automáticamente como `'_id_'`.*
+
+**Conclusión:** *Este resultado muestra que la base de datos `school` tiene una colección llamada `students`, que no tiene configuraciones especiales, es editable (no de solo lectura) y tiene un índice por defecto en el campo `_id`.*

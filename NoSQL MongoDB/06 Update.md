@@ -17,6 +17,10 @@
 
 ## ***Uso de `$set`***
 
+**$set:**
+
+- *El operador $set se usa para agregar nuevos campos a un documento o actualizar los valores de campos existentes. Si el campo ya existe en el documento, su valor será actualizado; si no existe, será creado.*
+
 *El operador `$set` se utiliza para modificar un campo existente o agregar uno nuevo si no existe.*
 
 **Ejemplo:**
@@ -103,6 +107,10 @@ school> db.students.find({_id: ObjectId('66ec92f51ccdd73d3f964033')})
 
 ### ***Eliminar un Campo con `$unset`***
 
+**$unset:**
+
+- *El operador $unset se usa para eliminar un campo de un documento. Si el campo no existe, no pasa nada.*
+
 - **Para eliminar un campo de un documento, utilizamos el operador `$unset`, el cual establece el valor del campo como `""`.**
 
 **Ejemplo:**
@@ -139,6 +147,24 @@ school> db.students.find({_id: ObjectId('66ec92f51ccdd73d3f964033')})
   }
 ]
 ```
+
+> [!NOTE]
+> **En MongoDB, el valor proporcionado con $unset es irrelevante; lo único que importa es la clave (nombre del campo) que estás intentando eliminar. Es decir, el valor asociado a la clave dentro de $unset no se utiliza para nada.**
+
+**Si ejecutas este comando:**
+
+```sql
+db.collection.updateOne(
+  { _id: 1 },
+  { $unset: { fieldName: "String" } }
+)
+```
+
+**¿Qué ocurrirá?**
+
+- *MongoDB ignorará el valor "String", ya que $unset solo presta atención al campo que estás eliminando.*
+- *El campo fieldName será eliminado del documento con _id igual a 1, si existe.*
+- *Si el campo fieldName no existe en ese documento, simplemente no se hará ningún cambio.*
 
 ---
 
