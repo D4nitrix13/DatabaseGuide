@@ -155,7 +155,7 @@ Query OK, 1 row affected (0.01 sec)
 
 ---
 
-#### **Ejemplo 4: Insertar un registro con un ID específico**
+#### ***Ejemplo 4: Insertar un registro con un ID específico***
 
 ```sql
 INSERT INTO `hello_mysql`.`users` (`user_id`, `name`, `age`, `email`) 
