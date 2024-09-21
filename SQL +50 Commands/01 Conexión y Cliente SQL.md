@@ -547,4 +547,97 @@ main: /home/vscode/hello_sqlite3.db r/w
    docker rmi vsc-sql50commands-ba3450d17e10e5014da786185946033e2475defd21c414d45c49c45cfb08108d-uid:latest
    ```
 
-- *Asegúrate de que no haya contenedores en ejecución que dependan de la imagen antes de eliminar la etiqueta antigua. Si necesitas más ayuda, ¡avísame!*
+- *Asegúrate de que no haya contenedores en ejecución que dependan de la imagen antes de eliminar la etiqueta antigua.*
+
+---
+
+### ***Iniciar el Contenedor***
+
+```bash
+docker start -i container-sqlite3-practicas
+```
+
+- **Descripción:** *Este comando inicia el contenedor llamado `container-sqlite3-practicas`.*
+- **Opciones:**
+  - **`-i`:** *Permite la entrada interactiva al contenedor.*
+  - **`-t`:** *Asigna un pseudo-TTY, útil para la interacción con la terminal.*
+
+---
+
+### ***Conectarse a SQLite con un Cliente CLI***
+
+```bash
+docker exec --interactive --tty --privileged --user vscode container-sqlite3-practicas sqlite3 /home/vscode/hello_sqlite3.db
+```
+
+- **Descripción:** *Este comando se utiliza para ejecutar el cliente de SQLite dentro del contenedor.*
+- **Componentes del comando:**
+  - **`docker exec`:** *Ejecuta un comando en un contenedor en ejecución.*
+  - **`--interactive` (`-i`):** *Mantiene la entrada estándar abierta para la interacción.*
+  - **`--tty` (`-t`):** *Proporciona un terminal interactivo.*
+  - **`--privileged`:** *Permite al contenedor ejecutar comandos que requieren privilegios adicionales (opcional, según necesidades).*
+  - **`--user vscode` (`-u, --user string`):** *Especifica el usuario bajo el cual se ejecutará el comando, en este caso, `vscode`.*
+  - **`container-sqlite3-practicas`:** *El nombre del contenedor en el que se ejecuta el cliente SQLite.*
+  - **`sqlite3 /home/vscode/hello_sqlite3.db`:** *Inicia el cliente SQLite y abre la base de datos `hello_sqlite3.db` ubicada en el directorio `/home/vscode/`.*
+
+---
+
+### ***Mensaje de Bienvenida***
+
+```sql
+SQLite version 3.37.2 2022-01-06 13:25:41
+Enter ".help" for usage hints.
+sqlite>
+```
+
+- **Descripción:** *Al conectarte exitosamente, verás la versión de SQLite y un mensaje de ayuda que indica que puedes escribir `.help` para obtener más información sobre los comandos disponibles en SQLite.*
+
+---
+
+### ***Explicación***
+
+> [!CAUTION]
+> *Al ejecutar el comando `docker exec -it container-sqlite3-practicas sqlite3`, si no especificas el usuario, Docker ejecutará el comando como **root** por defecto. Esto es debido a que el usuario root es el usuario predeterminado en la mayoría de las imágenes de Docker, a menos que se haya configurado explícitamente otro usuario en el archivo `Dockerfile` o con el argumento `--user` durante la creación del contenedor.*
+
+1. **Comando ejecutado como root:**
+
+   **Si ejecutas el siguiente comando sin especificar el usuario:**
+
+   ```bash
+   docker exec -it container-sqlite3-practicas sqlite3
+   ```
+
+   - **Por defecto,** *este comando se ejecutará como el usuario **root** dentro del contenedor, ya que no se especificó el usuario a través del argumento `--user`.*
+   - **root** *tiene acceso a todos los archivos y permisos en el sistema de archivos del contenedor, lo que incluye la capacidad de ejecutar el cliente SQLite y acceder a cualquier archivo de base de datos en el contenedor.*
+
+2. **Por qué sucede:**
+   - *Docker ejecuta comandos dentro de contenedores como root de forma predeterminada a menos que se le indique lo contrario. Esto proporciona acceso total al sistema dentro del contenedor, pero también puede representar un riesgo si no se maneja con cuidado, especialmente si el contenedor tiene más permisos de los necesarios.*
+
+3. **Ejemplo de ejecución como root:**
+
+   ```bash
+   docker exec -it container-sqlite3-practicas sqlite3 /home/vscode/hello_sqlite3.db
+   ```
+
+   - *Este comando abrirá la base de datos `hello_sqlite3.db` en SQLite como el usuario **root** dentro del contenedor. Aunque esto funcionará sin problemas, es importante entender que cualquier operación que realices dentro del contenedor tendrá los permisos de root.*
+
+---
+
+### ***Especificar otro usuario (vscode en este caso)***
+
+- **Para evitar usar el usuario root y ejecutar el comando como otro usuario (por ejemplo, `vscode`), puedes utilizar el argumento `--user`:**
+
+```bash
+docker exec --interactive --tty --user vscode container-sqlite3-practicas sqlite3 /home/vscode/hello_sqlite3.db
+```
+
+- **--user vscode:** *Indica que el comando se ejecutará bajo el usuario `vscode`, que puede tener permisos más restringidos según cómo esté configurado el contenedor.*
+
+---
+
+### ***Consideraciones de Seguridad:***
+
+- *Ejecutar comandos como **root** dentro de contenedores puede ser arriesgado, especialmente si esos contenedores tienen acceso a volúmenes o interfaces de red compartidas con el sistema host.*
+- *Es buena práctica, cuando sea posible, ejecutar contenedores y comandos bajo un usuario no root para limitar el impacto potencial de vulnerabilidades o errores dentro del contenedor.*
+
+- *En resumen, cuando no se especifica el usuario en un comando `docker exec`, el comando se ejecuta como **root** por defecto. Para mayor seguridad y control, puedes definir un usuario específico con `--user`.*
