@@ -42,6 +42,7 @@ CREATE TABLE students (
   - **`TEXT`:** **Almacena cadenas de texto.**
   - **`REAL`:** **Almacena números de punto flotante.**
   - **`BLOB`:** **Almacena datos binarios, como imágenes o archivos.**
+  - **`NUMERIC`:** **Almacena números en formato decimal, permitiendo precisión en cálculos.**
   - **`NULL`:** **Campo sin valor asignado.**
 
 - **Descripción:** **Cada fila en la tabla `students` estará formada por los valores que correspondan a los campos `id`, `name` y `age`.**
