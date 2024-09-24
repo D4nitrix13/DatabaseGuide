@@ -1,8 +1,6 @@
-<https://www.ibm.com/mx-es/topics/redis>
+# curso <https://www.youtube.com/watch?v=s2co4JzuVB0&list=PLhfxuQVMs-nw6wu3HaD4YcO6wlF0AXMkp&index=1>
 
-sudo sysctl vm.overcommit_memory=1
-[sudo] contraseña para d4nitrix13:
-vm.overcommit_memory = 1
+## Info <https://www.ibm.com/mx-es/topics/redis>
 
 --user redis
 
