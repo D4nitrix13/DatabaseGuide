@@ -2,6 +2,4 @@
 <!-- GitHub: https://github.com/DanielPerezMoralesDev13 -->
 <!-- Correo electrónico: danielperezdev@proton.me -->
 
-# 9.3 ORDER BY
-
-<!-- https://youtu.be/OuJerKzV5T0?t=6594 -->
+# ***Relaciones Muchos a Muchos***

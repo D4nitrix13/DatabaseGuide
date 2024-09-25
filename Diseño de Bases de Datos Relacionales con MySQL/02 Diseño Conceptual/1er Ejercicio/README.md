@@ -142,6 +142,20 @@ sudo snap install drawio
   - *Cada tarea pertenece a **un único usuario** (1:1).*
   - *Una tarea no puede ser creada por más de un usuario.*
 
+---
+
+### ***Explicación***
+
+- **Un usuario puede crear muchas tareas** (mínimo 0, máximo N). Esto indica que un usuario puede estar asociado a ninguna o muchas tareas.
+- **Cada tarea pertenece a un único usuario**, lo que implica que una tarea solo puede tener un creador, es decir, no puede estar asociada a más de un usuario.
+
+- *Esto describe una relación **uno a muchos** (**1:N**), donde:*
+
+- **Usuario (1)** *→ Puede crear muchas tareas (**N**).*
+- **Tarea (N)** *→ Pertenece a un único usuario (**1**).*
+
+- *Es decir, cada usuario puede tener múltiples tareas, pero cada tarea solo puede tener un único usuario como creador.*
+
 *![/Images/ImageRelacionesAtributos](/Images/ImageRelacionesAtributos.png "/Images/ImageRelacionesAtributos.png")*
 
 ---
@@ -159,3 +173,34 @@ sudo snap install drawio
 - **`.bkp`:** *Este tipo de fichero representa una copia de seguridad (backup) del diagrama. Se utiliza para restaurar el estado anterior del fichero en caso de que se necesite recuperar información perdida o revertir cambios no deseados.*
 
 - **`.dtmp`:** *Este fichero es un fichero temporal creado por Draw.io durante el proceso de edición. Su propósito es almacenar información provisional mientras trabajas en el diagrama. Normalmente, estos ficheros se eliminan automáticamente al cerrar la aplicación, pero pueden ser útiles en caso de un cierre inesperado o error.*
+
+---
+
+### ***Data: Existe la relación de "muchos a uno" (N:1)**, y de hecho, es simplemente el enfoque inverso de la relación "uno a muchos" (1:N). Ambas descripciones son válidas y representan la misma relación, solo que desde diferentes perspectivas.***
+
+---
+
+### ***Ejemplo con la relación entre usuarios y tareas:***
+
+- **Uno a muchos (1:N):**
+  - *Desde el punto de vista de **un usuario**, un usuario puede crear muchas tareas.*
+  
+- **Muchos a uno (N:1):**
+  - *Desde el punto de vista de **una tarea**, muchas tareas pueden estar relacionadas con un único usuario (su creador).*
+
+---
+
+### ***Relación **muchos a uno (N:1)** en el ejemplo***
+
+- **Tareas (N):** *Muchas tareas pueden ser creadas por un solo usuario.*
+- **Usuario (1):** *Un único usuario puede ser el creador de muchas tareas.*
+
+> [!IMPORTANT]
+> **Ambas descripciones son correctas y solo varían en cómo se describe la relación: si se enfoca desde el usuario hacia las tareas o desde las tareas hacia el usuario.**
+
+### ***Resumen***
+
+- **1:N (uno a muchos):** *Un usuario crea muchas tareas.*
+- **N:1 (muchos a uno):** *Muchas tareas pertenecen a un único usuario.*
+
+- *Ambas expresan lo mismo, solo cambia la perspectiva.*
