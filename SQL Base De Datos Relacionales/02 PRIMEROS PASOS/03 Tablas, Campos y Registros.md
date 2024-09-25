@@ -85,9 +85,23 @@ students
 
 - **Para mostrar la estructura de una tabla específica, utiliza:**
 
+> [!NOTE]
+> *En SQLite, para ver los nombres de los campos (columnas) de una tabla, puedes usar el comando `PRAGMA table_info`. Aquí tienes un ejemplo para obtener los nombres de las columnas de una tabla llamada `Products`:*
+
 ```sql
-PRAGMA table_info(nameTable);
+PRAGMA table_info(students);
 ```
+
+- *Esto devolverá una lista con los detalles de cada columna, incluyendo su nombre, tipo de datos, si puede ser `NULL`, si es clave primaria, etc.*
+
+**El resultado típico incluye columnas como:**
+
+- **`cid`:** *El índice de la columna.*
+- **`name`:** *El nombre de la columna.*
+- **`type`:** *El tipo de datos de la columna.*
+- **`notnull`:** *Indica si la columna puede ser `NULL` (0 significa que puede ser `NULL`, 1 significa que no puede ser `NULL`).*
+- **`dflt_value`:** *El valor predeterminado de la columna, si existe.*
+- **`pk`:** *Indica si la columna es clave primaria (1 significa que es clave primaria, 0 significa que no lo es).*
 
 ```sql
 sqlite> PRAGMA table_info(students);
@@ -98,4 +112,17 @@ sqlite> PRAGMA table_info(students);
 
 - **Descripción:** **Este comando muestra la estructura de la tabla `students`, con detalles sobre cada campo (columna), su tipo de dato, si permite valores `NULL`, y si es clave primaria.**
 
----
+**Por ejemplo, para ver solo los nombres de las columnas en la tabla `students`, puedes hacer algo como esto:**
+
+```sql
+SELECT name FROM pragma_table_info('students');
+```
+
+```sql
+sqlite> SELECT name FROM pragma_table_info('students');
+id
+name
+age
+```
+
+- *Este comando devolverá una lista con los nombres de las columnas de la tabla `students`.*
