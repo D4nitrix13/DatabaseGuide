@@ -12,11 +12,11 @@
 
 ---
 
-## ***Pasos para Registrarse y Crear una Base de Datos en Redis Cloud***
+### ***Pasos para Registrarse y Crear una Base de Datos en Redis Cloud***
 
 ---
 
-### ***1. Registrarse en Redis***
+#### ***1. Registrarse en Redis***
 
 - *Para comenzar a utilizar Redis Cloud, primero debes registrarte en el sitio web de Redis. Aquí tienes los pasos:*
 
@@ -26,7 +26,7 @@
 
 ---
 
-### ***2. Acceder a Redis Cloud***
+#### ***2. Acceder a Redis Cloud***
 
 **Una vez que te hayas registrado y activado tu cuenta, puedes acceder a la plataforma de Redis Cloud:**
 
@@ -35,7 +35,7 @@
 
 ---
 
-### ***3. Crear una Nueva Base de Datos***
+#### ***3. Crear una Nueva Base de Datos***
 
 **Para crear una nueva base de datos en Redis Cloud, sigue estos pasos:**
 
@@ -47,13 +47,13 @@
 
 ---
 
-### ***4. Acceder a tu Base de Datos***
+#### ***4. Acceder a tu Base de Datos***
 
 - **Después de crear la base de datos, podrás acceder a ella desde el panel de control. Podrás gestionar datos, realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) y monitorizar el rendimiento.**
 
 ---
 
-## ***Recursos Adicionales***
+#### ***Recursos Adicionales***
 
 - **Descargar Redis:** *Si prefieres utilizar Redis localmente, puedes descargar la última versión desde [redis.io/downloads](https://redis.io/downloads/ "https://redis.io/downloads/").*
 - **Documentación:** *Para aprender más sobre cómo usar Redis, revisa la [documentación oficial](https://redis.io/documentation "https://redis.io/documentation")*
