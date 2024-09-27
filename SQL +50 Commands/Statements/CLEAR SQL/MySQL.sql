@@ -6,9 +6,12 @@
 
 -- Limpiar la pantalla en la consola MySQL en Linux
 -- Usa el siguiente comando para limpiar la pantalla:
-\! sh -c "echo -e '\033[H\033[2J'"
+\! printf '\033c'
+
 -- Alternativamente, puedes usar:
 -- \! sh -c "printf '\033c'"
+-- \! sh -c "echo -e '\033[H\033[2J'"
+-- \! echo -e '\033[H\033[2J'
 -- system clear;
 -- \! clear
 
