@@ -117,10 +117,6 @@ Warning: Using a password with '-a' or '-u' option on the command line interface
 
 ---
 
-Aquí tienes una versión mejorada de la información sobre cómo ejecutar un servidor Redis en Docker y conectarte a él como cliente. He añadido claridad y estructura a la explicación, así como algunos consejos adicionales para el uso seguro.
-
----
-
 ### ***Comando para Escuchar en Todas las Interfaces de Red***
 
 > [!TIP]
@@ -222,6 +218,35 @@ Warning: Using a password with '-a' or '-u' option on the command line interface
 *![Cliente Gráfico Redis Completo](/Images/ClientGraficoRedisComplete.png "/Images/ClientGraficoRedisIncomplete.png")*
 
 ---
+
+#### ***Redis no es sensible a mayúsculas y minúsculas en sus comandos, lo que significa que puedes escribir los comandos en cualquier combinación de letras mayúsculas y minúsculas sin que esto afecte su funcionamiento.***
+
+- **Por ejemplo, los siguientes comandos son equivalentes y producirán el mismo resultado:**
+
+```bash
+SET mykey "value"
+set mykey "value"
+SeT mykey "value"
+```
+
+- *Esta característica permite a los usuarios escribir comandos de manera más flexible y cómoda, adaptándose a sus preferencias personales o estilo de programación. Sin embargo, es una buena práctica mantener un estilo consistente en el uso de mayúsculas y minúsculas para mejorar la legibilidad del código y facilitar la colaboración con otros desarrolladores.*
+
+---
+
+### ***Ejemplo***
+
+- **Para ilustrar, aquí hay un ejemplo de cómo puedes usar diferentes combinaciones de mayúsculas y minúsculas:**
+
+```bash
+# Todas estas líneas son equivalentes y se ejecutarán sin problemas.
+GET mykey
+get mykey
+GeT mykey
+```
+
+- *Independientemente de cómo escribas el comando, Redis lo interpretará de la misma manera, lo que simplifica la experiencia del usuario y reduce la posibilidad de errores tipográficos relacionados con la capitalización.*
+
+- *Si bien Redis no es sensible a mayúsculas y minúsculas en sus comandos, es importante recordar que las claves almacenadas pueden ser sensibles a la capitalización, lo que significa que "MyKey" y "mykey" se considerarían diferentes claves. Por lo tanto, debes ser consistente y cuidadoso al manejar las claves para evitar confusiones.*
 
 ### ***Lista de los comandos más importantes que un ingeniero de software debería aprender al trabajar con Redis:***
 
@@ -356,6 +381,12 @@ KEYS user*
 ```bash
 1) "user2"
 2) "user3"
+```
+
+- **Para listar todas las claves de la base de datos actual, utiliza el siguiente comando en redis-cli**
+
+```bash
+KEYS *
 ```
 
 ---
