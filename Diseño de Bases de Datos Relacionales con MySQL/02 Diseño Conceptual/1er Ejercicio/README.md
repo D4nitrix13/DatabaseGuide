@@ -52,7 +52,7 @@
 ### ***Editores para Diagramas de Chen***
 
 1. **draw.io (ahora diagrams.net):** *Una herramienta gratuita en línea para crear diagramas, incluidos los diagramas ER.*
-   - [diagrams.net](https://www.diagrams.net/ "https://www.diagrams.net/")
+   - *[diagrams.net](https://www.diagrams.net/ "https://www.diagrams.net/")*
 
 - *Estos editores proporcionan interfaces gráficas que facilitan la creación y modificación de diagramas ER, lo que permite a los diseñadores de bases de datos trabajar de manera más eficiente.*
 
