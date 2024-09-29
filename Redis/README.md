@@ -117,6 +117,112 @@ Warning: Using a password with '-a' or '-u' option on the command line interface
 
 ---
 
+Aquí tienes una versión mejorada de la información sobre cómo ejecutar un servidor Redis en Docker y conectarte a él como cliente. He añadido claridad y estructura a la explicación, así como algunos consejos adicionales para el uso seguro.
+
+---
+
+### ***Comando para Escuchar en Todas las Interfaces de Red***
+
+> [!TIP]
+> *Para ejecutar un contenedor Redis que escuche en todas las interfaces de red, utiliza el siguiente comando:*
+
+```bash
+docker run --interactive --tty \
+  --attach STDIN --attach STDERR --attach STDOUT \
+  --stop-signal SIGTERM --stop-timeout 10 \
+  --publish 6379:6379 --expose 6379 \
+  --user root --privileged \
+  --workdir /App \
+  --mount type=bind,source="$(pwd)",destination=/App \
+  --env REDIS_PASSWORD=root \
+  --name server-redis-practicas \
+  redis redis-server --bind 0.0.0.0 --port 6379 --requirepass root
+```
+
+---
+
+### ***Conexión como Cliente a través de CLI***
+
+---
+
+#### ***1. Conexión usando `redis-cli` (usuario vacío)***
+
+```bash
+docker exec -it --privileged --user redis server-redis-practicas redis-cli -h 127.0.0.1 -p 6379 -a root
+```
+
+**Salida esperada:**
+
+```bash
+Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.
+127.0.0.1:6379>
+```
+
+---
+
+#### ***2. Conexión utilizando `0.0.0.0`***
+
+**Puedes intentar conectarte utilizando `0.0.0.0` como host:**
+
+```bash
+docker exec -it --privileged --user redis server-redis-practicas redis-cli -h 0.0.0.0 -p 6379 -a root
+```
+
+**Salida esperada:**
+
+```bash
+Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.
+0.0.0.0:6379>
+```
+
+#### ***3. Usar la dirección IP del contenedor***
+
+- **Para obtener la dirección IPv4 del contenedor, puedes usar el siguiente comando:**
+
+```bash
+docker exec -it --privileged --user redis server-redis-practicas redis-cli -h $(docker inspect --format "{{.NetworkSettings.IPAddress}}" server-redis-practicas) -p 6379 -a root
+```
+
+**Salida esperada:**
+
+```bash
+Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.
+172.17.0.2:6379>
+```
+
+---
+
+#### ***4. Conectar utilizando la IP de tu máquina host***
+
+- *Si quieres conectarte utilizando la dirección IP de tu máquina host, puedes obtenerla de la siguiente manera:*
+
+```bash
+docker exec -it --privileged --user redis server-redis-practicas redis-cli -h $(hostname -I | awk '{print $1}') -p 6379 -a root
+```
+
+**Salida esperada:**
+
+```bash
+Warning: Using a password with '-a' or '-u' option on the command line interface may not be safe.
+192.168.1.17:6379>
+```
+
+---
+
+### ***Advertencia sobre el Uso de Contraseñas***
+
+> [!WARNING]
+> *Ten en cuenta que usar contraseñas con las opciones `-a` o `-u` en la línea de comandos puede no ser seguro, ya que puede exponer tus credenciales en el historial de comandos.*
+
+---
+
+### ***Imágenes de Clientes Gráficos de Redis***
+
+*![Cliente Gráfico Redis Incompleto](/Images/ClientGraficoRedisIncomplete.png "/Images/ClientGraficoRedisIncomplete.png")*
+*![Cliente Gráfico Redis Completo](/Images/ClientGraficoRedisComplete.png "/Images/ClientGraficoRedisIncomplete.png")*
+
+---
+
 ### ***Lista de los comandos más importantes que un ingeniero de software debería aprender al trabajar con Redis:***
 
 ---
