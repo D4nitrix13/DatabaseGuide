@@ -135,6 +135,6 @@
 - *Start_Date*
 - *End_Date*
 
-![Image RelacionesUnoAUnoAtributosCompuestos](/Images/RelacionesUnoAUnoAtributosCompuestos.png "/Images/RelacionesUnoAUnoAtributosCompuestos.png")
+*![Image RelacionesUnoAUnoAtributosCompuestos](/Images/RelacionesUnoAUnoAtributosCompuestos.png "/Images/RelacionesUnoAUnoAtributosCompuestos.png")*
 
 - *[Recurso](https://ewebik.com/base-de-datos/modelo-entidad-relacion "https://ewebik.com/base-de-datos/modelo-entidad-relacion")*
