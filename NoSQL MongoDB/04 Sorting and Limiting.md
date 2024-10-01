@@ -118,6 +118,15 @@ school> db.students.find().sort({name: -1})
 - **Para ordenar los resultados en orden ascendente, se utiliza `1`.**
 - **Para ordenar los resultados en orden descendente, se utiliza `-1`.**
 
+**Informacion:**
+
+1. **`db.students.find()`:** *Este comando obtiene todos los documentos de la colección **`students`**.*
+
+2. **`sort({name: -1})`:** *Aplica una ordenación a los documentos basándose en el campo **`name`**.*
+
+   - **`-1`** *indica que se quiere ordenar los resultados en **orden descendente**. Es decir, ordena los nombres de la `Z` a la `A` (alfabéticamente inverso).*
+   - *Si quisieras ordenar de manera **ascendente**, usarías `1` en lugar de `-1`.*
+
 ##### **Ejemplo: Ordenación ascendente por `name`**
 
 ```sql
