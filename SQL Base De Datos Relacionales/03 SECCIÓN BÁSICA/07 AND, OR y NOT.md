@@ -93,10 +93,6 @@ sqlite> SELECT * FROM Products WHERE Price < 20 OR (CategoryID = 6 AND SupplierI
 
 ---
 
-Claro, aquí tienes una explicación más detallada sobre el uso de paréntesis `()` en las consultas SQL, así como su importancia y lo que sucede si no se utilizan.
-
----
-
 ## ***Uso de Paréntesis `()` en SQL***
 
 - *Los paréntesis se utilizan en SQL para agrupar condiciones y controlar el orden en que se evalúan. Al igual que en matemáticas, donde los paréntesis determinan qué operaciones se realizan primero, en SQL, los paréntesis permiten especificar qué condiciones deben evaluarse juntas antes de aplicar los operadores lógicos como `AND` y `OR`.*
@@ -110,13 +106,27 @@ Claro, aquí tienes una explicación más detallada sobre el uso de paréntesis 
 **Ejemplo sin paréntesis:**
 
 ```sql
-SELECT * FROM Products WHERE Price < 20 OR CategoryID = 6 AND SupplierID = 7;
+SELECT * FROM Products WHERE Price < 20 OR CategoryID = 6 AND SupplierID = 7 LIMIT 3;
+```
+
+```sql
+sqlite> SELECT * FROM Products WHERE Price < 20 OR CategoryID = 6 AND SupplierID = 7 LIMIT 3;
+1|Chais|1|1|10 boxes x 20 bags|18
+2|Chang|1|1|24 - 12 oz bottles|19
+3|Aniseed Syrup|1|2|12 - 550 ml bottles|10
 ```
 
 **En este caso, SQL interpretará la consulta como:**
 
 ```sql
-SELECT * FROM Products WHERE Price < 20 OR (CategoryID = 6 AND SupplierID = 7);
+SELECT * FROM Products WHERE Price < 20 OR (CategoryID = 6 AND SupplierID = 7) LIMIT 3;
+```
+
+```sql
+sqlite> SELECT * FROM Products WHERE Price < 20 OR (CategoryID = 6 AND SupplierID = 7) LIMIT 3;
+1|Chais|1|1|10 boxes x 20 bags|18
+2|Chang|1|1|24 - 12 oz bottles|19
+3|Aniseed Syrup|1|2|12 - 550 ml bottles|10
 ```
 
 - *Esto significa que seleccionará productos que cumplen cualquiera de las siguientes condiciones:*
@@ -138,6 +148,13 @@ SELECT * FROM Products WHERE Price < 20 OR (CategoryID = 6 AND SupplierID = 7);
 
 ```sql
 SELECT * FROM Products WHERE (Price < 20 OR CategoryID = 6) AND SupplierID = 7;
+```
+
+```sql
+sqlite> SELECT * FROM Products WHERE (Price < 20 OR CategoryID = 6) AND SupplierID = 7;
+16|Pavlova|7|3|32 - 500 g boxes|17.45
+17|Alice Mutton|7|6|20 - 1 kg tins|39
+70|Outback Lager|7|1|24 - 355 ml bottles|15
 ```
 
 - *En este caso, la consulta selecciona productos que cumplen con la siguiente condición:*
@@ -164,13 +181,27 @@ SELECT * FROM Products WHERE (Price < 20 OR CategoryID = 6) AND SupplierID = 7;
 **Considera el siguiente conjunto de datos:**
 
 ```sql
-SELECT * FROM Products WHERE Price < 20 OR Price > 30 AND CategoryID = 6;
+SELECT * FROM Products WHERE Price < 20 OR Price > 30 AND CategoryID = 6 LIMIT 3;
+```
+
+```sql
+sqlite> SELECT * FROM Products WHERE Price < 20 OR Price > 30 AND CategoryID = 6 LIMIT 3;
+1|Chais|1|1|10 boxes x 20 bags|18
+2|Chang|1|1|24 - 12 oz bottles|19
+3|Aniseed Syrup|1|2|12 - 550 ml bottles|10
 ```
 
 **Esto se interpretará como:**
 
 ```sql
-SELECT * FROM Products WHERE Price < 20 OR (Price > 30 AND CategoryID = 6);
+SELECT * FROM Products WHERE Price < 20 OR (Price > 30 AND CategoryID = 6) LIMIT 3;
+```
+
+```sql
+sqlite> SELECT * FROM Products WHERE Price < 20 OR (Price > 30 AND CategoryID = 6) LIMIT 3;
+1|Chais|1|1|10 boxes x 20 bags|18
+2|Chang|1|1|24 - 12 oz bottles|19
+3|Aniseed Syrup|1|2|12 - 550 ml bottles|10
 ```
 
 **Posibles resultados:**
