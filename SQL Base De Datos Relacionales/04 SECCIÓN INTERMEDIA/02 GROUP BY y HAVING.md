@@ -7,6 +7,6 @@ base de datos dalto hello_sqlite3 tabla usuarios
 docker exec --interactive --tty --privileged --user vscode container-sqlite3-practicas sqlite3 /home/vscode/Northwind.db
 -->
 
-<!-- https://youtu.be/DFg1V-rO6Pg?t=11864 -->
+<!-- https://youtu.be/DFg1V-rO6Pg?t=12416 -->
 
-# Funciones de Agregación
+# ***GROUP BY y HAVING***
