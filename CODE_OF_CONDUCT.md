@@ -6,7 +6,7 @@
 
 ## **Our Promise**
 
-*In [Database-SQL-NOSQL], we are committed to creating and maintaining a respectful and welcoming environment for everyone, regardless of age, size, disability, ethnicity, identity and expression of gender, level of experience, education, socioeconomic status, nationality, personal appearance, race, religion, or sexual identity and orientation.*
+*In [Database-SQL-NoSQL-Redis], we are committed to creating and maintaining a respectful and welcoming environment for everyone, regardless of age, size, disability, ethnicity, identity and expression of gender, level of experience, education, socioeconomic status, nationality, personal appearance, race, religion, or sexual identity and orientation.*
 
 ## **Our Standards**
 
