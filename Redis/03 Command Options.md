@@ -112,21 +112,19 @@ DEL Name
 
     ```bash
     SET Name Yoshi NX
-    (nil)
     ```
 
     ```bash
     127.0.0.1:6379> SET Name Yoshi NX
-    (nil)
+    OK
     ```
 
-  - *Establece `"Name"` a `"Yoshi"` solo si no existe. Si `"Name"` ya existe, devuelve `(nil)`.*
+  - *Establece `"Name"` a `"Yoshi"` solo si no existe. Si `"Name"` ya existe, devuelve `(nil)` y si no existe devuelve `OK`.*
 
 - **`SET Name Yoshi NX`**
 
     ```bash
     SET Name Yoshi NX
-    (nil)
     ```
 
     ```bash
@@ -140,15 +138,14 @@ DEL Name
 
     ```bash
     SET Name Yoshi XX
-    (nil)
     ```
 
     ```bash
     127.0.0.1:6379> SET Name Yoshi XX
-    (nil)
+    OK
     ```
 
-  - *Intenta establecer `"Name"` a `"Yoshi"` solo si ya existe. Si no existe, devuelve `(nil)`.*
+  - *Intenta establecer `"Name"` a `"Yoshi"` solo si ya existe. Si no existe, devuelve `(nil)` y si existe devuelve `OK`.*
 
 - **`SET Name Peach GET`**
 
