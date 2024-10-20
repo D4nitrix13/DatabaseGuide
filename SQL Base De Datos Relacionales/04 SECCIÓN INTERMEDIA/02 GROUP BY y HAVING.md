@@ -2,13 +2,6 @@
 <!-- GitHub: https://github.com/DanielPerezMoralesDev13 -->
 <!-- Correo electrónico: danielperezdev@proton.me -->
 
-<!-- 
-base de datos dalto hello_sqlite3 tabla usuarios
-docker exec --interactive --tty --privileged --user vscode container-sqlite3-practicas sqlite3 /home/vscode/Northwind.db
--->
-
-<!-- https://youtu.be/DFg1V-rO6Pg?t=12416 -->
-
 # ***Explicación detallada de GROUP BY y HAVING***
 
 - *En SQL, las cláusulas `GROUP BY` y `HAVING` permiten agrupar filas que comparten un valor común y aplicar funciones de agregación (como `COUNT`, `AVG`, `SUM`, etc.) a cada grupo. Además, la cláusula `HAVING` se utiliza para filtrar grupos basados en condiciones, similar a cómo `WHERE` filtra filas individuales.*
@@ -197,114 +190,195 @@ sqlite> SELECT CategoryID, ROUND(AVG(Price)) AS Promedio FROM Products WHERE Cat
 
 ---
 
-Group by crea grupo y las funciones de agregacion nos permiten trabajar con grupos
+#### ***Agrupación y Agregación en SQL***
 
-having filtra grupos mientras que el where filtra registro
+- *La cláusula `GROUP BY` se utiliza para agrupar filas que tienen valores similares en columnas específicas, permitiendo realizar operaciones de agregación sobre cada grupo. Las funciones de agregación como `AVG()`, `SUM()`, `COUNT()`, entre otras, nos permiten aplicar cálculos sobre los grupos creados.*
 
-sqlite> SELECT CategoryID, ROUND(AVG(Price), 2) AS Promedio FROM Products WHERE CategoryID IS NOT NULL GROUP BY CategoryID HAVING Promedio > 40;
+- **`WHERE`:** *Filtra filas (registros) antes de agrupar. Solo actúa sobre los registros individuales.*
+- **`HAVING`:** *Filtra grupos. Se usa después de aplicar `GROUP BY` y funciona sobre los resultados de las funciones de agregación.*
+
+**Ejemplo 1:**
+
+```sql
+SELECT CategoryID, ROUND(AVG(Price), 2) AS Promedio
+FROM Products
+WHERE CategoryID IS NOT NULL
+GROUP BY CategoryID
+HAVING Promedio > 40;
+```
+
+```sql
+sqlite> SELECT CategoryID, ROUND(AVG(Price), 2) AS Promedio
+FROM Products
+WHERE CategoryID IS NOT NULL
+GROUP BY CategoryID
+HAVING Promedio > 40;
+```
+
+*Esto selecciona el ID de categoría y el promedio de los precios de productos para cada categoría, pero solo muestra los grupos cuyo promedio supera los 40.*
+
+**Resultado:**
+
+```sql
 6|46.29
+```
 
-sqlite> SELECT SupplierID, ROUND(AVG(Price), 2) AS Promedio FROM Products GROUP BY SupplierID HAVING Promedio > 40;
+**Ejemplo 2:**
+
+```sql
+SELECT SupplierID, ROUND(AVG(Price), 2) AS Promedio
+FROM Products
+GROUP BY SupplierID
+HAVING Promedio > 40;
+```
+
+```sql
+sqlite> SELECT SupplierID, ROUND(AVG(Price), 2) AS Promedio
+FROM Products
+GROUP BY SupplierID
+HAVING Promedio > 40;
+```
+
+- *Aquí se agrupan productos por sus proveedores, calculando el promedio de precios por proveedor, y filtrando solo aquellos proveedores con un promedio de precios mayor a 40.*
+
+**Resultado:**
+
+```sql
 4|46.0
 12|44.68
 18|140.75
 28|44.5
-sqlite> SELECT SupplierID, ROUND(AVG(Price), 2) AS Promedio FROM Products WHERE ProductName IS NOT NULL GROUP BY SupplierID HAVING Promedio > 40;
-4|46.0
-12|44.68
-18|140.75
-28|44.5
+```
 
-sqlite> SELECT "ProductID", "Quantity" FROM "OrderDetails" LIMIT 10;
-11|12
-42|10
-72|5
-14|9
-51|40
-41|10
-51|35
-65|15
-22|6
-57|15
+---
 
-sqlite> SELECT "ProductID", SUM("Quantity") FROM "OrderDetails";
-11|12743
+#### ***Ejemplos de Consultas con Agregación***
 
-sqlite> SELECT "ProductID", "Quantity" FROM "OrderDetails" ORDER BY "ProductID" ASC LIMIT 20;
-1|45
-1|18
-1|20
-1|15
-1|12
-1|15
-1|10
-1|24
-2|20
-2|50
-2|35
-2|40
-2|25
-2|7
-2|24
-2|25
-2|60
-2|10
-2|45
-3|30
+1. *Consulta para obtener los primeros 10 registros de la tabla `OrderDetails`:*
 
-sqlite> SELECT "ProductID", SUM("Quantity") AS Total FROM "OrderDetails" GROUP BY "ProductID" ORDER BY Total ASC NULLS LAST LIMIT 20;
-67|5
-45|15
-22|18
-9|20
-7|25
-15|25
-12|27
-6|36
-37|39
-73|45
-52|48
-32|52
-48|70
-50|70
-25|71
-42|77
-3|80
-10|85
-27|90
-66|90
+    ```sql
+    SELECT "ProductID", "Quantity" 
+    FROM "OrderDetails" 
+    LIMIT 10;
+    ```
 
-sqlite> SELECT "ProductID", SUM("Quantity") AS Total FROM "OrderDetails" GROUP BY "ProductID" HAVING Total < 50 ORDER BY Total ASC NULLS LAST LIMIT 20;
-67|5
-45|15
-22|18
-9|20
-7|25
-15|25
-12|27
-6|36
-37|39
-73|45
-52|48
+    ```sql
+    sqlite> SELECT "ProductID", "Quantity" 
+    FROM "OrderDetails" 
+    LIMIT 10;
+    ```
 
-sqlite> SELECT "ProductID", SUM("Quantity") AS Total FROM "OrderDetails" GROUP BY "ProductID" ORDER BY Total DESC NULLS LAST LIMIT 1;
+    **Resultado:**
+
+    ```sql
+    11|12
+    42|10
+    72|5
+    ...
+    ```
+
+2. *Suma de cantidades (`Quantity`) para un producto específico:*
+
+    ```sql
+    SELECT "ProductID", SUM("Quantity")
+    FROM "OrderDetails";
+    ```
+
+    ```sql
+    sqlite> SELECT "ProductID", SUM("Quantity")
+    FROM "OrderDetails";
+    ```
+
+    **Esto suma todas las cantidades asociadas con un producto.**
+
+    **Resultado:**
+
+    ```sql
+    11|12743
+    ```
+
+3. *Ordenar por el total de cantidades para cada producto, limitando la salida a los primeros 20 registros:*
+
+    ```sql
+    SELECT "ProductID", SUM("Quantity") AS Total 
+    FROM "OrderDetails"
+    GROUP BY "ProductID"
+    ORDER BY Total ASC NULLS LAST 
+    LIMIT 20;
+    ```
+
+    ```sql
+    sqlite> SELECT "ProductID", SUM("Quantity") AS Total 
+    FROM "OrderDetails"
+    GROUP BY "ProductID"
+    ORDER BY Total ASC NULLS LAST 
+    LIMIT 20;
+    ```
+
+4. *Filtrar productos cuya suma total de cantidades sea menor a 50:*
+
+    ```sql
+    SELECT "ProductID", SUM("Quantity") AS Total 
+    FROM "OrderDetails"
+    GROUP BY "ProductID"
+    HAVING Total < 50 
+    ORDER BY Total ASC NULLS LAST 
+    LIMIT 20;
+    ```
+
+    ```sql
+    sqlite> SELECT "ProductID", SUM("Quantity") AS Total 
+    FROM "OrderDetails"
+    GROUP BY "ProductID"
+    HAVING Total < 50 
+    ORDER BY Total ASC NULLS LAST 
+    LIMIT 20;
+    ```
+
+5. *Obtener el producto con la mayor cantidad vendida:*
+
+    ```sql
+    SELECT "ProductID", SUM("Quantity") AS Total 
+    FROM "OrderDetails"
+    GROUP BY "ProductID"
+    ORDER BY Total DESC NULLS LAST 
+    LIMIT 1;
+    ```
+
+    ```sql
+    sqlite> SELECT "ProductID", SUM("Quantity") AS Total 
+    FROM "OrderDetails"
+    GROUP BY "ProductID"
+    ORDER BY Total DESC NULLS LAST 
+    LIMIT 1;
+    ```
+
+**Resultado:**
+
+```sql
 31|458
+```
 
-sqlite> SELECT "ProductID", SUM("Quantity") AS Total FROM "OrderDetails" GROUP BY "ProductID" ORDER BY Total ASC NULLS LAST LIMIT 1;
-67|5
+---
 
-en sql no se puede usar una funcion de agregacion en con un valor de otra funcionde agregacion
-el having no se puede usar sin group by el group by agrupa registro y el having trabajo con grupos
+#### ***Importante sobre SQL:***
 
-orden
+- *No es posible usar una función de agregación como argumento de otra función de agregación directamente.*
+- *`HAVING` solo puede usarse en conjunto con `GROUP BY`, ya que se aplica sobre grupos de datos, no sobre registros individuales.*
 
-1. primero selccionamos select ... from ...
-2. luego filtramos registros filas where ...
-3. luego agrupasmo registros group by ...
-4. luego filtramos grupos having ...
-5. luego ordenamos order by ...
-6. y si es necesario limitamos la salida de registros limit ...
-<https://youtu.be/DFg1V-rO6Pg?t=13611>
+---
+
+#### ***Orden de Ejecución de las Cláusulas en una Consulta SQL:***
+
+1. **`SELECT`:** *Definimos las columnas que queremos seleccionar.*
+2. **`FROM`:** *Indicamos las tablas de las que obtendremos los datos.*
+3. **`WHERE`:** *Filtramos filas (registros) antes de agrupar.*
+4. **`GROUP BY`:** *Agrupamos los registros en base a una o más columnas.*
+5. **`HAVING`:** *Filtramos los grupos después de la agregación.*
+6. **`ORDER BY`:** *Ordenamos los resultados en base a una o más columnas.*
+7. **`LIMIT`:** *Limitamos la cantidad de registros que se muestran en el resultado.*
+
+- *Este orden asegura que la consulta se ejecute de forma correcta y eficiente, obteniendo resultados precisos según los criterios establecidos.*
 
 ---
 
