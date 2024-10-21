@@ -73,7 +73,7 @@
     },
     {
         "CustomerID": 9,
-        "CustomerName": "Bon app'",
+        "CustomerName": "Bon app''",
         "ContactName": "Laurence Lebihans",
         "Address": "12, rue des Bouchers",
         "City": "Marseille",
@@ -91,7 +91,7 @@
     },
     {
         "CustomerID": 11,
-        "CustomerName": "B's Beverages",
+        "CustomerName": "B''s Beverages",
         "ContactName": "Victoria Ashworth",
         "Address": "Fauntleroy Circus",
         "City": "London",
@@ -352,16 +352,16 @@
     },
     {
         "CustomerID": 40,
-        "CustomerName": "La corne d'abondance",
+        "CustomerName": "La corne d''abondance",
         "ContactName": "Daniel Tonini",
-        "Address": "67, avenue de l'Europe",
+        "Address": "67, avenue de l''Europe",
         "City": "Versailles",
         "PostalCode": "78000",
         "Country": "France"
     },
     {
         "CustomerID": 41,
-        "CustomerName": "La maison d'Asie",
+        "CustomerName": "La maison d''Asie",
         "ContactName": "Annette Roulet",
         "Address": "1 rue Alsace-Lorraine",
         "City": "Toulouse",
@@ -397,7 +397,7 @@
     },
     {
         "CustomerID": 45,
-        "CustomerName": "Let's Stop N Shop",
+        "CustomerName": "Let''s Stop N Shop",
         "ContactName": "Jaime Yorres",
         "Address": "87 Polk St. Suite 5",
         "City": "San Francisco",
@@ -730,7 +730,7 @@
     },
     {
         "CustomerID": 82,
-        "CustomerName": "Trail's Head Gourmet Provisioners",
+        "CustomerName": "Trail''s Head Gourmet Provisioners",
         "ContactName": "Helvetius Nagy",
         "Address": "722 DaVinci Blvd.",
         "City": "Kirkland",
@@ -759,7 +759,7 @@
         "CustomerID": 85,
         "CustomerName": "Vins et alcools Chevalier",
         "ContactName": "Paul Henriot",
-        "Address": "59 rue de l'Abbaye",
+        "Address": "59 rue de l''Abbaye",
         "City": "Reims",
         "PostalCode": "51100",
         "Country": "France"

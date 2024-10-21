@@ -1088,7 +1088,7 @@ INSERT INTO OrderDetails VALUES(518,10443,28,12);
 
 **Diagrama:**
 
-![Northwind](/Images/NorthwindERDiagram.png "/Images/NorthwindERDiagram.png")
+*![Northwind](/Images/NorthwindERDiagram.png "/Images/NorthwindERDiagram.png")*
 
 - **Listamos Tablas**
 
