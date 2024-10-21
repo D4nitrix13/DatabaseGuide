@@ -2,5 +2,11 @@
 # GitHub: https://github.com/DanielPerezMoralesDev13
 # Correo electrónico: danielperezdev@proton.me
 
-*.txt
-!NoSQL\ MongoDB/NoSQL/requirements.txt
+et-xmlfile==1.1.0
+numpy==2.1.2
+openpyxl==3.1.5
+pandas==2.2.3
+python-dateutil==2.9.0.post0
+pytz==2024.2
+six==1.16.0
+tzdata==2024.2
