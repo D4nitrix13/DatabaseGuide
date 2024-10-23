@@ -4495,3 +4495,6 @@ SELECT * FROM Colores c CROSS JOIN Tamaños t;
 ```
 
 - *Aquí, `c` y `t` son alias para las tablas `Colores` y `Tamaños`, respectivamente. También, los corchetes `[]` son específicos de ciertos dialectos de SQL (como SQL Server) y no siempre son necesarios. En otros sistemas como SQLite, PostgreSQL, y MySQL, el uso de comillas dobles `" "` para nombres de columnas o tablas funciona igual.*
+
+*![Image CrossJoin](/Images/ImageCrossJoin.png "/Images/ImageCrossJoin.png")*
+*![Image CrossJoinQuery](/Images/ImageCrossJoinQuery.png "/Images/ImageCrossJoinQuery.png")*
