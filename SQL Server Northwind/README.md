@@ -10,6 +10,97 @@
 
 ---
 
+## ***Configuración de Acceso Remoto en SQL Server***
+
+### ***Comando para verificar la configuración de acceso remoto***
+
+```bash
+docker exec -it sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "P@ssw0rd123!"
+```
+
+*Este comando ejecuta el contenedor de Docker con SQL Server (`sqlpreview`) e inicia una sesión interactiva con `sqlcmd`, una herramienta de línea de comandos para conectarse a SQL Server. Aquí:*
+
+- **docker exec -it:** *Ejecuta un comando dentro de un contenedor activo.*
+  - **-i:** *Modo interactivo.*
+  - **-t:** *Asigna una pseudo-TTY (permite la interacción con el contenedor desde la terminal).*
+- **sqlpreview:** *Nombre del contenedor que ejecuta SQL Server.*
+- **/opt/mssql-tools/bin/sqlcmd:** *Ruta a `sqlcmd`, la herramienta para ejecutar comandos SQL.*
+- **-S localhost:** *Indica que el servidor SQL está corriendo en el contenedor en la dirección `localhost`.*
+- **-U sa:** *Especifica el usuario de SQL Server. En este caso, es el administrador del sistema (`sa`).*
+- **-P "P@ssw0rd123!":** *Contraseña del usuario `sa`.*
+
+*Una vez dentro del entorno de SQL Server, puedes ejecutar la siguiente consulta para verificar la configuración de acceso remoto:*
+
+```sql
+EXEC sp_configure 'remote access';
+GO
+```
+
+*Este comando ejecuta el procedimiento almacenado del sistema `sp_configure` para verificar la configuración actual del acceso remoto en SQL Server. El valor de `remote access` controla si SQL Server permite o no que otros servidores SQL Server se conecten a él desde una red externa. Los posibles valores son:*
+
+- **0:** *Desactiva el acceso remoto.*
+- **1:** *Activa el acceso remoto (predeterminado en SQL Server).*
+
+*La salida de la consulta:*
+
+| *name*          | *minimum* | *maximum* | *config_value* | *run_value* |
+| --------------- | --------- | --------- | -------------- | ----------- |
+| *remote access* | 0         | 1         | 1              | 1           |
+
+- **config_value:** *El valor configurado (1 = acceso remoto activado).*
+- **run_value:** *El valor actual en ejecución (1 = acceso remoto está activo).*
+
+*En este caso, tanto el `config_value` como el `run_value` son `1`, lo que significa que el acceso remoto está habilitado.*
+
+```bash
+docker exec -it sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "P@ssw0rd123!"
+1> EXEC sp_configure 'remote access';
+
+2> GO
+name                                minimum     maximum     config_value run_value
+----------------------------------- ----------- ----------- ------------ -----------
+remote access                                 0           1            1           1
+```
+
+---
+
+## ***Extensión de Visual Studio Code: SQL Server***
+
+**Nombre:** *SQL Server (mssql)*
+**ID:** *ms-mssql.mssql*
+**Descripción:** *Esta extensión permite desarrollar con Microsoft SQL Server, Azure SQL Database y SQL Data Warehouse directamente desde Visual Studio Code. Soporta la ejecución de consultas, la administración de bases de datos y la conexión a servidores SQL desde cualquier plataforma (Windows, Linux, macOS).*
+**Versión:** *1.24.0*
+**Editor:** *Microsoft*
+**Vínculo de VS Marketplace:** *[SQL Server Extension](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql "https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql")*
+
+---
+
+### ***Características principales***
+
+- **Ejecutar consultas:** *Permite ejecutar consultas SQL directamente desde Visual Studio Code.*
+- **Exploración de bases de datos:** *Acceso visual para explorar bases de datos, tablas, vistas, etc.*
+- **Compatibilidad multiplataforma:** *Funciona en cualquier sistema operativo compatible con VS Code.*
+- **Integración con Azure:** *Soporte para Azure SQL Database y Azure SQL Data Warehouse.*
+- **Conexión segura:** *Soporte para certificados de servidor y conexiones cifradas.*
+
+---
+
+## ***Conexión a la Base de Datos***
+
+**Este es el formato de cadena de conexión para conectarse a SQL Server desde una aplicación o cliente:**
+
+```bash
+Server=localhost,1433;Database=master;User Id=sa;Password=P@ssw0rd123!;TrustServerCertificate=true;
+```
+
+- **Server=localhost,1433:** *Especifica el servidor SQL (`localhost`) y el puerto (1433, el puerto predeterminado de SQL Server).*
+- **Database=master:** *Indica la base de datos a la que se conectará, en este caso, `master`, que es la base de datos del sistema.*
+- **User Id=sa:** *El usuario de SQL Server, en este caso `sa` (System Administrator).*
+- **Password=P@ssw0rd123!:** *La contraseña asociada al usuario `sa`.*
+- **TrustServerCertificate=true:** *Se usa cuando estás conectándote a un servidor SQL que utiliza un certificado autofirmado o si no quieres validar el certificado del servidor.*
+
+---
+
 ### **Comandos de Pull y Ejecución de SQL Server**
 
 ---

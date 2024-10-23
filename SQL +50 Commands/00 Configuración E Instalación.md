@@ -489,3 +489,60 @@ drwxr-x--- 2 mysql mysql     4096 Sep 16 19:55  sys
 ```
 
 - *Ambos comandos mostrarán todas las bases de datos disponibles en el servidor PostgreSQL.*
+
+---
+
+### ***Opciones y su significado***
+
+> [!TIP]
+> *El comando `.show` en SQLite es una instrucción de línea de comandos que muestra la configuración actual del entorno de la sesión SQLite en la que estás trabajando. Aquí tienes una explicación de cada una de las opciones que se muestran en la salida de tu comando `.show`:*
+
+- **`echo: off`:** *Indica que la opción de eco (echo) está desactivada. Cuando el eco está encendido, todos los comandos que escribes se muestran en la salida.*
+
+- **`eqp: off`:** *Significa que el plan de ejecución (explain query plan) no se mostrará automáticamente para las consultas ejecutadas. Si está activado, SQLite mostrará el plan de ejecución para cada consulta.*
+
+- **`explain: auto`:** *Indica que SQLite usará la opción de explicación de forma automática cuando sea necesario. Esto puede depender del contexto de la consulta que se está ejecutando.*
+
+- **`headers: off`:** *Significa que los encabezados de las columnas no se mostrarán en la salida de las consultas. Si se activa, se mostrarán los nombres de las columnas como parte de la salida.*
+
+- **`mode: list`:** *Esto establece el modo de salida en "lista". En este modo, los resultados se mostrarán en una lista, con cada fila impresa en una línea separada.*
+
+- **`nullvalue: ""`:** *Define cómo se muestran los valores `NULL`. En este caso, los valores `NULL` se mostrarán como cadenas vacías.*
+
+- **`output: stdout`:** *Indica que la salida se enviará a la consola estándar (standard output).*
+
+- **`colseparator: "|"`:** *Este es el separador que se usará entre las columnas en la salida. En este caso, las columnas estarán separadas por un carácter de barra vertical (`|`).*
+
+- **`rowsseparator: "\n"`:** *Indica que las filas estarán separadas por un salto de línea.*
+
+- **`stats: off`:** *Significa que la recopilación de estadísticas está desactivada. Cuando está activado, SQLite recopila estadísticas sobre el rendimiento de las consultas.*
+
+- **`width:`:** *Esta opción controla el ancho de las columnas, pero en este caso no tiene un valor definido.*
+
+- **`filename: /home/vscode/Northwind.db`:** *Muestra la ruta del archivo de base de datos que está actualmente abierto en SQLite, en este caso, `Northwind.db`.*
+
+---
+
+### ***Resumen***
+
+*El comando `.show` es útil para ver la configuración actual del entorno de tu sesión en SQLite, permitiéndote ajustar el comportamiento de la salida y otras características según tus necesidades. Si deseas cambiar alguna de estas configuraciones, puedes usar otros comandos específicos de SQLite para hacerlo.*
+
+```sql
+.show
+```
+
+```sql
+sqlite> .show
+        echo: off
+         eqp: off
+     explain: auto
+     headers: off
+        mode: list
+   nullvalue: ""
+      output: stdout
+colseparator: "|"
+rowseparator: "\n"
+       stats: off
+       width:
+    filename: /home/vscode/Northwind.db
+```
