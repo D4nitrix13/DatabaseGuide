@@ -10,6 +10,10 @@
 
 - *El operador **IN** permite verificar si un valor en una columna coincide con alguno de los valores dentro de una lista específica. Es una forma más eficiente de escribir múltiples condiciones **OR**.*
 
+*El operador IN en programación es conocido como operador de pertenencia. Su función es verificar si un valor pertenece a un conjunto de valores o elementos dentro de una lista, colección, array, etc.*
+
+*En el contexto de SQL, el operador IN se utiliza para determinar si un valor dado coincide con uno de los valores dentro de una lista. Es una forma de hacer múltiples comparaciones de igualdad.*
+
 **Ejemplo sin `IN`:**
 
 ```sql

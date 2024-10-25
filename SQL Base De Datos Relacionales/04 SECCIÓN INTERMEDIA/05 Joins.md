@@ -2,13 +2,6 @@
 <!-- GitHub: https://github.com/DanielPerezMoralesDev13 -->
 <!-- Correo electrónico: danielperezdev@proton.me -->
 
-<!-- 
-base de datos dalto hello_sqlite3 tabla usuarios
-docker exec --interactive --tty --privileged --user vscode container-sqlite3-practicas sqlite3 /home/vscode/Northwind.db
--->
-
-<!-- https://youtu.be/DFg1V-rO6Pg?t=16787 -->
-
 # ***Joins***
 
 *En SQL, existen varios tipos de joins que permiten combinar filas de dos o más tablas en función de una condición relacionada:*
@@ -18,6 +11,7 @@ docker exec --interactive --tty --privileged --user vscode container-sqlite3-pra
 - **Right Join**
 - **Full Join**
 - **Cross Join**
+- **Full Outer Join**
 
 ---
 
@@ -4498,3 +4492,668 @@ SELECT * FROM Colores c CROSS JOIN Tamaños t;
 
 *![Image CrossJoin](/Images/ImageCrossJoin.png "/Images/ImageCrossJoin.png")*
 *![Image CrossJoinQuery](/Images/ImageCrossJoinQuery.png "/Images/ImageCrossJoinQuery.png")*
+
+---
+
+### ***Joins:***
+
+*En SQL, los **Joins** permiten combinar filas de dos o más tablas en función de una relación común entre ellas. En resumen:*
+
+- *Sin `WHERE`, es un **Cross Join** (producto cartesiano).*
+- *Con `WHERE`, se convierte en un **Inner Join** implícito.*
+
+**Ejemplo:**
+
+```sql
+SELECT * 
+FROM "Employees" e
+INNER JOIN "Orders" o
+ON e."EmployeeID" = o."EmployeeID" 
+LIMIT 100;
+```
+
+```sql
+sqlite> SELECT * 
+FROM "Employees" e
+INNER JOIN "Orders" o
+ON e."EmployeeID" = o."EmployeeID" 
+LIMIT 100;
+5|Buchanan|Steven|1955-03-04|EmpID5.pic|Steven Buchanan graduated from St. Andrews University, Scotland, with a BSC degree. Upon joining the company as a sales representative, he spent 6 months in an orientation program at the Seattle office and then returned to his permanent post in London, where he was promoted to sales manager. Mr. Buchanan has completed the courses 'Successful Telemarketing' and 'International Sales Management'. He is fluent in French.|10248|90|5|1996-07-04|3
+6|Suyama|Michael|1963-07-02|EmpID6.pic|Michael is a graduate of Sussex University (MA, economics) and the University of California at Los Angeles (MBA, marketing). He has also taken the courses 'Multi-Cultural Selling' and 'Time Management for the Sales Professional'. He is fluent in Japanese and can read and write French, Portuguese, and Spanish.|10249|81|6|1996-07-05|1
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10250|34|4|1996-07-08|2
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10251|84|3|1996-07-08|1
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10252|76|4|1996-07-09|2
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10253|34|3|1996-07-10|2
+5|Buchanan|Steven|1955-03-04|EmpID5.pic|Steven Buchanan graduated from St. Andrews University, Scotland, with a BSC degree. Upon joining the company as a sales representative, he spent 6 months in an orientation program at the Seattle office and then returned to his permanent post in London, where he was promoted to sales manager. Mr. Buchanan has completed the courses 'Successful Telemarketing' and 'International Sales Management'. He is fluent in French.|10254|14|5|1996-07-11|2
+9|Dodsworth|Anne|1969-07-02|EmpID9.pic|Anne has a BA degree in English from St. Lawrence College. She is fluent in French and German.|10255|68|9|1996-07-12|3
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10256|88|3|1996-07-15|2
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10257|35|4|1996-07-16|3
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10258|20|1|1996-07-17|1
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10259|13|4|1996-07-18|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10260|55|4|1996-07-19|1
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10261|61|4|1996-07-19|2
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10262|65|8|1996-07-22|3
+9|Dodsworth|Anne|1969-07-02|EmpID9.pic|Anne has a BA degree in English from St. Lawrence College. She is fluent in French and German.|10263|20|9|1996-07-23|3
+6|Suyama|Michael|1963-07-02|EmpID6.pic|Michael is a graduate of Sussex University (MA, economics) and the University of California at Los Angeles (MBA, marketing). He has also taken the courses 'Multi-Cultural Selling' and 'Time Management for the Sales Professional'. He is fluent in Japanese and can read and write French, Portuguese, and Spanish.|10264|24|6|1996-07-24|3
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10265|7|2|1996-07-25|1
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10266|87|3|1996-07-26|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10267|25|4|1996-07-29|1
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10268|33|8|1996-07-30|3
+5|Buchanan|Steven|1955-03-04|EmpID5.pic|Steven Buchanan graduated from St. Andrews University, Scotland, with a BSC degree. Upon joining the company as a sales representative, he spent 6 months in an orientation program at the Seattle office and then returned to his permanent post in London, where he was promoted to sales manager. Mr. Buchanan has completed the courses 'Successful Telemarketing' and 'International Sales Management'. He is fluent in French.|10269|89|5|1996-07-31|1
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10270|87|1|1996-08-01|1
+6|Suyama|Michael|1963-07-02|EmpID6.pic|Michael is a graduate of Sussex University (MA, economics) and the University of California at Los Angeles (MBA, marketing). He has also taken the courses 'Multi-Cultural Selling' and 'Time Management for the Sales Professional'. He is fluent in Japanese and can read and write French, Portuguese, and Spanish.|10271|75|6|1996-08-01|2
+6|Suyama|Michael|1963-07-02|EmpID6.pic|Michael is a graduate of Sussex University (MA, economics) and the University of California at Los Angeles (MBA, marketing). He has also taken the courses 'Multi-Cultural Selling' and 'Time Management for the Sales Professional'. He is fluent in Japanese and can read and write French, Portuguese, and Spanish.|10272|65|6|1996-08-02|2
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10273|63|3|1996-08-05|3
+6|Suyama|Michael|1963-07-02|EmpID6.pic|Michael is a graduate of Sussex University (MA, economics) and the University of California at Los Angeles (MBA, marketing). He has also taken the courses 'Multi-Cultural Selling' and 'Time Management for the Sales Professional'. He is fluent in Japanese and can read and write French, Portuguese, and Spanish.|10274|85|6|1996-08-06|1
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10275|49|1|1996-08-07|1
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10276|80|8|1996-08-08|3
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10277|52|2|1996-08-09|3
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10278|5|8|1996-08-12|2
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10279|44|8|1996-08-13|2
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10280|5|2|1996-08-14|1
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10281|69|4|1996-08-14|1
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10282|69|4|1996-08-15|1
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10283|46|3|1996-08-16|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10284|44|4|1996-08-19|1
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10285|63|1|1996-08-20|2
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10286|63|8|1996-08-21|3
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10287|67|8|1996-08-22|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10288|66|4|1996-08-23|1
+7|King|Robert|1960-05-29|EmpID7.pic|Robert King served in the Peace Corps and traveled extensively before completing his degree in English at the University of Michigan and then joining the company. After completing a course entitled 'Selling in Europe', he was transferred to the London office.|10289|11|7|1996-08-26|3
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10290|15|8|1996-08-27|1
+6|Suyama|Michael|1963-07-02|EmpID6.pic|Michael is a graduate of Sussex University (MA, economics) and the University of California at Los Angeles (MBA, marketing). He has also taken the courses 'Multi-Cultural Selling' and 'Time Management for the Sales Professional'. He is fluent in Japanese and can read and write French, Portuguese, and Spanish.|10291|61|6|1996-08-27|2
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10292|81|1|1996-08-28|2
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10293|80|1|1996-08-29|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10294|65|4|1996-08-30|2
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10295|85|2|1996-09-02|2
+6|Suyama|Michael|1963-07-02|EmpID6.pic|Michael is a graduate of Sussex University (MA, economics) and the University of California at Los Angeles (MBA, marketing). He has also taken the courses 'Multi-Cultural Selling' and 'Time Management for the Sales Professional'. He is fluent in Japanese and can read and write French, Portuguese, and Spanish.|10296|46|6|1996-09-03|1
+5|Buchanan|Steven|1955-03-04|EmpID5.pic|Steven Buchanan graduated from St. Andrews University, Scotland, with a BSC degree. Upon joining the company as a sales representative, he spent 6 months in an orientation program at the Seattle office and then returned to his permanent post in London, where he was promoted to sales manager. Mr. Buchanan has completed the courses 'Successful Telemarketing' and 'International Sales Management'. He is fluent in French.|10297|7|5|1996-09-04|2
+6|Suyama|Michael|1963-07-02|EmpID6.pic|Michael is a graduate of Sussex University (MA, economics) and the University of California at Los Angeles (MBA, marketing). He has also taken the courses 'Multi-Cultural Selling' and 'Time Management for the Sales Professional'. He is fluent in Japanese and can read and write French, Portuguese, and Spanish.|10298|37|6|1996-09-05|2
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10299|67|4|1996-09-06|2
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10300|49|2|1996-09-09|2
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10301|86|8|1996-09-09|2
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10302|76|4|1996-09-10|2
+7|King|Robert|1960-05-29|EmpID7.pic|Robert King served in the Peace Corps and traveled extensively before completing his degree in English at the University of Michigan and then joining the company. After completing a course entitled 'Selling in Europe', he was transferred to the London office.|10303|30|7|1996-09-11|2
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10304|80|1|1996-09-12|2
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10305|55|8|1996-09-13|3
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10306|69|1|1996-09-16|3
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10307|48|2|1996-09-17|2
+7|King|Robert|1960-05-29|EmpID7.pic|Robert King served in the Peace Corps and traveled extensively before completing his degree in English at the University of Michigan and then joining the company. After completing a course entitled 'Selling in Europe', he was transferred to the London office.|10308|2|7|1996-09-18|3
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10309|37|3|1996-09-19|1
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10310|77|8|1996-09-20|2
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10311|18|1|1996-09-20|3
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10312|86|2|1996-09-23|2
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10313|63|2|1996-09-24|2
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10314|65|1|1996-09-25|2
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10315|38|4|1996-09-26|2
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10316|65|1|1996-09-27|3
+6|Suyama|Michael|1963-07-02|EmpID6.pic|Michael is a graduate of Sussex University (MA, economics) and the University of California at Los Angeles (MBA, marketing). He has also taken the courses 'Multi-Cultural Selling' and 'Time Management for the Sales Professional'. He is fluent in Japanese and can read and write French, Portuguese, and Spanish.|10317|48|6|1996-09-30|1
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10318|38|8|1996-10-01|2
+7|King|Robert|1960-05-29|EmpID7.pic|Robert King served in the Peace Corps and traveled extensively before completing his degree in English at the University of Michigan and then joining the company. After completing a course entitled 'Selling in Europe', he was transferred to the London office.|10319|80|7|1996-10-02|3
+5|Buchanan|Steven|1955-03-04|EmpID5.pic|Steven Buchanan graduated from St. Andrews University, Scotland, with a BSC degree. Upon joining the company as a sales representative, he spent 6 months in an orientation program at the Seattle office and then returned to his permanent post in London, where he was promoted to sales manager. Mr. Buchanan has completed the courses 'Successful Telemarketing' and 'International Sales Management'. He is fluent in French.|10320|87|5|1996-10-03|3
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10321|38|3|1996-10-03|2
+7|King|Robert|1960-05-29|EmpID7.pic|Robert King served in the Peace Corps and traveled extensively before completing his degree in English at the University of Michigan and then joining the company. After completing a course entitled 'Selling in Europe', he was transferred to the London office.|10322|58|7|1996-10-04|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10323|39|4|1996-10-07|1
+9|Dodsworth|Anne|1969-07-02|EmpID9.pic|Anne has a BA degree in English from St. Lawrence College. She is fluent in French and German.|10324|71|9|1996-10-08|1
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10325|39|1|1996-10-09|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10326|8|4|1996-10-10|2
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10327|24|2|1996-10-11|1
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10328|28|4|1996-10-14|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10329|75|4|1996-10-15|2
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10330|46|3|1996-10-16|1
+9|Dodsworth|Anne|1969-07-02|EmpID9.pic|Anne has a BA degree in English from St. Lawrence College. She is fluent in French and German.|10331|9|9|1996-10-16|1
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10332|51|3|1996-10-17|2
+5|Buchanan|Steven|1955-03-04|EmpID5.pic|Steven Buchanan graduated from St. Andrews University, Scotland, with a BSC degree. Upon joining the company as a sales representative, he spent 6 months in an orientation program at the Seattle office and then returned to his permanent post in London, where he was promoted to sales manager. Mr. Buchanan has completed the courses 'Successful Telemarketing' and 'International Sales Management'. He is fluent in French.|10333|87|5|1996-10-18|3
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10334|84|8|1996-10-21|2
+7|King|Robert|1960-05-29|EmpID7.pic|Robert King served in the Peace Corps and traveled extensively before completing his degree in English at the University of Michigan and then joining the company. After completing a course entitled 'Selling in Europe', he was transferred to the London office.|10335|37|7|1996-10-22|2
+7|King|Robert|1960-05-29|EmpID7.pic|Robert King served in the Peace Corps and traveled extensively before completing his degree in English at the University of Michigan and then joining the company. After completing a course entitled 'Selling in Europe', he was transferred to the London office.|10336|60|7|1996-10-23|2
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10337|25|4|1996-10-24|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10338|55|4|1996-10-25|3
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10339|51|2|1996-10-28|2
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10340|9|1|1996-10-29|3
+7|King|Robert|1960-05-29|EmpID7.pic|Robert King served in the Peace Corps and traveled extensively before completing his degree in English at the University of Michigan and then joining the company. After completing a course entitled 'Selling in Europe', he was transferred to the London office.|10341|73|7|1996-10-29|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10342|25|4|1996-10-30|2
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10343|44|4|1996-10-31|1
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10344|89|4|1996-11-01|2
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10345|63|2|1996-11-04|2
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10346|65|3|1996-11-05|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10347|21|4|1996-11-06|3
+```
+
+**También podemos omitir la palabra `INNER`:**
+
+```sql
+SELECT * 
+FROM "Employees" e
+JOIN "Orders" o
+ON e."EmployeeID" = o."EmployeeID" 
+LIMIT 100;
+```
+
+```sql
+sqlite> SELECT * 
+FROM "Employees" e
+JOIN "Orders" o
+ON e."EmployeeID" = o."EmployeeID" 
+LIMIT 100;
+5|Buchanan|Steven|1955-03-04|EmpID5.pic|Steven Buchanan graduated from St. Andrews University, Scotland, with a BSC degree. Upon joining the company as a sales representative, he spent 6 months in an orientation program at the Seattle office and then returned to his permanent post in London, where he was promoted to sales manager. Mr. Buchanan has completed the courses 'Successful Telemarketing' and 'International Sales Management'. He is fluent in French.|10248|90|5|1996-07-04|3
+6|Suyama|Michael|1963-07-02|EmpID6.pic|Michael is a graduate of Sussex University (MA, economics) and the University of California at Los Angeles (MBA, marketing). He has also taken the courses 'Multi-Cultural Selling' and 'Time Management for the Sales Professional'. He is fluent in Japanese and can read and write French, Portuguese, and Spanish.|10249|81|6|1996-07-05|1
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10250|34|4|1996-07-08|2
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10251|84|3|1996-07-08|1
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10252|76|4|1996-07-09|2
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10253|34|3|1996-07-10|2
+5|Buchanan|Steven|1955-03-04|EmpID5.pic|Steven Buchanan graduated from St. Andrews University, Scotland, with a BSC degree. Upon joining the company as a sales representative, he spent 6 months in an orientation program at the Seattle office and then returned to his permanent post in London, where he was promoted to sales manager. Mr. Buchanan has completed the courses 'Successful Telemarketing' and 'International Sales Management'. He is fluent in French.|10254|14|5|1996-07-11|2
+9|Dodsworth|Anne|1969-07-02|EmpID9.pic|Anne has a BA degree in English from St. Lawrence College. She is fluent in French and German.|10255|68|9|1996-07-12|3
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10256|88|3|1996-07-15|2
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10257|35|4|1996-07-16|3
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10258|20|1|1996-07-17|1
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10259|13|4|1996-07-18|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10260|55|4|1996-07-19|1
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10261|61|4|1996-07-19|2
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10262|65|8|1996-07-22|3
+9|Dodsworth|Anne|1969-07-02|EmpID9.pic|Anne has a BA degree in English from St. Lawrence College. She is fluent in French and German.|10263|20|9|1996-07-23|3
+6|Suyama|Michael|1963-07-02|EmpID6.pic|Michael is a graduate of Sussex University (MA, economics) and the University of California at Los Angeles (MBA, marketing). He has also taken the courses 'Multi-Cultural Selling' and 'Time Management for the Sales Professional'. He is fluent in Japanese and can read and write French, Portuguese, and Spanish.|10264|24|6|1996-07-24|3
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10265|7|2|1996-07-25|1
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10266|87|3|1996-07-26|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10267|25|4|1996-07-29|1
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10268|33|8|1996-07-30|3
+5|Buchanan|Steven|1955-03-04|EmpID5.pic|Steven Buchanan graduated from St. Andrews University, Scotland, with a BSC degree. Upon joining the company as a sales representative, he spent 6 months in an orientation program at the Seattle office and then returned to his permanent post in London, where he was promoted to sales manager. Mr. Buchanan has completed the courses 'Successful Telemarketing' and 'International Sales Management'. He is fluent in French.|10269|89|5|1996-07-31|1
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10270|87|1|1996-08-01|1
+6|Suyama|Michael|1963-07-02|EmpID6.pic|Michael is a graduate of Sussex University (MA, economics) and the University of California at Los Angeles (MBA, marketing). He has also taken the courses 'Multi-Cultural Selling' and 'Time Management for the Sales Professional'. He is fluent in Japanese and can read and write French, Portuguese, and Spanish.|10271|75|6|1996-08-01|2
+6|Suyama|Michael|1963-07-02|EmpID6.pic|Michael is a graduate of Sussex University (MA, economics) and the University of California at Los Angeles (MBA, marketing). He has also taken the courses 'Multi-Cultural Selling' and 'Time Management for the Sales Professional'. He is fluent in Japanese and can read and write French, Portuguese, and Spanish.|10272|65|6|1996-08-02|2
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10273|63|3|1996-08-05|3
+6|Suyama|Michael|1963-07-02|EmpID6.pic|Michael is a graduate of Sussex University (MA, economics) and the University of California at Los Angeles (MBA, marketing). He has also taken the courses 'Multi-Cultural Selling' and 'Time Management for the Sales Professional'. He is fluent in Japanese and can read and write French, Portuguese, and Spanish.|10274|85|6|1996-08-06|1
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10275|49|1|1996-08-07|1
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10276|80|8|1996-08-08|3
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10277|52|2|1996-08-09|3
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10278|5|8|1996-08-12|2
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10279|44|8|1996-08-13|2
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10280|5|2|1996-08-14|1
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10281|69|4|1996-08-14|1
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10282|69|4|1996-08-15|1
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10283|46|3|1996-08-16|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10284|44|4|1996-08-19|1
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10285|63|1|1996-08-20|2
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10286|63|8|1996-08-21|3
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10287|67|8|1996-08-22|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10288|66|4|1996-08-23|1
+7|King|Robert|1960-05-29|EmpID7.pic|Robert King served in the Peace Corps and traveled extensively before completing his degree in English at the University of Michigan and then joining the company. After completing a course entitled 'Selling in Europe', he was transferred to the London office.|10289|11|7|1996-08-26|3
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10290|15|8|1996-08-27|1
+6|Suyama|Michael|1963-07-02|EmpID6.pic|Michael is a graduate of Sussex University (MA, economics) and the University of California at Los Angeles (MBA, marketing). He has also taken the courses 'Multi-Cultural Selling' and 'Time Management for the Sales Professional'. He is fluent in Japanese and can read and write French, Portuguese, and Spanish.|10291|61|6|1996-08-27|2
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10292|81|1|1996-08-28|2
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10293|80|1|1996-08-29|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10294|65|4|1996-08-30|2
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10295|85|2|1996-09-02|2
+6|Suyama|Michael|1963-07-02|EmpID6.pic|Michael is a graduate of Sussex University (MA, economics) and the University of California at Los Angeles (MBA, marketing). He has also taken the courses 'Multi-Cultural Selling' and 'Time Management for the Sales Professional'. He is fluent in Japanese and can read and write French, Portuguese, and Spanish.|10296|46|6|1996-09-03|1
+5|Buchanan|Steven|1955-03-04|EmpID5.pic|Steven Buchanan graduated from St. Andrews University, Scotland, with a BSC degree. Upon joining the company as a sales representative, he spent 6 months in an orientation program at the Seattle office and then returned to his permanent post in London, where he was promoted to sales manager. Mr. Buchanan has completed the courses 'Successful Telemarketing' and 'International Sales Management'. He is fluent in French.|10297|7|5|1996-09-04|2
+6|Suyama|Michael|1963-07-02|EmpID6.pic|Michael is a graduate of Sussex University (MA, economics) and the University of California at Los Angeles (MBA, marketing). He has also taken the courses 'Multi-Cultural Selling' and 'Time Management for the Sales Professional'. He is fluent in Japanese and can read and write French, Portuguese, and Spanish.|10298|37|6|1996-09-05|2
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10299|67|4|1996-09-06|2
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10300|49|2|1996-09-09|2
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10301|86|8|1996-09-09|2
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10302|76|4|1996-09-10|2
+7|King|Robert|1960-05-29|EmpID7.pic|Robert King served in the Peace Corps and traveled extensively before completing his degree in English at the University of Michigan and then joining the company. After completing a course entitled 'Selling in Europe', he was transferred to the London office.|10303|30|7|1996-09-11|2
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10304|80|1|1996-09-12|2
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10305|55|8|1996-09-13|3
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10306|69|1|1996-09-16|3
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10307|48|2|1996-09-17|2
+7|King|Robert|1960-05-29|EmpID7.pic|Robert King served in the Peace Corps and traveled extensively before completing his degree in English at the University of Michigan and then joining the company. After completing a course entitled 'Selling in Europe', he was transferred to the London office.|10308|2|7|1996-09-18|3
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10309|37|3|1996-09-19|1
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10310|77|8|1996-09-20|2
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10311|18|1|1996-09-20|3
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10312|86|2|1996-09-23|2
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10313|63|2|1996-09-24|2
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10314|65|1|1996-09-25|2
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10315|38|4|1996-09-26|2
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10316|65|1|1996-09-27|3
+6|Suyama|Michael|1963-07-02|EmpID6.pic|Michael is a graduate of Sussex University (MA, economics) and the University of California at Los Angeles (MBA, marketing). He has also taken the courses 'Multi-Cultural Selling' and 'Time Management for the Sales Professional'. He is fluent in Japanese and can read and write French, Portuguese, and Spanish.|10317|48|6|1996-09-30|1
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10318|38|8|1996-10-01|2
+7|King|Robert|1960-05-29|EmpID7.pic|Robert King served in the Peace Corps and traveled extensively before completing his degree in English at the University of Michigan and then joining the company. After completing a course entitled 'Selling in Europe', he was transferred to the London office.|10319|80|7|1996-10-02|3
+5|Buchanan|Steven|1955-03-04|EmpID5.pic|Steven Buchanan graduated from St. Andrews University, Scotland, with a BSC degree. Upon joining the company as a sales representative, he spent 6 months in an orientation program at the Seattle office and then returned to his permanent post in London, where he was promoted to sales manager. Mr. Buchanan has completed the courses 'Successful Telemarketing' and 'International Sales Management'. He is fluent in French.|10320|87|5|1996-10-03|3
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10321|38|3|1996-10-03|2
+7|King|Robert|1960-05-29|EmpID7.pic|Robert King served in the Peace Corps and traveled extensively before completing his degree in English at the University of Michigan and then joining the company. After completing a course entitled 'Selling in Europe', he was transferred to the London office.|10322|58|7|1996-10-04|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10323|39|4|1996-10-07|1
+9|Dodsworth|Anne|1969-07-02|EmpID9.pic|Anne has a BA degree in English from St. Lawrence College. She is fluent in French and German.|10324|71|9|1996-10-08|1
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10325|39|1|1996-10-09|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10326|8|4|1996-10-10|2
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10327|24|2|1996-10-11|1
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10328|28|4|1996-10-14|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10329|75|4|1996-10-15|2
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10330|46|3|1996-10-16|1
+9|Dodsworth|Anne|1969-07-02|EmpID9.pic|Anne has a BA degree in English from St. Lawrence College. She is fluent in French and German.|10331|9|9|1996-10-16|1
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10332|51|3|1996-10-17|2
+5|Buchanan|Steven|1955-03-04|EmpID5.pic|Steven Buchanan graduated from St. Andrews University, Scotland, with a BSC degree. Upon joining the company as a sales representative, he spent 6 months in an orientation program at the Seattle office and then returned to his permanent post in London, where he was promoted to sales manager. Mr. Buchanan has completed the courses 'Successful Telemarketing' and 'International Sales Management'. He is fluent in French.|10333|87|5|1996-10-18|3
+8|Callahan|Laura|1958-01-09|EmpID8.pic|Laura received a BA in psychology from the University of Washington. She has also completed a course in business French. She reads and writes French.|10334|84|8|1996-10-21|2
+7|King|Robert|1960-05-29|EmpID7.pic|Robert King served in the Peace Corps and traveled extensively before completing his degree in English at the University of Michigan and then joining the company. After completing a course entitled 'Selling in Europe', he was transferred to the London office.|10335|37|7|1996-10-22|2
+7|King|Robert|1960-05-29|EmpID7.pic|Robert King served in the Peace Corps and traveled extensively before completing his degree in English at the University of Michigan and then joining the company. After completing a course entitled 'Selling in Europe', he was transferred to the London office.|10336|60|7|1996-10-23|2
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10337|25|4|1996-10-24|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10338|55|4|1996-10-25|3
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10339|51|2|1996-10-28|2
+1|Davolio|Nancy|1968-12-08|EmpID1.pic|Education includes a BA in psychology from Colorado State University. She also completed (The Art of the Cold Call). Nancy is a member of 'Toastmasters International'.|10340|9|1|1996-10-29|3
+7|King|Robert|1960-05-29|EmpID7.pic|Robert King served in the Peace Corps and traveled extensively before completing his degree in English at the University of Michigan and then joining the company. After completing a course entitled 'Selling in Europe', he was transferred to the London office.|10341|73|7|1996-10-29|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10342|25|4|1996-10-30|2
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10343|44|4|1996-10-31|1
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10344|89|4|1996-11-01|2
+2|Fuller|Andrew|1952-02-19|EmpID2.pic|Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.|10345|63|2|1996-11-04|2
+3|Leverling|Janet|1963-08-30|EmpID3.pic|Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.|10346|65|3|1996-11-05|3
+4|Peacock|Margaret|1958-09-19|EmpID4.pic|Margaret holds a BA in English literature from Concordia College and an MA from the American Institute of Culinary Arts. She was temporarily assigned to the London office before returning to her permanent post in Seattle.|10347|21|4|1996-11-06|3
+```
+
+---
+
+## ***Ejemplo práctico: Creación de tabla y explicación de cada paso***
+
+- **Creamos una nueva tabla `Rewards` que guarda recompensas asociadas a empleados:**
+
+```sql
+CREATE TABLE "Rewards" (
+    "RewardsID" INTEGER NOT NULL,
+    "EmployeeID" INTEGER,
+    "Reward" TEXT,
+    "Month" TEXT,
+    PRIMARY KEY("RewardsID" AUTOINCREMENT)
+);
+```
+
+**Esta estructura define:**
+
+- **RewardsID:** *Identificador único para cada recompensa.*
+- **EmployeeID:** *Identificador del empleado que recibe la recompensa, vinculable a la tabla `Employees`.*
+- **Reward:** *Valor de la recompensa.*
+- **Month:** *Mes en el que se otorgó la recompensa.*
+  
+**Insertamos algunos datos:**
+
+```sql
+INSERT INTO "Rewards" ("EmployeeID", "Reward", "Month")
+VALUES 
+    (3, 200, "January"),
+    (2, 180, "February"),
+    (5, 250, "March"),
+    (1, 280, "April"),
+    (8, 160, "May"),
+    (NULL, NULL, "June");
+```
+
+---
+
+### ***INNER JOIN***
+
+*El **Inner Join** devuelve las filas que tienen coincidencias en ambas tablas:*
+
+```sql
+SELECT "FirstName", "Reward", "Month" 
+FROM "Employees" e
+INNER JOIN "Rewards" r
+ON e."EmployeeID" = r."EmployeeID"
+LIMIT 100;
+```
+
+```sql
+sqlite> SELECT "FirstName", "Reward", "Month" 
+FROM "Employees" e
+INNER JOIN "Rewards" r
+ON e."EmployeeID" = r."EmployeeID"
+LIMIT 100;
+Janet|200|January
+Andrew|180|February
+Steven|250|March
+Nancy|280|April
+Laura|160|May
+```
+
+---
+
+#### ***Salida (Output)***
+
+| *FirstName* | *Reward* | *Month*    |
+| ----------- | -------- | ---------- |
+| *Janet*     | *200*    | *January*  |
+| *Andrew*    | *180*    | *February* |
+| *Steven*    | *250*    | *March*    |
+| *Nancy*     | *280*    | *April*    |
+| *Laura*     | *160*    | *May*      |
+
+**En este caso:**
+
+- **Tabla A:** *`Employees` (`e`).*
+- **Tabla B:** *`Rewards` (`r`).*
+
+*El `INNER JOIN` solo muestra filas cuando `EmployeeID` coincide en ambas tablas.*
+
+---
+
+### ***LEFT JOIN***
+
+- *Un **Left Join** devuelve todas las filas de la tabla izquierda (`Employees`), y las filas coincidentes de la tabla derecha (`Rewards`):*
+
+```sql
+SELECT "FirstName", "Reward", "Month" 
+FROM "Employees" e
+LEFT JOIN "Rewards" r
+ON e."EmployeeID" = r."EmployeeID" 
+LIMIT 100;
+```
+
+```sql
+sqlite> SELECT "FirstName", "Reward", "Month" 
+FROM "Employees" e
+LEFT JOIN "Rewards" r
+ON e."EmployeeID" = r."EmployeeID" 
+LIMIT 100;
+Nancy|280|April
+Andrew|180|February
+Janet|200|January
+Margaret||
+Steven|250|March
+Michael||
+Robert||
+Laura|160|May
+Anne||
+Adam||
+```
+
+---
+
+#### ***Salida:***
+
+| *FirstName* | *Reward* | *Month*    |
+| ----------- | -------- | ---------- |
+| *Nancy*     | *280*    | *April*    |
+| *Andrew*    | *180*    | *February* |
+| *Janet*     | *200*    | *January*  |
+| *Margaret*  | *NULL*   | *NULL*     |
+| *Steven*    | *250*    | *March*    |
+| *Michael*   | *NULL*   | *NULL*     |
+| *Robert*    | *NULL*   | *NULL*     |
+| *Laura*     | *160*    | *May*      |
+| *Anne*      | *NULL*   | *NULL*     |
+| *Adam*      | *NULL*   | *NULL*     |
+
+- **Aquí:**
+
+- **Tabla A:** *`Employees` (`e`).*
+- **Tabla B:** *`Rewards` (`r`).*
+
+- *Las filas de `Employees` se muestran, y cuando no hay coincidencias en `Rewards`, las columnas `Reward` y `Month` contienen `NULL`.*
+
+---
+
+### ***RIGHT JOIN***
+
+- *SQLite no admite **Right Join**. Como alternativa, invertimos las tablas y usamos `LEFT JOIN`:*
+
+```sql
+SELECT "FirstName", "Reward", "Month" 
+FROM "Rewards" r
+LEFT JOIN "Employees" e
+ON e."EmployeeID" = r."EmployeeID" 
+LIMIT 100;
+```
+
+```sql
+sqlite> SELECT "FirstName", "Reward", "Month" 
+FROM "Rewards" r
+LEFT JOIN "Employees" e
+ON e."EmployeeID" = r."EmployeeID" 
+LIMIT 100;
+Janet|200|January
+Andrew|180|February
+Steven|250|March
+Nancy|280|April
+Laura|160|May
+||June
+```
+
+---
+
+### ***FULL OUTER JOIN***
+
+- *SQLite tampoco admite **Full Outer Join** directamente, pero se puede simular usando `UNION` para combinar los resultados de un `LEFT JOIN` y un `RIGHT JOIN`:*
+
+```sql
+SELECT "FirstName", "Reward", "Month" 
+FROM "Employees" e
+LEFT JOIN "Rewards" r
+ON e."EmployeeID" = r."EmployeeID"
+UNION
+SELECT "FirstName", "Reward", "Month" 
+FROM "Rewards" r
+LEFT JOIN "Employees" e
+ON e."EmployeeID" = r."EmployeeID"
+LIMIT 100;
+```
+
+```sql
+sqlite> SELECT "FirstName", "Reward", "Month" 
+FROM "Employees" e
+LEFT JOIN "Rewards" r
+ON e."EmployeeID" = r."EmployeeID"
+UNION
+SELECT "FirstName", "Reward", "Month" 
+FROM "Rewards" r
+LEFT JOIN "Employees" e
+ON e."EmployeeID" = r."EmployeeID"
+LIMIT 100;
+||June
+Adam||
+Andrew|180|February
+Anne||
+Janet|200|January
+Laura|160|May
+Margaret||
+Michael||
+Nancy|280|April
+Robert||
+Steven|250|March
+```
+
+---
+
+### ***UNION en SQL***
+
+- *El operador **UNION** combina los resultados de dos o más subconsultas en un solo conjunto de resultados. A diferencia de los Joins, que combinan tablas en función de una relación específica, **UNION** simplemente apila los resultados de múltiples consultas, siempre que estas tengan la misma estructura.*
+
+*Para utilizar **UNION**, ambas subconsultas deben:*
+
+1. *Tener el mismo número de columnas.*
+2. *Tener tipos de datos compatibles en las columnas correspondientes.*
+
+**Por ejemplo:**
+
+```sql
+SELECT "FirstName", "Reward", "Month" 
+FROM "Employees" e
+LEFT JOIN "Rewards" r ON e."EmployeeID" = r."EmployeeID"
+
+UNION
+
+SELECT "FirstName", "Reward", "Month" 
+FROM "Rewards" r
+LEFT JOIN "Employees" e ON e."EmployeeID" = r."EmployeeID"
+LIMIT 100;
+```
+
+---
+
+#### ***Explicación***
+
+- *Este ejemplo utiliza `UNION` para simular un **FULL OUTER JOIN** en SQLite, ya que esta base de datos no lo admite directamente. Aquí:*
+- *La primera consulta (`LEFT JOIN` desde `Employees` hacia `Rewards`) devuelve todas las filas de `Employees` y las coincidencias en `Rewards`, mostrando `NULL` donde no hay coincidencias.*
+- *La segunda consulta (`LEFT JOIN` desde `Rewards` hacia `Employees`) devuelve todas las filas de `Rewards` y las coincidencias en `Employees`, con `NULL` para los empleados que no tienen recompensa.*
+
+---
+
+### **¿Diferencias entre UNION y UNION ALL?**
+
+- **UNION:** *Elimina duplicados en los resultados combinados.*
+- **UNION ALL:** *Mantiene todos los resultados, incluso duplicados, mejorando el rendimiento al no filtrar resultados repetidos.*
+
+---
+
+### ***Ejemplo Práctico:***
+
+- *Estructura para crear las tablas `StudentsA` y `StudentsB`, insertando algunos datos de ejemplo para que el operador `UNION` funcione según el ejemplo que mencionaste:*
+
+```sql
+-- Crear tabla StudentsA
+CREATE TABLE "StudentsA" (
+    "StudentID" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "StudentName" TEXT NOT NULL
+);
+
+-- Crear tabla StudentsB
+CREATE TABLE "StudentsB" (
+    "StudentID" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "StudentName" TEXT NOT NULL
+);
+
+-- Insertar datos en StudentsA
+INSERT INTO "StudentsA" ("StudentName")
+VALUES 
+    ('Ana'),
+    ('Luis'),
+    ('Carlos'),
+    ('María');
+
+-- Insertar datos en StudentsB
+INSERT INTO "StudentsB" ("StudentName")
+VALUES 
+    ('Carlos'),  -- Nombre duplicado para probar UNION
+    ('Jorge'),
+    ('Ana'),     -- Nombre duplicado para probar UNION
+    ('Laura');
+
+-- Ejecutar consulta UNION
+SELECT "StudentName" 
+FROM "StudentsA"
+
+UNION
+
+SELECT "StudentName" 
+FROM "StudentsB";
+```
+
+```sql
+sqlite> -- Crear tabla StudentsA
+CREATE TABLE "StudentsA" (
+    "StudentID" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "StudentName" TEXT NOT NULL
+);
+
+-- Crear tabla StudentsB
+CREATE TABLE "StudentsB" (
+    "StudentID" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "StudentName" TEXT NOT NULL
+);
+
+-- Insertar datos en StudentsA
+INSERT INTO "StudentsA" ("StudentName")
+VALUES 
+    ('Ana'),
+    ('Luis'),
+    ('Carlos'),
+    ('María');
+
+-- Insertar datos en StudentsB
+INSERT INTO "StudentsB" ("StudentName")
+VALUES 
+    ('Carlos'),  -- Nombre duplicado para probar UNION
+    ('Jorge'),
+    ('Ana'),     -- Nombre duplicado para probar UNION
+    ('Laura');
+
+-- Ejecutar consulta UNION
+SELECT StudentName FROM StudentsA UNION SELECT StudentName FROM StudentsB LIMIT 100
+```
+
+---
+
+### ***Explicación de los Resultados***
+
+- *La consulta `UNION` combinará los nombres de ambas tablas y eliminará duplicados. En este caso, los nombres "Ana" y "Carlos" solo aparecerán una vez en el resultado final, aunque están en ambas tablas.*
+
+---
+
+### ***Resultado Esperado***
+
+| *StudentName* |
+|---------------|
+| *Ana*         |
+| *Luis*        |
+| *Carlos*      |
+| *María*       |
+| *Jorge*       |
+| *Laura*       |
+
+- *Este resultado muestra cómo **UNION** devuelve una lista unificada de nombres sin duplicados.*
+
+- **Supongamos dos tablas, `StudentsA` y `StudentsB`, con estudiantes de dos clases distintas. Queremos obtener una lista de todos los estudiantes de ambas clases sin duplicados:**
+
+---
+
+### ***Bug en la extensión cweijan.vscode-mysql-client2 al ejecutar consultas SQL***
+
+> [!CAUTION]
+> *Se ha identificado un bug en la extensión **cweijan.vscode-mysql-client2** para Visual Studio Code al ejecutar consultas SQL que incluyen múltiples líneas o formato de comillas. En particular, la siguiente consulta falla al ejecutarse cuando se pega en el editor con comillas dobles y saltos de línea:*
+
+```sql
+SELECT "StudentName" 
+FROM "StudentsA"
+
+UNION
+
+SELECT "StudentName" 
+FROM "StudentsB";
+```
+
+- **La consulta arroja un error debido a los saltos de línea y las comillas dobles que envuelven los nombres de columnas y tablas.**
+
+- *Sin embargo, el problema desaparece si la consulta se reescribe en una sola línea sin comillas dobles, de esta manera:*
+
+```sql
+SELECT StudentName FROM StudentsA UNION SELECT StudentName FROM StudentsB LIMIT 100;
+```
+
+```sql
+sqlite> SELECT StudentName FROM StudentsA UNION SELECT StudentName FROM StudentsB LIMIT 100;
+Ana
+Carlos
+Jorge
+Laura
+Luis
+María
+```
+
+- **Solución temporal:** *Para evitar este error, se recomienda eliminar los saltos de línea y las comillas dobles, escribiendo las consultas en una sola línea siempre que sea posible hasta que el problema sea resuelto en una actualización de la extensión.*
+
+- *Aquí, el operador `UNION` nos da una lista única de nombres de estudiantes. Usaríamos `UNION ALL` si deseamos ver duplicados (por ejemplo, si un estudiante aparece en ambas clases).*
+
+### ***Conclusión***
+
+- *El operador `UNION` es útil para combinar resultados de subconsultas y se usa en SQL para obtener un conjunto unificado de datos, eliminando o conservando duplicados según sea necesario.*
+
+---
+
+### ***Visualización de Joins con Diagramas de Venn***
+
+---
+
+### **¿Qué es un diagrama de Venn y para qué se usa en SQL?**
+
+- *Un **diagrama de Venn** es una representación visual que muestra la relación entre conjuntos mediante círculos que se superponen. En el contexto de SQL y los **Joins**, estos diagramas ayudan a ilustrar cómo las filas de diferentes tablas se combinan de acuerdo con la condición de unión especificada.*
+
+**En SQL, cada tipo de Join puede visualizarse con un diagrama de Venn:**
+
+- **Inner Join:** *Muestra solo los elementos que están en la intersección de los conjuntos (las filas que coinciden en ambas tablas).*
+- **Left Join:** *Incluye todas las filas del conjunto de la izquierda (tabla izquierda) y las filas coincidentes del conjunto derecho. Si no hay coincidencia en el conjunto derecho, el valor se representa como `NULL`.*
+- **Right Join:** *Similar al Left Join, pero incluye todas las filas del conjunto derecho y las coincidencias del conjunto izquierdo. En SQLite, se puede simular intercambiando las tablas y usando un `LEFT JOIN`.*
+- **Full Outer Join:** *Representa todos los elementos de ambos conjuntos, llenando con `NULL` los datos faltantes donde no hay coincidencias. Aunque SQLite no lo admite, se puede simular con `UNION`.*
+
+- *En resumen, los diagramas de Venn en SQL ayudan a entender rápidamente qué datos se incluirán o excluirán en el resultado del Join.*
+
+- **Las imágenes ayudan a visualizar cómo funcionan los distintos tipos de joins:**
+
+- *![**Inner Join**](/Images/ImageInnerJoin.png "/Images/ImageInnerJoin.png")*
+- *![**Left Join**](/Images/ImageLeftJoin.png "/Images/ImageLeftJoin.png")*
+- *![**Right Join**](/Images/ImageRightJoin.png "/Images/ImageRightJoin.png")*
+- *![**Full Outer Join**](/Images/ImageFullOuterJoin.png "/Images/ImageFullOuterJoin.png")*
