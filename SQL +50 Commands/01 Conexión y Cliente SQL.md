@@ -7,7 +7,7 @@
 **Cliente SQL**  
 **Puedes descargar MySQL Workbench desde el siguiente enlace:**
 
-- [Descargar MySQL Workbench](https://dev.mysql.com/downloads/workbench/ "https://dev.mysql.com/downloads/workbench/")
+- *[Descargar MySQL Workbench](https://dev.mysql.com/downloads/workbench/ "https://dev.mysql.com/downloads/workbench/")*
 
 **Obtenemos los datos de todos los contenedores:**  
 

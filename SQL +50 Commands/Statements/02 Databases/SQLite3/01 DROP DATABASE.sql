@@ -1,0 +1,12 @@
+-- Autor: Daniel Benjamin Perez Morales
+-- GitHub: https://github.com/DanielPerezMoralesDev13
+-- Correo electrónico: danielperezdev@proton.me
+
+-- SQLite no utiliza el comando DROP DATABASE, ya que no maneja bases de datos de la misma manera que otros DBMS.
+-- En SQLite, las bases de datos son archivos. Para "eliminar" una base de datos,
+-- se debe eliminar el archivo correspondiente. Si la base de datos se llama "test.db",
+-- se puede usar el siguiente comando en el sistema operativo:
+-- (Este comando no se ejecuta en SQL, sino que es un comando del sistema operativo)
+-- Para eliminar el archivo:
+--   rm test.db   (en sistemas Unix/Linux)
+--   del test.db  (en Windows)
