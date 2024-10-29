@@ -10,7 +10,7 @@
 
 - *Cuando trabajas con bases de datos y necesitas almacenar imágenes, lo habitual no es guardar directamente la imagen en la base de datos. En su lugar, se sube la imagen a un servidor de almacenamiento y, en la base de datos, se almacena la **URL absoluta** de la imagen en un campo específico (por ejemplo, `photo`).*
 
-- *Esto optimiza el rendimiento de la base de datos y facilita la gestión de archivos multimedia. La URL almacena la ubicación de la imagen en el servidor, permitiendo acceder a ella desde cualquier lugar.*
+- *Esto optimiza el rendimiento de la base de datos y facilita la gestión de ficheros multimedia. La URL almacena la ubicación de la imagen en el servidor, permitiendo acceder a ella desde cualquier lugar.*
 
 ---
 

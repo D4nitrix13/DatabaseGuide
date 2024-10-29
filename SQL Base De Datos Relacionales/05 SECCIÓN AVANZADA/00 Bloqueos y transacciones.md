@@ -533,7 +533,7 @@ PRAGMA journal_mode;
 
 - **seq:** *Un número de secuencia que representa la posición de la base de datos en la lista.*
 - **name:** *El nombre de la base de datos.*
-- **file:** *La ruta al archivo de la base de datos.*
+- **file:** *La ruta al fichero de la base de datos.*
 
 **Ejemplo de uso:**
 
@@ -552,7 +552,7 @@ sqlite> PRAGMA database_list;
 | ----- | ------ | --------------------------- |
 | *0*   | *main* | */home/vscode/Northwind.db* |
 
-- **Aquí, `main` es la base de datos principal (el archivo que has abierto) y `temp` es una base de datos temporal que SQLite crea automáticamente.**
+- **Aquí, `main` es la base de datos principal (el fichero que has abierto) y `temp` es una base de datos temporal que SQLite crea automáticamente.**
 
 ---
 
@@ -588,9 +588,9 @@ PRAGMA locking_mode = EXCLUSIVE;
 
 - **Este comando se utiliza para obtener o establecer el modo de registro (journal mode) de la base de datos. El modo de registro determina cómo SQLite maneja las transacciones y los puntos de restauración. Existen varios modos:**
 
-- **DELETE:** *El modo predeterminado. Al finalizar la transacción, el archivo de registro se elimina.*
-- **TRUNCATE:** *Similar a DELETE, pero el archivo de registro se trunca en lugar de eliminarse.*
-- **PERSIST:** *El archivo de registro se mantiene, pero se limpia su contenido.*
+- **DELETE:** *El modo predeterminado. Al finalizar la transacción, el fichero de registro se elimina.*
+- **TRUNCATE:** *Similar a DELETE, pero el fichero de registro se trunca en lugar de eliminarse.*
+- **PERSIST:** *El fichero de registro se mantiene, pero se limpia su contenido.*
 - **MEMORY:** *El registro se almacena en memoria, lo que puede ser más rápido pero no persiste después de cerrar la base de datos.*
 - **WAL (Write-Ahead Logging):** *Permite un acceso concurrente más eficiente y no bloquea las lecturas mientras se realizan escrituras.*
 
@@ -626,9 +626,9 @@ sqlite> TRUNCATE TABLE Products;
 
 ---
 
-### ***2. Truncar un Archivo o Datos***
+### ***2. Truncar un Fichero o Datos***
 
-- **En el contexto de archivos o datos, truncar puede referirse a la acción de reducir la longitud de un archivo o conjunto de datos, eliminando parte de su contenido. Por ejemplo, si se trunca un archivo de texto, se eliminarán los caracteres que están más allá de un cierto punto.**
+- **En el contexto de ficheros o datos, truncar puede referirse a la acción de reducir la longitud de un fichero o conjunto de datos, eliminando parte de su contenido. Por ejemplo, si se trunca un fichero de texto, se eliminarán los caracteres que están más allá de un cierto punto.**
 
 ---
 

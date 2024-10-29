@@ -12,7 +12,7 @@
 *Una base de datos embebida es un sistema de gestión de bases de datos que se integra directamente en la aplicación que la utiliza. No requiere un servidor independiente para operar, lo que significa que todas las operaciones de la base de datos se llevan a cabo dentro del mismo proceso de la aplicación.*
 
 **Ejemplo:**
-*SQLite es un buen ejemplo de base de datos embebida; se almacena en un archivo dentro del sistema de archivos y se accede directamente desde la aplicación que la utiliza. Esto es ideal para aplicaciones móviles, software de escritorio o situaciones donde se necesita una gestión simple y ligera de datos.*
+*SQLite es un buen ejemplo de base de datos embebida; se almacena en un fichero dentro del sistema de ficheros y se accede directamente desde la aplicación que la utiliza. Esto es ideal para aplicaciones móviles, software de escritorio o situaciones donde se necesita una gestión simple y ligera de datos.*
 
 ---
 
@@ -21,14 +21,14 @@
 | **Característica**                          | **SQLite**                                                  | **SQL Server**                                      | **MySQL**                                           | **PostgreSQL**                                          |
 | ------------------------------------------- | ----------------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------- |
 | **Tipo**                                    | *Embebida*                                                  | *Cliente/Servidor*                                  | *Cliente/Servidor*                                  | *Cliente/Servidor*                                      |
-| **Instalación**                             | *Solo requiere un archivo*                                  | *Instalación completa y configuración del servidor* | *Instalación completa y configuración del servidor* | *Instalación completa y configuración del servidor*     |
+| **Instalación**                             | *Solo requiere un fichero*                                  | *Instalación completa y configuración del servidor* | *Instalación completa y configuración del servidor* | *Instalación completa y configuración del servidor*     |
 | **Costo**                                   | *Gratuito*                                                  | *Licencia comercial*                                | *Gratuito (versión comunitaria)*                    | *Gratuito (versión comunitaria)*                        |
 | **Soporte para Transacciones**              | *Soporte básico (ACID)*                                     | *Soporte completo (ACID)*                           | *Soporte básico (ACID)*                             | *Soporte completo (ACID)*                               |
 | **Escalabilidad**                           | *Limitada*                                                  | *Alta escalabilidad*                                | *Alta escalabilidad*                                | *Alta escalabilidad*                                    |
 | **Lenguaje de Consulta**                    | *SQL*                                                       | *T-SQL*                                             | *SQL*                                               | *SQL*                                                   |
 | **Soporte para Procedimientos Almacenados** | *No*                                                        | *Sí*                                                | *Sí*                                                | *Sí*                                                    |
-| **Soporte para Concurrencia**               | *Limitado (bloqueo de archivo)*                             | *Alto (control de concurrencia)*                    | *Alto (control de concurrencia)*                    | *Alto (control de concurrencia)*                        |
-| **Diferencias en Mayúsculas y Minúsculas**  | *Sensible a mayúsculas dependiendo del sistema de archivos* | *Insensible a mayúsculas*                           | *Insensible a mayúsculas*                           | *Sensible a mayúsculas dependiendo de la configuración* |
+| **Soporte para Concurrencia**               | *Limitado (bloqueo de fichero)*                             | *Alto (control de concurrencia)*                    | *Alto (control de concurrencia)*                    | *Alto (control de concurrencia)*                        |
+| **Diferencias en Mayúsculas y Minúsculas**  | *Sensible a mayúsculas dependiendo del sistema de ficheros* | *Insensible a mayúsculas*                           | *Insensible a mayúsculas*                           | *Sensible a mayúsculas dependiendo de la configuración* |
 
 ---
 
@@ -45,7 +45,7 @@
 
 #### ***b. Transacciones***
 
-- **SQLite:** *Soporta transacciones, pero puede tener limitaciones en entornos altamente concurrentes debido a su bloqueo de archivo.*
+- **SQLite:** *Soporta transacciones, pero puede tener limitaciones en entornos altamente concurrentes debido a su bloqueo de fichero.*
 - **SQL Server y PostgreSQL:** *Soporte completo para transacciones y control de concurrencia, lo que permite múltiples accesos simultáneos sin problemas.*
   
   ---
@@ -66,7 +66,7 @@
 
 ### ***4. Diferencias en el Tratamiento de Mayúsculas y Minúsculas***
 
-- **SQLite:** *Puede ser sensible a mayúsculas o minúsculas, dependiendo del sistema de archivos. Por ejemplo, en sistemas de archivos de Windows, "tabla" y "Tabla" pueden ser tratados como idénticos, pero en Linux pueden ser diferentes.*
+- **SQLite:** *Puede ser sensible a mayúsculas o minúsculas, dependiendo del sistema de ficheros. Por ejemplo, en sistemas de ficheros de Windows, "tabla" y "Tabla" pueden ser tratados como idénticos, pero en Linux pueden ser diferentes.*
 - **SQL Server:** *Generalmente insensible a mayúsculas, aunque esto puede variar según la configuración de collation.*
 - **MySQL:** *También insensible a mayúsculas en la mayoría de las configuraciones predeterminadas.*
 - **PostgreSQL:** *Sensible a mayúsculas, a menos que se utilicen comillas para forzar el uso exacto de la capitalización.*
@@ -87,7 +87,7 @@
 
 ```sql
 -- Crear base de datos en SQLite
--- En SQLite, la base de datos se crea al crear una conexión con un archivo.
+-- En SQLite, la base de datos se crea al crear una conexión con un fichero.
 -- No es necesario un comando específico para crear la base de datos.
 
 -- Crear tabla en la base de datos
@@ -99,7 +99,7 @@ CREATE TABLE diferencias (
 ```
 
 **Diferencias:**  
-*En SQLite, la base de datos es un archivo y se crea automáticamente al conectarse a un archivo. La estructura de la tabla se define directamente al crearla.*
+*En SQLite, la base de datos es un fichero y se crea automáticamente al conectarse a un fichero. La estructura de la tabla se define directamente al crearla.*
 
 ---
 
@@ -172,7 +172,7 @@ CREATE TABLE diferencias (
 
 ### ***Resumen de Diferencias***
 
-- **SQLite:** *La base de datos se crea como un archivo. No se necesita un comando específico para crearla.*
+- **SQLite:** *La base de datos se crea como un fichero. No se necesita un comando específico para crearla.*
 - **SQL Server:** *Requiere el comando `CREATE DATABASE` y permite el uso de tipos de datos específicos como `NVARCHAR`.*
 - **MySQL:** *Utiliza `CREATE DATABASE` y permite especificar un motor de almacenamiento (por ejemplo, `InnoDB`).*
 - **PostgreSQL:** *Requiere `CREATE DATABASE` y se conecta a la base de datos con `\c`. Usa `SERIAL` para campos autoincrementales.*

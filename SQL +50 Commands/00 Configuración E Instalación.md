@@ -519,7 +519,7 @@ drwxr-x--- 2 mysql mysql     4096 Sep 16 19:55  sys
 
 - **`width:`:** *Esta opción controla el ancho de las columnas, pero en este caso no tiene un valor definido.*
 
-- **`filename: /home/vscode/Northwind.db`:** *Muestra la ruta del archivo de base de datos que está actualmente abierto en SQLite, en este caso, `Northwind.db`.*
+- **`filename: /home/vscode/Northwind.db`:** *Muestra la ruta del fichero de base de datos que está actualmente abierto en SQLite, en este caso, `Northwind.db`.*
 
 ---
 

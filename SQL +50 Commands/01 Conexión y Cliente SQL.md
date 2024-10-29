@@ -597,7 +597,7 @@ sqlite>
 ### ***Explicación***
 
 > [!CAUTION]
-> *Al ejecutar el comando `docker exec -it container-sqlite3-practicas sqlite3`, si no especificas el usuario, Docker ejecutará el comando como **root** por defecto. Esto es debido a que el usuario root es el usuario predeterminado en la mayoría de las imágenes de Docker, a menos que se haya configurado explícitamente otro usuario en el archivo `Dockerfile` o con el argumento `--user` durante la creación del contenedor.*
+> *Al ejecutar el comando `docker exec -it container-sqlite3-practicas sqlite3`, si no especificas el usuario, Docker ejecutará el comando como **root** por defecto. Esto es debido a que el usuario root es el usuario predeterminado en la mayoría de las imágenes de Docker, a menos que se haya configurado explícitamente otro usuario en el fichero `Dockerfile` o con el argumento `--user` durante la creación del contenedor.*
 
 1. **Comando ejecutado como root:**
 
@@ -608,7 +608,7 @@ sqlite>
    ```
 
    - **Por defecto,** *este comando se ejecutará como el usuario **root** dentro del contenedor, ya que no se especificó el usuario a través del argumento `--user`.*
-   - **root** *tiene acceso a todos los archivos y permisos en el sistema de archivos del contenedor, lo que incluye la capacidad de ejecutar el cliente SQLite y acceder a cualquier archivo de base de datos en el contenedor.*
+   - **root** *tiene acceso a todos los ficheros y permisos en el sistema de ficheros del contenedor, lo que incluye la capacidad de ejecutar el cliente SQLite y acceder a cualquier fichero de base de datos en el contenedor.*
 
 2. **Por qué sucede:**
    - *Docker ejecuta comandos dentro de contenedores como root de forma predeterminada a menos que se le indique lo contrario. Esto proporciona acceso total al sistema dentro del contenedor, pero también puede representar un riesgo si no se maneja con cuidado, especialmente si el contenedor tiene más permisos de los necesarios.*

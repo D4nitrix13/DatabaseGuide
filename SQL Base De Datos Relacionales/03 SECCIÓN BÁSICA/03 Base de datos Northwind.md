@@ -26,7 +26,7 @@
 
 ### ***Uso de Northwind en SQLite:***
 
-*Para comenzar a trabajar con la base de datos Northwind en SQLite, puedes abrir el archivo de la base de datos utilizando el siguiente comando en la terminal de SQLite:*
+*Para comenzar a trabajar con la base de datos Northwind en SQLite, puedes abrir el fichero de la base de datos utilizando el siguiente comando en la terminal de SQLite:*
 
 ```sql
 .open /home/vscode/Northwind.db
@@ -36,7 +36,7 @@
 sqlite> .open /home/vscode/Northwind.db
 ```
 
-- *Este comando abrirá el archivo de base de datos `Northwind.db` en tu entorno de SQLite, permitiéndote ejecutar consultas SQL y explorar los datos.*
+- *Este comando abrirá el fichero de base de datos `Northwind.db` en tu entorno de SQLite, permitiéndote ejecutar consultas SQL y explorar los datos.*
 
 ---
 

@@ -34,7 +34,7 @@ def convertir_json_a_excel(json_file: str, output_dir: str) -> None:
     # Ruta completa para guardar el fichero Excel
     excel_file: str = os.path.join(output_dir, f"{base_name}.xlsx")
 
-    # Guardar el DataFrame como un archivo Excel
+    # Guardar el DataFrame como un fichero Excel
     data.to_excel(excel_writer=excel_file, index=False)
     print(f"Fichero convertido: {excel_file}", end="\n", file=sys.stdout)
     return None

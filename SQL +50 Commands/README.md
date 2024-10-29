@@ -89,7 +89,7 @@
      );
      ```
 
-   - *Bajo el capó, esto implica asignar espacio en el disco, definir la estructura de los archivos de almacenamiento y preparar los mecanismos de acceso y búsqueda.*
+   - *Bajo el capó, esto implica asignar espacio en el disco, definir la estructura de los ficheros de almacenamiento y preparar los mecanismos de acceso y búsqueda.*
 
 2. **ALTER:** *Modifica la estructura de un objeto existente.*
    - **Sintaxis:**

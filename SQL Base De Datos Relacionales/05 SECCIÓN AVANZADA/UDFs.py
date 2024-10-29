@@ -121,7 +121,7 @@ def second() -> None:
     return None
 
 
-# `if __name__ == "__main__":` permite ejecutar el código solo si se ejecuta directamente el archivo
+# `if __name__ == "__main__":` permite ejecutar el código solo si se ejecuta directamente el fichero
 if __name__ == "__main__":
     # Ejecuta la función `second()` como función principal (se puede cambiar a `main()`)
     # main()

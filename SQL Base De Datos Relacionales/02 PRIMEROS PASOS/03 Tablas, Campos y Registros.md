@@ -41,7 +41,7 @@ CREATE TABLE students (
   - **`INTEGER`:** **Almacena números enteros.**
   - **`TEXT`:** **Almacena cadenas de texto.**
   - **`REAL`:** **Almacena números de punto flotante.**
-  - **`BLOB`:** **Almacena datos binarios, como imágenes o archivos.**
+  - **`BLOB`:** **Almacena datos binarios, como imágenes o ficheros.**
   - **`NUMERIC`:** **Almacena números en formato decimal, permitiendo precisión en cálculos.**
   - **`NULL`:** **Campo sin valor asignado.**
 

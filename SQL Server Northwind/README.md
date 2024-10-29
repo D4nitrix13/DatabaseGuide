@@ -351,7 +351,7 @@ Aquí tienes la explicación detallada de cada comando y flag, siguiendo el form
 
 ---
 
-#### ***SQL Server en Docker - Ejecución de Consultas y Manejo de Archivos SQL***
+#### ***SQL Server en Docker - Ejecución de Consultas y Manejo de Ficheros SQL***
 
 ### ***Consulta a la base de datos activa***
 
@@ -390,13 +390,13 @@ Northwind
 
 ---
 
-### ***Copiar un archivo SQL al contenedor***
+### ***Copiar un fichero SQL al contenedor***
 
 ---
 
-### ***2. Copiar un archivo SQL desde el host al contenedor***
+### ***2. Copiar un fichero SQL desde el host al contenedor***
 
-**Este comando copia un archivo SQL desde el sistema host al contenedor de Docker, donde puede ser ejecutado posteriormente.**
+**Este comando copia un fichero SQL desde el sistema host al contenedor de Docker, donde puede ser ejecutado posteriormente.**
 
 ```bash
 docker cp $HOME/Sql/tablesDatabase.sql sqlpreview:/tmp/tablesDatabase.sql
@@ -404,9 +404,9 @@ docker cp $HOME/Sql/tablesDatabase.sql sqlpreview:/tmp/tablesDatabase.sql
 
 ### **Explicación de cada flag y opción:**
 
-- **`docker cp`:** *Este comando copia archivos entre el sistema host y un contenedor de Docker.*
-- **`$HOME/Sql/tablesDatabase.sql`:** *Es la ruta en el host donde se encuentra el archivo `tablesDatabase.sql`.*
-- **`sqlpreview:/tmp/tablesDatabase.sql`:** *Especifica la ruta de destino dentro del contenedor. El archivo se copiará en el directorio `/tmp` dentro del contenedor `sqlpreview`.*
+- **`docker cp`:** *Este comando copia ficheros entre el sistema host y un contenedor de Docker.*
+- **`$HOME/Sql/tablesDatabase.sql`:** *Es la ruta en el host donde se encuentra el fichero `tablesDatabase.sql`.*
+- **`sqlpreview:/tmp/tablesDatabase.sql`:** *Especifica la ruta de destino dentro del contenedor. El fichero se copiará en el directorio `/tmp` dentro del contenedor `sqlpreview`.*
 
 **Salida esperada:**
 
@@ -451,7 +451,7 @@ the input device is not a TTY
 
 ### ***4. Ejecutar el script SQL correctamente***
 
-**Para ejecutar un archivo SQL correctamente con redirección de entrada, usa `-i` en lugar de `-it`:**
+**Para ejecutar un fichero SQL correctamente con redirección de entrada, usa `-i` en lugar de `-it`:**
 
 ```bash
 docker exec -i sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ssw0rd123! < $HOME/Sql/tablesDatabase.sql
@@ -462,9 +462,9 @@ docker exec -i sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ss
 ### **Explicación de cada flag::**
 
 - **`docker exec`:** *Ejecuta un comando en un contenedor en ejecución.*
-- **`-i`:** *Permite la redirección de la entrada estándar para leer el archivo SQL, pero sin asignar un terminal interactivo.*
+- **`-i`:** *Permite la redirección de la entrada estándar para leer el fichero SQL, pero sin asignar un terminal interactivo.*
 - **`sqlpreview`:** *Especifica el nombre del contenedor donde se ejecutará el comando.*
-- **`< $HOME/Sql/tablesDatabase.sql`:** *Redirige el contenido del archivo SQL `tablesDatabase.sql` ubicado en el host hacia el comando SQL en el contenedor.*
+- **`< $HOME/Sql/tablesDatabase.sql`:** *Redirige el contenido del fichero SQL `tablesDatabase.sql` ubicado en el host hacia el comando SQL en el contenedor.*
 
 **Salida esperada:**
 
@@ -512,13 +512,13 @@ master                                                                          
 
 ---
 
-### **Otra forma de ejecutar un archivo SQL desde el host**
+### **Otra forma de ejecutar un fichero SQL desde el host**
 
 ---
 
-### ***5. Usar `cat` para enviar el contenido del archivo SQL***
+### ***5. Usar `cat` para enviar el contenido del fichero SQL***
 
-**Otra manera de ejecutar un archivo SQL es mediante el uso del comando `cat` para pasar su contenido a la entrada estándar del comando `sqlcmd`:**
+**Otra manera de ejecutar un fichero SQL es mediante el uso del comando `cat` para pasar su contenido a la entrada estándar del comando `sqlcmd`:**
 
 ```bash
 cat $HOME/Sql/tablesDatabase.sql | docker exec -i sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ssw0rd123!
@@ -569,7 +569,7 @@ master                                                                          
 
 ### **Explicación:**
 
-- **`cat $HOME/Sql/tablesDatabase.sql`:** *Muestra el contenido del archivo `tablesDatabase.sql`.*
+- **`cat $HOME/Sql/tablesDatabase.sql`:** *Muestra el contenido del fichero `tablesDatabase.sql`.*
 - **`|`:** *Redirige el contenido mostrado por `cat` hacia el comando `docker exec`.*
 - **`docker exec -i`:** *Ejecuta el comando SQL dentro del contenedor, permitiendo la redirección de entrada con `-i`.*
 
@@ -581,7 +581,7 @@ master                                                                          
 
 ### ***6. Ejecutar una consulta simple con `echo`***
 
-**Puedes usar `echo` para ejecutar una consulta SQL simple directamente desde el host, sin necesidad de archivos:**
+**Puedes usar `echo` para ejecutar una consulta SQL simple directamente desde el host, sin necesidad de ficheros:**
 
 ```bash
 echo "SELECT * FROM INFORMATION_SCHEMA.TABLES;" | docker exec -i sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ssw0rd123!
@@ -643,7 +643,7 @@ master                                                                          
 
 ---
 
-#### ***1. Ejecutar un script SQL desde un archivo existente en el contenedor***
+#### ***1. Ejecutar un script SQL desde un fichero existente en el contenedor***
 
 ```bash
 docker exec -it sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ssw0rd123! -i $HOME/Sql/tablesDatabase.sql
@@ -652,17 +652,17 @@ docker exec -it sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@s
 **Error:**
 `Sqlcmd: '$HOME/Sql/tablesDatabase.sql': Invalid filename.`
 
-- *Este error ocurre porque el archivo no existe dentro del contenedor en la ruta especificada. El `$HOME` en el sistema host no se traduce automáticamente dentro del contenedor.*
+- *Este error ocurre porque el fichero no existe dentro del contenedor en la ruta especificada. El `$HOME` en el sistema host no se traduce automáticamente dentro del contenedor.*
 
 ---
 
-#### ***2. Copiar el archivo al contenedor y ejecutar el script en una base de datos específica***
+#### ***2. Copiar el fichero al contenedor y ejecutar el script en una base de datos específica***
 
 ```bash
 docker exec -i sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ssw0rd123! -d Northwind -i $HOME/Sql/script.sql
 ```
 
-- *Este comando intenta ejecutar un script SQL que está en la máquina host, pero este enfoque también fallará si el archivo no está en el contenedor.*
+- *Este comando intenta ejecutar un script SQL que está en la máquina host, pero este enfoque también fallará si el fichero no está en el contenedor.*
 
 ```bash
 docker exec -it sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ssw0rd123! -i $HOME/Sql/script.sql
@@ -964,7 +964,7 @@ The identifier that starts with 'A0909A909009E9E9A9A0B09B0A0D0BDAF0B9E9BB0AB0B09
 
 ---
 
-#### ***3. Copiar el archivo del host al contenedor***
+#### ***3. Copiar el fichero del host al contenedor***
 
 ```bash
 docker cp $HOME/Sql/script.sql sqlpreview:/tmp/script.sql
@@ -972,7 +972,7 @@ docker cp $HOME/Sql/script.sql sqlpreview:/tmp/script.sql
 
 **Explicación:**
 
-- **Este comando copia el archivo `script.sql` desde la máquina host a la ruta `/tmp/script.sql` dentro del contenedor `sqlpreview`.**
+- **Este comando copia el fichero `script.sql` desde la máquina host a la ruta `/tmp/script.sql` dentro del contenedor `sqlpreview`.**
 
 **Salida:**
 
@@ -1057,7 +1057,7 @@ docker exec -i sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ss
 
 ### ***Resumen***
 
-1. *Para ejecutar scripts SQL dentro de un contenedor Docker, primero debes copiar el archivo al contenedor con `docker cp`.*
-2. *Usa el flag `-i` para especificar el archivo de entrada y ejecutarlo en una base de datos específica con el flag `-d`.*
+1. *Para ejecutar scripts SQL dentro de un contenedor Docker, primero debes copiar el fichero al contenedor con `docker cp`.*
+2. *Usa el flag `-i` para especificar el fichero de entrada y ejecutarlo en una base de datos específica con el flag `-d`.*
 3. *Si necesitas ejecutar scripts de forma interactiva, puedes usar el comando `docker exec` junto con `sqlcmd`.*
-4. *La flag `-Q` se usa para ejecutar consultas rápidas sin necesidad de un archivo SQL.*
+4. *La flag `-Q` se usa para ejecutar consultas rápidas sin necesidad de un fichero SQL.*

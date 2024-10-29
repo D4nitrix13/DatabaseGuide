@@ -18,13 +18,13 @@ sqlite3 /home/user/NombreBaseDatos.db
 sqlite3 /home/user/UsuariosDataBase.db
 ```
 
-- **Descripción:** *Este comando crea un archivo de base de datos llamado `UsuariosDataBase.db` en el directorio actual. Si el archivo no existe, SQLite lo creará automáticamente.*
+- **Descripción:** *Este comando crea un fichero de base de datos llamado `UsuariosDataBase.db` en el directorio actual. Si el fichero no existe, SQLite lo creará automáticamente.*
 
 ---
 
 ## ***Verificar la creación de la base de datos***
 
-- **Para verificar que la base de datos fue creada, puedes listar los archivos en el directorio:**
+- **Para verificar que la base de datos fue creada, puedes listar los ficheros en el directorio:**
 
 ```bash
 ls -l ./
@@ -35,7 +35,7 @@ ls -l ./
 UsuariosDataBase.db
 ```
 
-- **Descripción:** *El archivo `UsuariosDataBase.db` aparecerá en la lista de archivos si la base de datos se creó correctamente.*
+- **Descripción:** *El fichero `UsuariosDataBase.db` aparecerá en la lista de ficheros si la base de datos se creó correctamente.*
 
 ---
 
@@ -51,7 +51,7 @@ sqlite3 /home/user/NombreBaseDatos.db
 sqlite3 /home/user/UsuariosDataBase.db
 ```
 
-- **Descripción:** *Este comando abre una sesión interactiva con la base de datos `UsuariosDataBase.db`. Si el archivo de base de datos existe, se conectará a él; si no existe, lo creará.*
+- **Descripción:** *Este comando abre una sesión interactiva con la base de datos `UsuariosDataBase.db`. Si el fichero de base de datos existe, se conectará a él; si no existe, lo creará.*
 
 ---
 
