@@ -1,43 +1,3 @@
-<!-- Autor: Daniel Benjamin Perez Morales -->
-<!-- GitHub: https://github.com/DanielPerezMoralesDev13 -->
-<!-- Correo electrónico: danielperezdev@proton.me -->
-
-# ***Funciones Definidas por el Usuario o en Inglés User Defined Functions (UDF)***
-
-- *Las **funciones definidas por el usuario (UDF)** son funciones creadas por el propio usuario en SQL para realizar operaciones personalizadas que pueden integrarse directamente en consultas SQL. Estas funciones ofrecen flexibilidad adicional, permitiendo realizar cálculos o transformaciones que no están disponibles en las funciones nativas de SQL.*
-
----
-
-## ***Diferencia entre UDF y Procedimientos Almacenados***
-
-- *Las **UDF** y los **procedimientos almacenados** son diferentes:*
-
-- **UDF:** *están diseñadas para utilizarse en expresiones dentro de consultas SQL y deben devolver un valor (como el cuadrado de un número en un conjunto de datos). Su objetivo es ayudar en operaciones rápidas y puntuales dentro de consultas.*
-  
-- **Procedimientos almacenados:** *son rutinas complejas almacenadas en la base de datos, diseñadas para ejecutar múltiples instrucciones SQL, pero no suelen usarse en expresiones de consultas. A diferencia de las UDF, los procedimientos almacenados pueden realizar tareas complejas, cambiar el estado de la base de datos (insertar, actualizar datos, etc.), y no necesariamente deben devolver un valor.*
-
----
-
-### ***Implementación de UDF en SQLite3 usando Python como Código Anfitrión***
-
-- *En el contexto de bases de datos y programación, un **código anfitrión** se refiere a un programa externo que interactúa con la base de datos, sirviendo como intermediario o "anfitrión" para ejecutar operaciones o extender la funcionalidad de la base de datos. En el caso de SQLite3, **Python actúa como anfitrión** al conectarse a la base de datos, ejecutar consultas, registrar funciones personalizadas (UDF) y procesar los datos obtenidos.*
-
----
-
-### ***Ejemplo del rol de Python como código anfitrión en SQLite3***
-
-1. **Conectar y ejecutar:** *Python establece la conexión con SQLite3, permitiendo realizar consultas SQL.*
-2. **Registrar funciones:** *Python permite definir y registrar funciones personalizadas (como `square` en el ejemplo anterior), que SQLite3 usa dentro de las consultas.*
-3. **Procesar y presentar datos:** *Python extrae los datos de SQLite3 y los presenta en un formato estructurado (como DataFrames de pandas).*
-
----
-
-### ***Ventajas de usar un código anfitrión***
-
-- **Mayor flexibilidad:** *Python puede realizar cálculos y transformaciones complejas que la base de datos no soporta de manera nativa.*
-- **Integración y automatización:** *Python puede integrar el uso de SQLite3 en aplicaciones más amplias, automatizando operaciones de la base de datos como parte de flujos de trabajo.*
-
-```python
 """
 Aplicación en Python 3 para Funciones Definidas por el Usuario (UDF) en SQLite
 
@@ -166,12 +126,3 @@ if __name__ == "__main__":
     # Ejecuta la función `second()` como función principal (se puede cambiar a `main()`)
     # main()
     second()
-```
-
----
-
-### ***Explicación de términos clave***
-
-1. **Cursor:** *El cursor en SQLite permite ejecutar comandos SQL y obtener resultados. Es necesario porque administra las operaciones SQL y permite un acceso secuencial a los datos de la consulta.*
-2. **create_function():** *Define una función personalizada (UDF) en la base de datos para usar en consultas SQL, como `square` en este caso, que calcula el cuadrado de un número.*
-3. **commit():** *Asegura que los cambios hechos en la base de datos se guarden permanentemente.*
