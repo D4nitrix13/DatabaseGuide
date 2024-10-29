@@ -1,22 +1,20 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
 {
 	"name": "Ubuntu",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/base:jammy"
-
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
-
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-
+	"image": "mcr.microsoft.com/devcontainers/base:jammy",
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "uname -a",
-
-	// Configure tool-specific properties.
-	// "customizations": {},
-
+	"postCreateCommand": [
+		// Instalar pip
+		"sudo apt install -y python3-pip",
+		// Instalar pandas-stubs y tipos
+		"python3 -m pip install pandas-stubs && mypy --install-types",
+		// Instalar tkinter
+		"sudo apt-get install -y python3-tk",
+		// Instalar los paquetes requeridos
+		"python3 -m pip install et-xmlfile==1.1.0 numpy==2.1.2 openpyxl==3.1.5 pandas==2.2.3 python-dateutil==2.9.0.post0 pytz==2024.2 six==1.16.0 tzdata==2024.2",
+		// Instalar las extensiones de VS Code
+		"code --install-extension cweijan.dbclient-jdbc",
+		"code --install-extension cweijan.vscode-mysql-client2"
+	]
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
 }
