@@ -120,3 +120,10 @@ print_user(
     user="'; UPDATE users SET age = '25' WHERE id = 1; COMMIT; -- "
 )  # ! SQL Injection
 print_user(user="Alice Smith")
+
+"""
+
+>>> https://planetscale.com/
+
+>>> https://www.clever-cloud.com/
+"""
