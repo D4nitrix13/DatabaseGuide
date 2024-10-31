@@ -35,7 +35,7 @@ docker exec -it --privileged -u vscode container-sqlite3-practicas bash -c "cd /
 
 ### ***Limitación***
 
-- *Recuerda que cada vez que inicies una nueva sesión, necesitarás ejecutar el mismo comando para navegar a `/home/vscode`. Si deseas estar en un directorio específico de manera persistente cada vez que inicias un contenedor, puedes considerar configurar un archivo `.bashrc` o `.bash_profile` en el contenedor para cambiar automáticamente a ese directorio cuando inicies una nueva sesión de `bash`.*
+- *Recuerda que cada vez que inicies una nueva sesión, necesitarás ejecutar el mismo comando para navegar a `/home/vscode`. Si deseas estar en un directorio específico de manera persistente cada vez que inicias un contenedor, puedes considerar configurar un fichero `.bashrc` o `.bash_profile` en el contenedor para cambiar automáticamente a ese directorio cuando inicies una nueva sesión de `bash`.*
 
 ---
 
@@ -105,7 +105,7 @@ docker container run \
     - *Conecta la entrada estándar del contenedor a la terminal de host, permitiendo enviar entrada al contenedor.*
 
 14. **`-v "$(pwd)":/Code`:**
-    - *Monta el directorio actual (obtenido con `$(pwd)`) del host en el directorio `/Code` del contenedor. Esto permite que el contenedor acceda a los archivos en el directorio actual del host y viceversa.*
+    - *Monta el directorio actual (obtenido con `$(pwd)`) del host en el directorio `/Code` del contenedor. Esto permite que el contenedor acceda a los ficheros en el directorio actual del host y viceversa.*
 
 15. **`--name container-sqlite3-practicas`:**
     - *Asigna un nombre al contenedor que se está creando, en este caso, `container-sqlite3-practicas`.*

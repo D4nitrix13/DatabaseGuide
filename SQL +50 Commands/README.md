@@ -21,6 +21,11 @@
       - [***Las bases de datos `relacionales` y `no relacionales` tienen diferentes enfoques y casos de uso***](#las-bases-de-datos-relacionales-y-no-relacionales-tienen-diferentes-enfoques-y-casos-de-uso)
     - [***Bases de datos relacionales (SQL):***](#bases-de-datos-relacionales-sql)
     - [***Bases de datos no relacionales (NoSQL):***](#bases-de-datos-no-relacionales-nosql)
+    - [***Uso del Comando `docker exec` para Interactuar con SQLite en un Contenedor Docker***](#uso-del-comando-docker-exec-para-interactuar-con-sqlite-en-un-contenedor-docker)
+    - [***Desglose del Comando***](#desglose-del-comando)
+    - [***Resumen***](#resumen)
+    - [***Ejemplo de Uso***](#ejemplo-de-uso)
+    - [***Ejecución de un Contenedor Docker para SQLite con Configuraciones Específicas***](#ejecución-de-un-contenedor-docker-para-sqlite-con-configuraciones-específicas)
 
 ## ***`SQL` significa `Structured Query Language` y es un estándar de lenguaje de consulta para bases de datos relacionales. Fue estandarizado por la `ISO` (Organización Internacional de Normalización) debido a su amplia adopción y necesidad de interoperabilidad entre diferentes sistemas de gestión de bases de datos***
 
@@ -71,64 +76,64 @@
 1. **CREATE:** *Crea un nuevo objeto en la base de datos (una tabla, vista, índice, etc.).*
    - **Sintaxis:**
 
-     ```sql
-     CREATE TABLE namTable (
-       column1 TypeData [restricciones],
-       column2 TypeData [restricciones],
-       ...
-     );
-     ```
+    ```sql
+    CREATE TABLE namTable (
+      column1 TypeData [restricciones],
+      column2 TypeData [restricciones],
+      ...
+    );
+    ```
 
-     **Ejemplo:**
+    **Ejemplo:**
 
-     ```sql
-     CREATE TABLE empleados (
-       id INT PRIMARY KEY,
-       nombre VARCHAR(50),
-       salario DECIMAL(10, 2)
-     );
-     ```
+    ```sql
+    CREATE TABLE empleados (
+      id INT PRIMARY KEY,
+      nombre VARCHAR(50),
+      salario DECIMAL(10, 2)
+    );
+    ```
 
    - *Bajo el capó, esto implica asignar espacio en el disco, definir la estructura de los ficheros de almacenamiento y preparar los mecanismos de acceso y búsqueda.*
 
 2. **ALTER:** *Modifica la estructura de un objeto existente.*
    - **Sintaxis:**
 
-     ```sql
-     ALTER TABLE namTable
-     ADD columna TypeData;
-     ```
+    ```sql
+    ALTER TABLE namTable
+    ADD columna TypeData;
+    ```
 
-     **Ejemplo:**
+    **Ejemplo:**
 
-     ```sql
-     ALTER TABLE empleados
-     ADD fecha_contratacion DATE;
-     ```
+    ```sql
+    ALTER TABLE empleados
+    ADD fecha_contratacion DATE;
+    ```
 
    - *A bajo nivel, esto puede implicar la reorganización del espacio asignado a la tabla, la actualización de índices o la creación de nuevos bloques de datos.*
 
 3. **DROP:** *Elimina un objeto de la base de datos.*
    - **Sintaxis:**
 
-     ```sql
-     DROP TABLE namTable;
-     ```
+    ```sql
+    DROP TABLE namTable;
+    ```
 
-     **Ejemplo:**
+    **Ejemplo:**
 
-     ```sql
-     DROP TABLE empleados;
-     ```
+    ```sql
+    DROP TABLE empleados;
+    ```
 
    - *Cuando se ejecuta un `DROP`, se eliminan tanto la estructura como los datos asociados. En términos técnicos, el espacio en disco es liberado y las referencias a la tabla en los índices y relaciones son eliminadas.*
 
 4. **TRUNCATE:** *Borra todos los datos de una tabla, pero mantiene la estructura de la misma.*
    - **Sintaxis:**
 
-     ```sql
-     TRUNCATE TABLE namTable;
-     ```
+    ```sql
+    TRUNCATE TABLE namTable;
+    ```
 
    - *A bajo nivel, a diferencia de `DELETE`, `TRUNCATE` no realiza una operación de borrado fila por fila, sino que simplemente resetea las estructuras de almacenamiento, lo que lo hace mucho más rápido.*
 
@@ -160,66 +165,66 @@
 1. **INSERT:** *Inserta nuevos datos en una tabla.*
    - **Sintaxis:**
 
-     ```sql
-     INSERT INTO nameTable (columna1, columna2, ...)
-     VALUES (valor1, valor2, ...);
-     ```
+    ```sql
+    INSERT INTO nameTable (columna1, columna2, ...)
+    VALUES (valor1, valor2, ...);
+    ```
 
-     **Ejemplo:**
+    **Ejemplo:**
 
-     ```sql
-     INSERT INTO empleados (id, nombre, salario)
-     VALUES (1, 'Daniel Pérez', 3500.00);
-     ```
+    ```sql
+    INSERT INTO empleados (id, nombre, salario)
+    VALUES (1, 'Daniel Pérez', 3500.00);
+    ```
 
 2. **UPDATE:** *Actualiza datos existentes en una tabla.*
    - **Sintaxis:**
 
-     ```sql
-     UPDATE nameTable
-     SET columna1 = valor1, columna2 = valor2, ...
-     WHERE condición;
-     ```
+    ```sql
+    UPDATE nameTable
+    SET columna1 = valor1, columna2 = valor2, ...
+    WHERE condición;
+    ```
 
-     **Ejemplo:**
+    **Ejemplo:**
 
-     ```sql
-     UPDATE empleados
-     SET salario = 4000.00
-     WHERE id = 1;
-     ```
+    ```sql
+    UPDATE empleados
+    SET salario = 4000.00
+    WHERE id = 1;
+    ```
 
 3. **DELETE:** *Elimina datos de una tabla.*
    - **Sintaxis:**
 
-     ```sql
-     DELETE FROM nameTable
-     WHERE condición;
-     ```
+    ```sql
+    DELETE FROM nameTable
+    WHERE condición;
+    ```
 
-     **Ejemplo:**
+    **Ejemplo:**
 
-     ```sql
-     DELETE FROM empleados
-     WHERE id = 1;
-     ```
+    ```sql
+    DELETE FROM empleados
+    WHERE id = 1;
+    ```
 
 4. **SELECT:** *Recupera datos de una tabla.*
    - **Sintaxis:**
 
-     ```sql
-     SELECT columna1, columna2, ...
-     FROM nameTable
-     WHERE condición;
-     ```
+    ```sql
+    SELECT columna1, columna2, ...
+    FROM nameTable
+    WHERE condición;
+    ```
 
      **Ejemplo:**
 
-     ```sql
-     SELECT nombre, salario
-     FROM empleados
-     WHERE salario > 3000;
-     ```
+    ```sql
+    SELECT nombre, salario
+    FROM empleados
+    WHERE salario > 3000;
+    ```
 
 ---
 
@@ -234,12 +239,12 @@
 - **Impacto:** *Cambia la estructura de la base de datos, afectando la manera en que se almacenan y gestionan los datos.*
 - **Ejemplo:**
 
-   ```sql
-   CREATE TABLE empleados (
-     id INT PRIMARY KEY,
-     nombre VARCHAR(50),
-     salario DECIMAL(10, 2)
-   );
+  ```sql
+  CREATE TABLE empleados (
+    id INT PRIMARY KEY,
+    nombre VARCHAR(50),
+    salario DECIMAL(10, 2)
+  );
    ```
 
 ---
@@ -251,10 +256,10 @@
 - **Impacto:** *Cambia el contenido de la base de datos, pero no su estructura.*
 - **Ejemplo:**
 
-   ```sql
-   INSERT INTO empleados (id, nombre, salario)
-   VALUES (1, 'Daniel Pérez', 3500.00);
-   ```
+  ```sql
+  INSERT INTO empleados (id, nombre, salario)
+  VALUES (1, 'Daniel Pérez', 3500.00);
+  ```
 
 ---
 
@@ -282,3 +287,109 @@
 - **Ejemplos:** *MongoDB, Redis.*
 
 *Ambas opciones se usan según el tipo de datos, la relación entre ellos y los requisitos de escalabilidad.*
+
+---
+
+### ***Uso del Comando `docker exec` para Interactuar con SQLite en un Contenedor Docker***
+
+```bash
+docker exec --interactive --tty --privileged --user vscode container-sqlite3-practicas sqlite3 /home/vscode/Northwind.db
+```
+
+### ***Desglose del Comando***
+
+1. **`docker exec`:** *Este es el comando principal que se utiliza para ejecutar un comando en un contenedor en ejecución. Permite interactuar con contenedores que ya están activos, en lugar de iniciar uno nuevo.*
+
+2. **`--interactive` o `-i`:** *Esta opción permite que la entrada estándar (stdin) del contenedor sea interactiva. Es útil cuando deseas interactuar con el proceso en ejecución, como una terminal, permitiendo que el usuario ingrese datos de forma interactiva.*
+
+3. **`--tty` o `-t`:** *Esta opción asigna un pseudo-terminal (tty) al contenedor. Esto es especialmente útil cuando se ejecutan aplicaciones que esperan que se les asigne un terminal, lo que permite una mejor visualización y interacción con la interfaz del usuario.*
+
+4. **`--privileged`:** *Esta opción concede permisos adicionales al contenedor, lo que le permite acceder a características especiales del host. En general, se recomienda usar `--privileged` con precaución, ya que otorga al contenedor un alto nivel de acceso al sistema host.*
+
+5. **`--user vscode`:** *Con esta opción, especificas el usuario con el que deseas ejecutar el comando dentro del contenedor. En este caso, el usuario es `vscode`. Esto es útil si deseas ejecutar el comando con un usuario específico que tiene ciertos permisos o configuraciones en el contenedor.*
+
+6. **`container-sqlite3-practicas`:** *Este es el nombre del contenedor en el que deseas ejecutar el comando. Debes asegurarte de que el contenedor esté en ejecución; de lo contrario, el comando fallará.*
+
+7. **`sqlite3`:** *Este es el comando que se ejecutará dentro del contenedor. En este caso, se está invocando el cliente de línea de comandos de SQLite. Es la herramienta que permite interactuar con bases de datos SQLite.*
+
+8. **`/home/vscode/Northwind.db`:** *Este es el argumento que se pasa al comando `sqlite3`. Aquí se especifica la ruta al archivo de base de datos SQLite que deseas abrir. En este caso, se está abriendo la base de datos `Northwind.db`, que se encuentra en el directorio `/home/vscode/` dentro del contenedor.*
+
+---
+
+### ***Resumen***
+
+- *En resumen, este comando se utiliza para abrir un archivo de base de datos SQLite (`Northwind.db`) dentro de un contenedor de Docker llamado `container-sqlite3-practicas`. Se ejecuta de manera interactiva, permitiendo al usuario interactuar con la base de datos a través de la línea de comandos de SQLite. Además, se ejecuta con permisos de usuario `vscode` y con privilegios especiales, lo que puede ser necesario para ciertas operaciones dentro del contenedor.*
+
+---
+
+### ***Ejemplo de Uso***
+
+- **Una vez que se ejecuta el comando, se accederá a una interfaz de línea de comandos de SQLite donde puedes ejecutar consultas SQL, como:**
+
+```sql
+SELECT * FROM Customers;
+```
+
+- *Esto te permitirá trabajar directamente con la base de datos y realizar operaciones de consulta, inserción, actualización o eliminación según sea necesario.*
+
+---
+
+### ***Ejecución de un Contenedor Docker para SQLite con Configuraciones Específicas***
+
+```bash
+docker run \
+    --interactive \
+    --tty \
+    --user vscode \
+    --workdir /Code \
+    --attach STDOUT \
+    --attach STDIN \
+    --attach STDERR \
+    --mount type=bind,source="$(pwd)",destination=/Code \
+    --privileged \
+    --publish 3000:3000 \
+    --expose 3000 \
+    --init \
+    --stop-signal SIGTERM\
+     --stop-timeout 10 \
+     --name sqlite3-practicas \
+     d4nitrix13/sqlite3-practicas:latest
+```
+
+- *Este comando se utiliza para crear y ejecutar un contenedor Docker que proporciona un entorno de trabajo para SQLite, con varias configuraciones que optimizan la interacción y la gestión de procesos. A continuación, se detalla cada parte del comando:*
+
+- **docker run:** *Inicia un nuevo contenedor a partir de una imagen especificada.*
+
+- **--interactive:** *Permite la interacción con el contenedor a través de la entrada estándar (STDIN).*
+
+- **--tty:** *Asigna un pseudo-terminal al contenedor, lo que permite una mejor visualización y uso de comandos interactivos.*
+
+- **--user vscode:** *Especifica que el contenedor debe ejecutarse como el usuario `vscode`, lo que puede ayudar a evitar problemas de permisos.*
+
+- **--workdir /Code:** *Establece el directorio de trabajo dentro del contenedor en `/Code`, donde se ejecutarán los comandos.*
+
+- **--attach STDOUT:** *Conecta la salida estándar del contenedor a la terminal, permitiendo ver la salida de los comandos en tiempo real.*
+
+- **--attach STDIN:** *Conecta la entrada estándar del contenedor a la terminal, lo que permite enviar comandos al contenedor.*
+
+- **--attach STDERR:** *Conecta la salida de error estándar del contenedor a la terminal, facilitando la visualización de errores.*
+
+- **--mount type=bind,source="$(pwd)",destination=/Code:** *Monta el directorio actual (`$(pwd)`) en el contenedor en la ruta`/Code`, lo que permite que los archivos y directorios del sistema anfitrión sean accesibles desde el contenedor.*
+
+- **--privileged:** *Proporciona al contenedor privilegios adicionales, permitiendo que realice operaciones que requieren permisos más altos.*
+
+- **--publish 3000:3000:** *Publica el puerto 3000 del contenedor en el puerto 3000 del host, permitiendo el acceso a aplicaciones que se ejecuten en este puerto desde fuera del contenedor.*
+
+- **--expose 3000:** *Indica que el contenedor escucha en el puerto 3000, aunque no lo publica en el host automáticamente.*
+
+- **--init:** *Inicia un proceso init en el contenedor, que se encargará de gestionar los procesos y señales adecuadamente.*
+
+- **--stop-signal SIGTERM:** *Especifica que la señal `SIGTERM` se utilizará para detener el contenedor, permitiendo una terminación más limpia.*
+
+- **--stop-timeout 10:** *Establece un tiempo de espera de 10 segundos para permitir que el contenedor se detenga adecuadamente antes de ser forzado a finalizar.*
+
+- **--name sqlite3-practicas:** *Asigna el nombre `sqlite3-practicas` al contenedor, facilitando su identificación y manejo en futuras operaciones.*
+
+- **d4nitrix13/sqlite3-practicas:latest:** *Especifica la imagen de Docker a utilizar, en este caso, la imagen `sqlite3-practicas` del usuario `d4nitrix13`, etiquetada como `latest`.*
+
+- *Esta configuración proporciona un entorno robusto y flexible para trabajar con SQLite, permitiendo la ejecución de comandos y la interacción con archivos en un contexto de desarrollo.*
