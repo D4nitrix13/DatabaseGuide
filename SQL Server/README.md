@@ -347,10 +347,6 @@ Northwind
 
 ---
 
-Aquí tienes la explicación detallada de cada comando y flag, siguiendo el formato que prefieres:
-
----
-
 #### ***SQL Server en Docker - Ejecución de Consultas y Manejo de Ficheros SQL***
 
 ### ***Consulta a la base de datos activa***
@@ -376,6 +372,22 @@ docker exec -it sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@s
 - **`-P P@ssw0rd123!`:** *Proporciona la contraseña para el usuario `sa`.*
 - **`-d Northwind`:** *Selecciona la base de datos `Northwind` como la base de datos activa donde se ejecutará la consulta.*
 - **`-q "SELECT DB_NAME() AS CurrentDatabase;"`:** *Ejecuta la consulta SQL que obtiene el nombre de la base de datos actual y lo muestra como `CurrentDatabase`.*
+
+- **La diferencia entre las flags `-Q` y `-q` en el comando `sqlcmd` de Microsoft SQL Server es sutil pero importante:**
+
+- **`-Q`:** *Esta opción permite ejecutar una consulta SQL y luego salir inmediatamente. Es útil para ejecutar una sola instrucción SQL sin entrar en el modo interactivo. Por ejemplo:*
+
+  ```bash
+  /opt/mssql-tools/bin/sqlcmd -Q "SELECT DB_NAME() AS CurrentDatabase;"
+  ```
+
+- **`-q`:** *Esta opción se utiliza para especificar que se desea que la salida de la consulta no contenga la información de inicio de sesión ni de conexión. También permite ejecutar una consulta SQL y salir, pero sin mostrar mensajes adicionales. Por ejemplo:*
+
+  ```bash
+  /opt/mssql-tools/bin/sqlcmd -q "SELECT DB_NAME() AS CurrentDatabase;"
+  ```
+
+- *En resumen, `-Q` ejecuta la consulta y sale, mientras que `-q` hace lo mismo pero suprime información adicional en la salida.*
 
 **Salida esperada:**
 
@@ -575,7 +587,7 @@ master                                                                          
 
 ---
 
-### **Ejecutar una consulta SQL directamente desde el host**
+### ***Ejecutar una consulta SQL directamente desde el host***
 
 ---
 
@@ -587,7 +599,9 @@ master                                                                          
 echo "SELECT * FROM INFORMATION_SCHEMA.TABLES;" | docker exec -i sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ssw0rd123!
 ```
 
-#### **Explicación**
+---
+
+#### ***Explicación***
 
 - **`echo "SELECT * FROM INFORMATION_SCHEMA.TABLES;"`:** *Envía la consulta SQL directamente como texto a la salida estándar.*
 - **`|`:** *Redirige la salida de `echo` hacia el comando SQL en el contenedor.*
@@ -659,13 +673,13 @@ docker exec -it sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@s
 #### ***2. Copiar el fichero al contenedor y ejecutar el script en una base de datos específica***
 
 ```bash
-docker exec -i sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ssw0rd123! -d Northwind -i $HOME/Sql/script.sql
+docker exec -i sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ssw0rd123! -d Northwind -i $HOME/Sql/Northwind.sql
 ```
 
 - *Este comando intenta ejecutar un script SQL que está en la máquina host, pero este enfoque también fallará si el fichero no está en el contenedor.*
 
 ```bash
-docker exec -it sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ssw0rd123! -i $HOME/Sql/script.sql
+docker exec -it sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ssw0rd123! -i $HOME/Sql/Northwind.sql
 Msg 103, Level 15, State 5, Server sqlpreview, Line 2
 The number that starts with '77773776777610000000137775350317777773777737750701000101021001000100000000000010100010010300067777761650604065047604760746404776' is too long. Maximum length is 128.
 Msg 102, Level 15, State 1, Server sqlpreview, Line 2
@@ -967,17 +981,17 @@ The identifier that starts with 'A0909A909009E9E9A9A0B09B0A0D0BDAF0B9E9BB0AB0B09
 #### ***3. Copiar el fichero del host al contenedor***
 
 ```bash
-docker cp $HOME/Sql/script.sql sqlpreview:/tmp/script.sql
+docker cp $HOME/Sql/Northwind.sql sqlpreview:/tmp/Northwind.sql
 ```
 
 **Explicación:**
 
-- **Este comando copia el fichero `script.sql` desde la máquina host a la ruta `/tmp/script.sql` dentro del contenedor `sqlpreview`.**
+- **Este comando copia el fichero `Northwind.sql` desde la máquina host a la ruta `/tmp/Northwind.sql` dentro del contenedor `sqlpreview`.**
 
 **Salida:**
 
 ```bash
-Successfully copied 1.05MB to sqlpreview:/tmp/script.sql
+Successfully copied 1.05MB to sqlpreview:/tmp/Northwind.sql
 ```
 
 ---
@@ -985,10 +999,10 @@ Successfully copied 1.05MB to sqlpreview:/tmp/script.sql
 #### ***4. Ejecutar el script SQL desde dentro del contenedor***
 
 ```bash
-docker exec -i sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ssw0rd123! -d Northwind -i /tmp/script.sql
+docker exec -i sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ssw0rd123! -d Northwind -i /tmp/Northwind.sql
 ```
 
-- *Este comando ejecuta el script SQL que está ubicado en `/tmp/script.sql` en la base de datos `Northwind`.*
+- *Este comando ejecuta el script SQL que está ubicado en `/tmp/Northwind.sql` en la base de datos `Northwind`.*
 
 **Flags:**
 
@@ -996,7 +1010,7 @@ docker exec -i sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ss
 - *`-U sa`: Usuario para la conexión (SA en este caso).*
 - *`-P P@ssw0rd123!`: Contraseña del usuario SA.*
 - *`-d Northwind`: Selecciona la base de datos `Northwind`.*
-- *`-i /tmp/script.sql`: Ejecuta el script ubicado en `/tmp/script.sql`.*
+- *`-i /tmp/Northwind.sql`: Ejecuta el script ubicado en `/tmp/Northwind.sql`.*
 
 ---
 
