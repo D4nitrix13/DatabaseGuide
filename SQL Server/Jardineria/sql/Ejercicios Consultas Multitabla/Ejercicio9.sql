@@ -192,3 +192,34 @@ WHERE
     -- - En esencia, la segunda consulta se interpreta como un intento de listar los subordinados de los empleados, pero dado que el `JOIN` no está configurado correctamente, es probable que no obtenga el resultado deseado.
     -- - **Subordinados** se refiere a los empleados que reportan a un jefe, mientras que en la primera consulta, estás enfocándote en los empleados desde su perspectiva hacia arriba en la jerarquía.
     -- Si el objetivo es listar subordinados, la consulta tendría que estructurarse adecuadamente para reflejar esa relación de jefes a subordinados. En su forma actual, la segunda consulta podría llevar a confusión en cuanto a los resultados obtenidos.
+    --     El concepto de "cascada" en el contexto de las uniones de tablas se refiere generalmente a la manera en que las relaciones se extienden a través de múltiples niveles en una estructura jerárquica, pero no está limitado a uniones dentro de una sola tabla. Aquí te explico con más detalle:
+    -- ### Cascada en Joins de una Sola Tabla
+    -- Cuando hablamos de uniones en cascada dentro de una misma tabla, como en el caso de empleados y sus jefes, se refiere a la capacidad de realizar uniones múltiples para acceder a diferentes niveles de la jerarquía. Por ejemplo, puedes unirte a la tabla de empleados para obtener no solo el empleado y su jefe inmediato, sino también el jefe de ese jefe.
+    -- **Ejemplo:**
+    -- ```sql
+    -- SELECT
+    --     e.nombre AS "Empleado",
+    --     JefeNivelUno.nombre AS "Jefe",
+    --     JefeNivelDos.nombre AS "Jefe del Jefe"
+    -- FROM empleado e
+    -- LEFT JOIN empleado JefeNivelUno ON e.codigo_jefe = JefeNivelUno.codigo_empleado
+    -- LEFT JOIN empleado JefeNivelDos ON JefeNivelUno.codigo_jefe = JefeNivelDos.codigo_empleado;
+    -- ```
+    -- En este caso, "cascada" describe cómo se accede a múltiples niveles de la jerarquía dentro de la misma tabla, donde `JefeNivelUno` es el jefe directo de `e`, y `JefeNivelDos` es el jefe de `JefeNivelUno`.
+    -- ### Cascada en Joins de Diferentes Tablas
+    -- El concepto de cascada no se limita solo a uniones en la misma tabla; también puede aplicarse en uniones entre diferentes tablas que están relacionadas jerárquicamente o que tienen relaciones de referencia.
+    -- **Ejemplo:**
+    -- Imagina que tienes una tabla de empleados y otra tabla de departamentos. Puedes unir estas tablas para acceder a los jefes y al departamento al que pertenecen, de manera que se conserve la jerarquía.
+    -- ```sql
+    -- SELECT
+    --     e.nombre AS "Empleado",
+    --     Jefe.nombre AS "Jefe",
+    --     d.nombre AS "Departamento"
+    -- FROM empleado e
+    -- LEFT JOIN empleado Jefe ON e.codigo_jefe = Jefe.codigo_empleado
+    -- LEFT JOIN departamento d ON e.codigo_departamento = d.codigo_departamento;
+    -- ```
+    -- ### Resumen
+    -- - **Cascada en Joins**: El término "cascada" se utiliza comúnmente para describir la forma en que los datos se extraen de una estructura jerárquica, ya sea en la misma tabla o entre tablas diferentes. Se refiere a cómo las uniones pueden extenderse a través de múltiples niveles de relaciones.
+    -- - **Uniones en Diferentes Tablas**: Las uniones pueden ser igualmente jerárquicas entre diferentes tablas, y el término cascada puede ser apropiado en esos contextos si estás siguiendo relaciones que se expanden a lo largo de una jerarquía organizativa o relacional.
+    -- En conclusión, el concepto de cascada puede aplicarse a uniones tanto en la misma tabla como entre diferentes tablas, dependiendo de cómo se estructuran las relaciones y se accede a los datos.

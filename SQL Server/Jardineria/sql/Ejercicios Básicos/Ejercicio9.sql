@@ -6,10 +6,14 @@
 -- Obtiene el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos que no fueron entregados a tiempo.
 
 SELECT
-    TOP 24 codigo_pedido,
+    TOP 53 codigo_pedido,
     codigo_cliente,
     fecha_esperada,
-    fecha_entrega
+    COALESCE(
+        CAST(fecha_entrega AS VARCHAR(10)),
+        'No Ha Sido Entregado'
+    ) AS "Fecha Entrega"
 FROM pedido
 WHERE
-    estado = 'Rechazado'
+    fecha_esperada > fecha_entrega
+    OR fecha_entrega IS NULL
