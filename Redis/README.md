@@ -107,7 +107,7 @@ docker exec -it --privileged --user redis server-redis-practicas redis-cli -h 12
 
 ### ***Salida del cliente***
 
-   **Al ejecutar el cliente, verás una advertencia sobre el uso de contraseñas en la línea de comandos, seguida de un prompt para ingresar comandos de Redis:**
+**Al ejecutar el cliente, verás una advertencia sobre el uso de contraseñas en la línea de comandos, seguida de un prompt para ingresar comandos de Redis:**
 
 ```bash
 docker exec --interactive --tty --privileged --user redis server-redis-practicas redis-cli -h 127.0.0.1 -p 6379 -a root
