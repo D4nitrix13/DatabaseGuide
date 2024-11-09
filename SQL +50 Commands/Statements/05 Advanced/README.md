@@ -2,7 +2,7 @@
 <!-- GitHub: https://github.com/DanielPerezMoralesDev13 -->
 <!-- Correo electrónico: danielperezdev@proton.me -->
 
-# Exportar la Base de Datos MySQL
+# ***Exportar la Base de Datos MySQL***
 
 - **Para exportar una base de datos MySQL, puedes utilizar la herramienta de línea de comandos `mysqldump`. Este comando permite crear un fichero de volcado (dump) que contiene todas las instrucciones necesarias para recrear la base de datos, incluyendo tablas y datos**
 
