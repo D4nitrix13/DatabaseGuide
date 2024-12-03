@@ -35,7 +35,7 @@ docker exec -i sqlpreview /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P P@ss
 
 ---
 
-### Errores Comunes y Soluciones
+### ***Errores Comunes y Soluciones***
 
 1. **Error de Conexión a la Base de Datos:**
 
