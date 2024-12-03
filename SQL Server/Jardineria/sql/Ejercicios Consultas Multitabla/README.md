@@ -53,24 +53,3 @@
 47. **Producto con Más Stock:** *Devuelve el producto que tiene más unidades en stock.*
 48. **Producto con Menos Stock:** *Devuelve el producto que tiene menos unidades en stock.*
 49. **Empleados a Cargo de Alberto Soria:** *Devuelve el nombre, apellidos y email de los empleados que están bajo la supervisión de Alberto Soria.*
-50. **Cliente con Mayor Límite de Crédito:** *Devuelve el nombre del cliente que tiene el mayor límite de crédito.*
-51. **Producto con el Precio Más Alto:** *Devuelve el nombre del producto que tiene el precio de venta más caro.*
-52. **Producto con Menos Stock:** *Devuelve el producto que tiene menos unidades en stock.*
-53. **Empleados sin Representantes de Clientes:** *Devuelve el nombre, apellido y cargo de los empleados que no representan a ningún cliente.*
-54. **Clientes sin Pagos:** *Devuelve un listado que muestra solamente los clientes que no han realizado ningún pago.*
-55. **Clientes con Pagos Realizados:** *Devuelve un listado que muestra solamente los clientes que sí han realizado algún pago.*
-56. **Productos Nunca Pedidos:** *Devuelve un listado de los productos que nunca han aparecido en un pedido.*
-57. **Empleados sin Representantes de Ventas:** *Muestra el nombre, apellidos, puesto y teléfono de la oficina de aquellos empleados que no son representantes de ventas.*
-58. **Oficinas sin Representantes de Ventas:** *Devuelve las oficinas donde no trabajan empleados que han representado a clientes que han comprado productos de la gama Frutales.*
-59. **Clientes con Pedidos sin Pagos:** *Devuelve un listado de clientes que han realizado pedidos pero no han realizado ningún pago.*
-60. **Clientes sin Pagos:** *Muestra un listado que incluye solamente los clientes que no han realizado ningún pago.*
-61. **Clientes con Pagos Realizados:** *Muestra un listado que incluye solamente los clientes que han realizado algún pago.*
-62. **Productos Nunca Pedidos:** *Devuelve un listado de los productos que nunca han aparecido en un pedido.*
-63. **Productos que han Aparecido en Pedidos:** *Muestra un listado de los productos que han aparecido en al menos un pedido.*
-64. **Clientes y Número de Pedidos:** *Devuelve el listado de clientes junto con cuántos pedidos han realizado, incluyendo clientes que no han realizado ningún pedido.*
-65. **Clientes y Total Pagado:** *Devuelve un listado con los nombres de los clientes y el total pagado por cada uno, incluyendo aquellos que no han realizado ningún pago.*
-66. **Clientes con Pedidos en 2008:** *Muestra el nombre de los clientes que han realizado pedidos en 2008, ordenados alfabéticamente.*
-67. **Clientes sin Pagos y sus Representantes:** *Devuelve el nombre del cliente, el nombre y primer apellido de su representante de ventas, y el número de teléfono de la oficina del representante para aquellos clientes que no han realizado ningún pago.*
-68. **Clientes y sus Representantes:** *Muestra el nombre del cliente, el nombre y primer apellido de su representante de ventas y la ciudad donde se encuentra su oficina.*
-69. **Empleados no Representantes de Ventas:** *Devuelve el nombre, apellidos, puesto y teléfono de la oficina de aquellos empleados que no son representantes de ventas.*
-70. **Ciudades y Número de Empleados:** *Devuelve un listado que muestra todas las ciudades donde hay oficinas y el número de empleados en cada una.*

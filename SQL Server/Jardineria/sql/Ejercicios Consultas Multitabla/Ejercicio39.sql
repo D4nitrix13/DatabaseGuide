@@ -12,4 +12,4 @@ SELECT
     ROUND(SUM(dp.cantidad * dp.precio_unidad), 2) * 1.21 AS TotalFacturado
 FROM 
     detalle_pedido dp
-GROUP BY dp.codigo_producto
+GROUP BY dp.codigo_producto ASC
