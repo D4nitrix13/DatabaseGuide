@@ -18,9 +18,9 @@ FROM clientes;
 
 -- #### Supongamos que tenemos la siguiente tabla llamada `clientes`:
 
--- | CodigoCliente | NombreCliente | telefono      | email              |
+-- | CodigoCliente  | NombreCliente  | telefono      | email              |
 -- |----------------|----------------|---------------|--------------------|
--- | 1              | Daniel Pérez     | NULL          | Daniel@email.com      |
+-- | 1              | Daniel Pérez   | NULL          | Daniel@email.com   |
 -- | 2              | María Gómez    | 123456789     | NULL               |
 -- | 3              | Pedro López    | NULL          | NULL               |
 
@@ -36,9 +36,9 @@ FROM clientes;
 -- ```
 
 -- * * Resultado: * *
--- | CodigoCliente | NombreCliente | ContactoPrincipal  |
+-- | CodigoCliente  | NombreCliente  | ContactoPrincipal    |
 -- |----------------|----------------|----------------------|
--- | 1              | Daniel Pérez    | Daniel@email.com       |
+-- | 1              | Daniel Pérez   | Daniel@email.com     |
 -- | 2              | María Gómez    | 123456789            |
 -- | 3              | Pedro López    | Sin contacto         |
 -- ### 2. MySQL
@@ -55,9 +55,9 @@ FROM clientes;
 -- ```
 
 -- * * Resultado: * *
--- | CodigoCliente | NombreCliente | ContactoPrincipal  |
+-- | CodigoCliente | NombreCliente   | ContactoPrincipal    |
 -- |----------------|----------------|----------------------|
--- | 1              | Daniel Pérez    | Daniel@email.com       |
+-- | 1              | Daniel Pérez   | Daniel@email.com     |
 -- | 2              | María Gómez    | 123456789            |
 -- | 3              | Pedro López    | Sin contacto         |
 -- ### 3. PostgreSQL
@@ -74,9 +74,9 @@ FROM clientes;
 -- ```
 
 -- * * Resultado: * *
--- | CodigoCliente | NombreCliente | ContactoPrincipal  |
+-- | CodigoCliente  | NombreCliente  | ContactoPrincipal    |
 -- |----------------|----------------|----------------------|
--- | 1              | Daniel Pérez   | Daniel@email.com       |
+-- | 1              | Daniel Pérez   | Daniel@email.com     |
 -- | 2              | María Gómez    | 123456789            |
 -- | 3              | Pedro López    | Sin contacto         |
 -- ### Explicación
