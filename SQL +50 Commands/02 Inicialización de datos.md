@@ -311,7 +311,7 @@ Query OK, 1 row affected (0.01 sec)
 ### ***Resumen***
 
 - **Base de Datos Actual:** *La base de datos en la que estás conectado se muestra en el prompt de `psql` (ej., `postgres=#`).*
-- **Cambiar Base de Datos:** *Usa `\c <nombre_base_de_datos>` para cambiar a una base de datos diferente.*
+- **Cambiar Base de Datos:** *Usa `\c <NombreBaseDeDatos>` para cambiar a una base de datos diferente.*
 
 - **Para crear la tabla `users` en PostgreSQL, usamos el siguiente comando:**
 

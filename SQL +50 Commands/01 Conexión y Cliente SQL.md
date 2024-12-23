@@ -439,7 +439,7 @@ postgres=# \l
 - **`postgres`:** *Es la base de datos por defecto que se crea durante la instalación de PostgreSQL.*
 - **`template0`** *y* **`template1`:** *Son bases de datos de plantilla que se usan para crear nuevas bases de datos. No se deben modificar, ya que se utilizan para mantener el estado original de las plantillas.*
 
-*Para obtener más detalles sobre una base de datos específica o sus tablas, puedes conectarte a la base de datos usando `\c <nombre_base_de_datos>` y luego usar comandos como `\dt` para listar las tablas, `\d <NombreTabla>` para obtener detalles sobre una tabla específica, etc.*
+*Para obtener más detalles sobre una base de datos específica o sus tablas, puedes conectarte a la base de datos usando `\c <NombreBaseDeDatos>` y luego usar comandos como `\dt` para listar las tablas, `\d <NombreTabla>` para obtener detalles sobre una tabla específica, etc.*
 
 ---
 
