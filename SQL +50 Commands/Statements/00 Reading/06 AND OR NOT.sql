@@ -1,7 +1,6 @@
-/*
-NOT, AND, OR
-Lección 9.5: https://youtu.be/OuJerKzV5T0?t=7194
-*/
+-- Autor: Daniel Benjamin Perez Morales
+-- GitHub: https://github.com/DanielPerezMoralesDev13
+-- Correo electrónico: danielperezdev@proton.me
 
 -- Obtiene todos datos de la tabla "users" con email distinto a sara@gmail.com
 SELECT * FROM users WHERE NOT email = 'sara@gmail.com';

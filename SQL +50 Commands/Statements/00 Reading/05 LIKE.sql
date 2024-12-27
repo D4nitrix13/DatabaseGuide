@@ -1,7 +1,6 @@
-/*
-LIKE
-Lección 9.4: https://youtu.be/OuJerKzV5T0?t=6894
-*/
+-- Autor: Daniel Benjamin Perez Morales
+-- GitHub: https://github.com/DanielPerezMoralesDev13
+-- Correo electrónico: danielperezdev@proton.me
 
 -- Obtiene todos datos de la tabla "users" que contienen un email con el texto "gmail.com" en su parte final
 SELECT * FROM users WHERE email LIKE '%gmail.com';

@@ -1,7 +1,6 @@
-/*
-NULL
-Lección 10.2: https://youtu.be/OuJerKzV5T0?t=7615
-*/
+-- Autor: Daniel Benjamin Perez Morales
+-- GitHub: https://github.com/DanielPerezMoralesDev13
+-- Correo electrónico: danielperezdev@proton.me
 
 -- Obtiene todos datos de la tabla "users" de la tabla "users" con email nulo
 SELECT * FROM users WHERE email IS NULL;

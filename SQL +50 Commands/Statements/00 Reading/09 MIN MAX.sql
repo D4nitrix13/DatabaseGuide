@@ -1,7 +1,6 @@
-/*
-MIN, MAX
-Lección 10.3: https://youtu.be/OuJerKzV5T0?t=7834
-*/
+-- Autor: Daniel Benjamin Perez Morales
+-- GitHub: https://github.com/DanielPerezMoralesDev13
+-- Correo electrónico: danielperezdev@proton.me
 
 -- Obtiene el valor menor del campo edad de la tabla "users"
 Select MIN(age) FROM users;

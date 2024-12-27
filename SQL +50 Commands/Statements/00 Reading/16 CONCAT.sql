@@ -1,7 +1,6 @@
-/*
-CONCAT
-Lección 10.10: https://youtu.be/OuJerKzV5T0?t=8826
-*/
+-- Autor: Daniel Benjamin Perez Morales
+-- GitHub: https://github.com/DanielPerezMoralesDev13
+-- Correo electrónico: danielperezdev@proton.me
 
 -- Concatena en una sola columa los campos nombre y apellido
 SELECT CONCAT('Nombre: ', name, ', Apellidos: ', surname) FROM users

@@ -1,7 +1,6 @@
-/*
-ORDER BY
-Lección 9.3: https://youtu.be/OuJerKzV5T0?t=6592
-*/
+-- Autor: Daniel Benjamin Perez Morales
+-- GitHub: https://github.com/DanielPerezMoralesDev13
+-- Correo electrónico: danielperezdev@proton.me
 
 -- Ordena todos los datos de la tabla "users" por edad (ascendente por defecto)
 SELECT * FROM users ORDER BY age;
