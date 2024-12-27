@@ -214,7 +214,7 @@
     - *Este comando se utiliza para eliminar elementos de la lista.*
     - **Ejemplo:**
 
-   ```bash
+    ```bash
     LREM Orders 1 "Chun-Li"
     ```
 
