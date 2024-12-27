@@ -159,7 +159,7 @@
 
     - **Ejemplo:**
 
-   ```bash
+    ```bash
     LRANGE Orders -2 -1
     ```
 
@@ -178,7 +178,7 @@
     - *Este comando se utiliza para obtener un elemento en un índice específico.*
     - **Ejemplo:**
 
-   ```bash
+    ```bash
     LINDEX Orders 1
     ```
 
@@ -196,7 +196,7 @@
     - *Este comando devuelve la primera posición de un elemento específico en la lista.*
     - **Ejemplo:**
 
-   ```bash
+    ```bash
     LPOS Orders Ryu
     ```
 
