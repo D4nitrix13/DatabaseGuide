@@ -6,7 +6,7 @@
 
 Estructura
 
-```json
+```bash
 {
     title: 'Name of the Wind',
     rating: '9',
