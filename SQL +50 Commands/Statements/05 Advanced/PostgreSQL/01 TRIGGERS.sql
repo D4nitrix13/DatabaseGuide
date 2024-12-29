@@ -51,7 +51,7 @@ Crear una función que ejecutará la lógica del trigger.
 En PostgreSQL, los triggers ejecutan funciones definidas para realizar las acciones especificadas.
 */
 
-CREATE OR REPLACE FUNCTION log_email_update()
+CREATE OR REPLACE FUNCTION function_log_email_update()
 RETURNS TRIGGER AS $$
 BEGIN
 	-- Verifica si el campo `email` ha cambiado comparando `OLD.email` con `NEW.email`
@@ -65,12 +65,12 @@ END;
 $$ LANGUAGE plpgsql;
 
 /* 
-Crear el trigger `trigger_email` que ejecutará la función `log_email_update` cada vez que se actualice el email en `users`.
+Crear el trigger `trigger_email` que ejecutará la función `function_log_email_update` cada vez que se actualice el email en `users`.
 `AFTER UPDATE ON users` asegura que el trigger se ejecute después de una actualización en la tabla.
 */
 CREATE TRIGGER trigger_email AFTER
 UPDATE ON users FOR EACH ROW -- Aplica el trigger a cada registro que se actualice en `users`
-EXECUTE FUNCTION log_email_update ();
+EXECUTE FUNCTION function_log_email_update ();
 -- Ejecuta la función que maneja la lógica del trigger
 /*
 Prueba el trigger actualizando el email de un usuario en la tabla `users`.
@@ -80,13 +80,13 @@ UPDATE users SET email = 'Daniel@gmail.com' WHERE user_id = 1;
 
 /*
 Eliminar el trigger `trigger_email` de la tabla `users`.
-Esto desactiva el trigger sin afectar la función `log_email_update()`.
+Esto desactiva el trigger sin afectar la función `function_log_email_update()`.
 */
 DROP TRIGGER trigger_email ON users;
 
 /*
-Si ya no se necesita la función `log_email_update`, se puede eliminar con:
-DROP FUNCTION log_email_update;
+Si ya no se necesita la función `function_log_email_update`, se puede eliminar con:
+DROP FUNCTION function_log_email_update;
 */
 
 /*
