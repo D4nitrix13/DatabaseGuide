@@ -15,13 +15,13 @@ de mejorar la seguridad, ya que los usuarios pueden ejecutar el procedimiento si
 DELIMITER / /
 
 -- Crear un procedimiento almacenado llamado `p_all_users` que obtiene todos los datos de la tabla `users`
-CREATE PROCEDURE p_all_users()
+CREATE PROCEDURE stored_procedure_all_users()
 BEGIN
 	SELECT * FROM users;
 END//
 
 -- Invocar al procedimiento almacenado `p_all_users`
-CALL p_all_users;
+CALL stored_procedure_all_users;
 
 -- Crear un procedimiento almacenado parametrizado llamado `p_age_users`
 -- `IN age_param INT`:
@@ -30,16 +30,16 @@ CALL p_all_users;
 -- - `INT` es el tipo de datos del parámetro
 DELIMITER / /
 
-CREATE PROCEDURE p_age_users(IN age_param INT)
+CREATE PROCEDURE stored_procedure_age_users(IN age_param INT)
 BEGIN
 	SELECT * FROM users WHERE age = age_param; -- Filtra usuarios según la edad proporcionada en `age_param`
 END//
 
 -- Invocar al procedimiento almacenado `p_age_users` con el parámetro `30`
-CALL p_age_users (30);
+CALL stored_procedure_age_users (30);
 
 -- Eliminar el procedimiento almacenado `p_age_users`
-DROP PROCEDURE p_age_users;
+DROP PROCEDURE stored_procedure_age_users;
 
 /*
 En SQL, el comando `CALL` se utiliza para invocar (o ejecutar) procedimientos almacenados. Un procedimiento almacenado es un conjunto de instrucciones SQL que se almacena en la base de datos y puede ser ejecutado en cualquier momento, permitiendo encapsular la lógica de negocio y facilitar su reutilización.
@@ -51,11 +51,11 @@ CALL nombre_del_procedimiento(parametro1, parametro2, ...);
 ### Ejemplo
 Supongamos que has definido un procedimiento almacenado llamado `p_all_users` que no recibe parámetros y simplemente devuelve todos los registros de la tabla `users`. Para ejecutar este procedimiento, usarías:
 ```sql
-CALL p_all_users();
+CALL stored_procedure_all_users();
 ```
 Si tu procedimiento almacenado tiene parámetros, como en el caso de `p_age_users`, que filtra los usuarios por edad, lo invocarías pasando el valor correspondiente:
 ```sql
-CALL p_age_users(30);
+CALL stored_procedure_age_users(30);
 ```
 ### Beneficios del uso de `CALL`
 1. **Reutilización de Código**: Permite encapsular lógicas complejas en un solo lugar y reutilizarlas sin tener que reescribir el código SQL cada vez.

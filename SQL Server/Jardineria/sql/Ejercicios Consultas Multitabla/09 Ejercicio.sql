@@ -44,8 +44,8 @@ WHERE
 --     ), 'No Ha Sido Entregado'
 -- ) AS "Fecha Entrega"
 -- ```
--- - **`CAST(p.fecha_entrega AS VARCHAR(10))`**: Aquí estás convirtiendo el valor de `p.fecha_entrega` a un tipo de dato `VARCHAR(10)`. Esto es útil si quieres asegurarte de que la fecha se represente en un formato de cadena que no exceda los 10 caracteres. Sin embargo, si el formato de la fecha en `p.fecha_entrega` es más largo (por ejemplo, "2024-11-04 10:00:00"), la conversión truncará la cadena a solo los primeros 10 caracteres, resultando en algo como "2024-11-0".
--- - **`COALESCE(...)`**: Si `p.fecha_entrega` es nulo, `COALESCE` devolverá el valor predeterminado "No Ha Sido Entregado". Esto asegura que en caso de que no haya una fecha de entrega, tu consulta aún retornará un valor comprensible.
+-- **`CAST(p.fecha_entrega AS VARCHAR(10))`**: Aquí estás convirtiendo el valor de `p.fecha_entrega` a un tipo de dato `VARCHAR(10)`. Esto es útil si quieres asegurarte de que la fecha se represente en un formato de cadena que no exceda los 10 caracteres. Sin embargo, si el formato de la fecha en `p.fecha_entrega` es más largo (por ejemplo, "2024-11-04 10:00:00"), la conversión truncará la cadena a solo los primeros 10 caracteres, resultando en algo como "2024-11-0".
+-- **`COALESCE(...)`**: Si `p.fecha_entrega` es nulo, `COALESCE` devolverá el valor predeterminado "No Ha Sido Entregado". Esto asegura que en caso de que no haya una fecha de entrega, tu consulta aún retornará un valor comprensible.
 -- El error que estás recibiendo, **"Conversion failed when converting date and/or time from character string"**, indica que SQL Server está intentando convertir un valor de tipo carácter a un tipo de fecha, y no puede hacerlo porque el formato del valor no es válido como una fecha.
 -- ### Problemas Potenciales
 -- 1. **Formato Incorrecto**: Si `p.fecha_entrega` no tiene un formato que SQL Server pueda interpretar como una fecha, esto causará el error.
@@ -89,7 +89,7 @@ WHERE
 -- ```
 -- En este caso, estoy utilizando una fecha de placeholder (`'1900-01-01'`). Cambia esto a una fecha que tenga sentido en tu contexto.
 -- ### Consideraciones sobre la Consulta
--- - **Manejo de Fechas**: Asegúrate de que las columnas `fecha_pedido`, `fecha_esperada`, y `fecha_entrega` son del tipo de dato correcto (normalmente `DATETIME` o `DATE` en SQL Server).
--- - **Formato de Fecha**: Si necesitas convertir cadenas a fechas en otras partes de tu consulta, asegúrate de que las cadenas estén en un formato que SQL Server reconozca (por ejemplo, `'YYYY-MM-DD'`).
+-- **Manejo de Fechas**: Asegúrate de que las columnas `fecha_pedido`, `fecha_esperada`, y `fecha_entrega` son del tipo de dato correcto (normalmente `DATETIME` o `DATE` en SQL Server).
+-- **Formato de Fecha**: Si necesitas convertir cadenas a fechas en otras partes de tu consulta, asegúrate de que las cadenas estén en un formato que SQL Server reconozca (por ejemplo, `'YYYY-MM-DD'`).
 -- ### Resumen
 -- El problema principal proviene de la mezcla de tipos de datos (fechas y cadenas). Asegúrate de que todas las columnas que esperas que sean fechas realmente lo sean, y usa `COALESCE` de manera que no introduzcas un tipo de dato que cause conflictos.

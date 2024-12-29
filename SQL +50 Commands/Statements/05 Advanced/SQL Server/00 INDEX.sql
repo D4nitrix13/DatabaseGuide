@@ -7,25 +7,25 @@ INDEX en MySQL
 */
 
 /* 
-Crea un índice llamado "idx_name" en la tabla "users" asociado al campo "name".
+Crea un índice llamado "index_name" en la tabla "users" asociado al campo "name".
 Esto mejora la búsqueda de registros en la tabla "users" basándose en el nombre.
 */
-CREATE INDEX idx_name ON users (name);
+CREATE INDEX index_name ON users (name);
 
 /* 
-Crea un índice único llamado "idx_name" en la tabla "users" asociado al campo "name".
+Crea un índice único llamado "index_name" en la tabla "users" asociado al campo "name".
 Esto garantiza que no haya duplicados en el campo "name".
 */
-CREATE UNIQUE INDEX idx_name ON users (name);
+CREATE UNIQUE INDEX index_name ON users (name);
 
 /* 
-Crea un índice único llamado "idx_name_surname" en la tabla "users" asociado a los campos "name" y "surname".
+Crea un índice único llamado "index_name_surname" en la tabla "users" asociado a los campos "name" y "surname".
 Esto garantiza que la combinación de nombre y apellido sea única en la tabla.
 */
-CREATE UNIQUE INDEX idx_name_surname ON users (name, surname);
+CREATE UNIQUE INDEX index_name_surname ON users (name, surname);
 
 /* 
-Elimina el índice llamado "idx_name".
+Elimina el índice llamado "index_name".
 Esto eliminará el índice y puede afectar el rendimiento de las consultas que lo utilizaban.
 */
-DROP INDEX idx_name ON users;
+DROP INDEX index_name ON users;

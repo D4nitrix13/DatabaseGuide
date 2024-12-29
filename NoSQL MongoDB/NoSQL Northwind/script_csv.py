@@ -32,11 +32,11 @@ def convertir_json_a_csv(json_file: str, output_dir: str) -> None:
     base_name: str = os.path.basename(p=json_file).replace(".json", "")
 
     # Ruta completa para guardar el fichero CSV
-    csv_file: str = os.path.join(output_dir, f"{base_name}.csv")
+    csview_file: str = os.path.join(output_dir, f"{base_name}.csv")
 
     # Guardar el DataFrame como un CSV
-    data.to_csv(path_or_buf=csv_file, index=False)
-    print(f"Fichero convertido: {csv_file}", end="\n", file=sys.stdout)
+    data.to_csv(path_or_buf=csview_file, index=False)
+    print(f"Fichero convertido: {csview_file}", end="\n", file=sys.stdout)
     return None
 
 

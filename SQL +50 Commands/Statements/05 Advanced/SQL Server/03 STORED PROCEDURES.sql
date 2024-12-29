@@ -12,17 +12,17 @@ de mejorar la seguridad, ya que los usuarios pueden ejecutar el procedimiento si
 -- SQL Server
 
 -- Crear un procedimiento almacenado `p_all_users` en SQL Server
-CREATE PROCEDURE p_all_users
+CREATE PROCEDURE stored_procedure_all_users
 AS
 BEGIN
 	SELECT * FROM users;
 END;
 
 -- Ejecutar el procedimiento almacenado `p_all_users`
-EXEC p_all_users;
+EXEC stored_procedure_all_users;
 
 -- Crear un procedimiento almacenado `p_age_users` con parámetro de entrada `@age_param`
-CREATE PROCEDURE p_age_users
+CREATE PROCEDURE stored_procedure_age_users
 	@age_param INT -- `@age_param` es el parámetro de entrada de tipo `INT`
 AS
 BEGIN
@@ -30,10 +30,10 @@ BEGIN
 END;
 
 -- Ejecutar el procedimiento almacenado `p_age_users` pasando el valor `30` como parámetro
-EXEC p_age_users @age_param = 30;
+EXEC stored_procedure_age_users @age_param = 30;
 
 -- Eliminar el procedimiento almacenado `p_age_users`
-DROP PROCEDURE p_age_users;
+DROP PROCEDURE stored_procedure_age_users;
 
 /*
 En SQL, el comando `CALL` se utiliza para invocar (o ejecutar) procedimientos almacenados. Un procedimiento almacenado es un conjunto de instrucciones SQL que se almacena en la base de datos y puede ser ejecutado en cualquier momento, permitiendo encapsular la lógica de negocio y facilitar su reutilización.
@@ -45,11 +45,11 @@ CALL nombre_del_procedimiento(parametro1, parametro2, ...);
 ### Ejemplo
 Supongamos que has definido un procedimiento almacenado llamado `p_all_users` que no recibe parámetros y simplemente devuelve todos los registros de la tabla `users`. Para ejecutar este procedimiento, usarías:
 ```sql
-CALL p_all_users();
+CALL stored_procedure_all_users();
 ```
 Si tu procedimiento almacenado tiene parámetros, como en el caso de `p_age_users`, que filtra los usuarios por edad, lo invocarías pasando el valor correspondiente:
 ```sql
-CALL p_age_users(30);
+CALL stored_procedure_age_users(30);
 ```
 ### Beneficios del uso de `CALL`
 1. **Reutilización de Código**: Permite encapsular lógicas complejas en un solo lugar y reutilizarlas sin tener que reescribir el código SQL cada vez.

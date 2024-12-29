@@ -40,13 +40,13 @@ WHERE
     -- La jerarquía en cascada permite construir consultas SQL que extraen múltiples niveles jerárquicos dentro de una misma tabla de empleados, conectando datos de empleados, jefes directos y jefes de jefes en una estructura escalonada. En este tipo de consulta, la tabla `empleado` se une consigo misma varias veces para acceder a diferentes niveles jerárquicos.
     -- #### Visualización en Cascada
     -- La relación en cascada se visualiza como una secuencia que se va construyendo desde el nivel del empleado hacia arriba, avanzando jerárquicamente:
-    -- - **Primer JOIN**: Conecta el empleado con su jefe directo.
-    -- - **Segundo JOIN**: Conecta al jefe directo con el jefe de ese jefe, logrando así un segundo nivel de jerarquía.
+    -- **Primer JOIN**: Conecta el empleado con su jefe directo.
+    -- **Segundo JOIN**: Conecta al jefe directo con el jefe de ese jefe, logrando así un segundo nivel de jerarquía.
     -- ### Importancia de la Estructura en Cascada
     -- La cascada permite:
-    -- - **Escalabilidad**: Acceder a varios niveles jerárquicos sin cambiar la estructura de la tabla.
-    -- - **Versatilidad**: Facilitar el análisis en organizaciones con estructuras jerárquicas complejas.
-    -- - **Claridad**: Identificar niveles de liderazgo y subordinación de manera clara, útil para informes o análisis organizacionales.
+    -- **Escalabilidad**: Acceder a varios niveles jerárquicos sin cambiar la estructura de la tabla.
+    -- **Versatilidad**: Facilitar el análisis en organizaciones con estructuras jerárquicas complejas.
+    -- **Claridad**: Identificar niveles de liderazgo y subordinación de manera clara, útil para informes o análisis organizacionales.
     -- ### Explicación Detallada de la Consulta
     -- #### 1. Estructura de la Consulta
     -- Esta consulta organiza a los empleados junto a su jefe directo y el jefe de su jefe:
@@ -71,13 +71,13 @@ WHERE
     -- WHERE data.[Nombre Jefe Directo] <> ' ';
     -- ```
     -- #### 2. Desglose de la Jerarquía en Cascada
-    -- - **Primer Nivel de Jerarquía (Empleado - Jefe Directo)**:
+    -- **Primer Nivel de Jerarquía (Empleado - Jefe Directo)**:
     --   - El primer `LEFT JOIN` conecta al empleado (`e`) con su jefe directo (`JefeNivelUno`).
     --   - Condición de unión: `e.codigo_jefe = JefeNivelUno.codigo_empleado`, que relaciona a cada empleado con su jefe directo.
     --   ```sql
     --   LEFT JOIN empleado JefeNivelUno ON e.codigo_jefe = JefeNivelUno.codigo_empleado
     --   ```
-    -- - **Segundo Nivel de Jerarquía (Jefe Directo - Jefe del Jefe)**:
+    -- **Segundo Nivel de Jerarquía (Jefe Directo - Jefe del Jefe)**:
     --   - El segundo `LEFT JOIN` conecta el jefe directo (`JefeNivelUno`) con el jefe del jefe (`JefeNivelDos`).
     --   - Condición de unión: `JefeNivelUno.codigo_jefe = JefeNivelDos.codigo_empleado`.
     --   ```sql
@@ -96,9 +96,9 @@ WHERE
     -- La consulta externa, `SELECT * FROM (...) AS data`, filtra los resultados para excluir empleados sin jefe directo (`WHERE data.[Nombre Jefe Directo] <> ' '`), lo que da una salida limpia que solo incluye empleados con jefes asignados.
     -- ### Aplicaciones de la Consulta
     -- Esta consulta es útil para generar informes que necesiten mostrar la jerarquía completa de un empleado hasta el segundo nivel de mando. Es especialmente valiosa en contextos organizacionales, como:
-    -- - **Reportes de estructura de personal**: Listar jerarquías de empleados en un departamento.
-    -- - **Análisis de línea de mando**: Identificar los niveles de supervisión en diversas áreas.
-    -- - **Estudios de estructura de autoridad**: Ayudar a visualizar la relación de mando y subordinación dentro de una organización.
+    -- **Reportes de estructura de personal**: Listar jerarquías de empleados en un departamento.
+    -- **Análisis de línea de mando**: Identificar los niveles de supervisión en diversas áreas.
+    -- **Estudios de estructura de autoridad**: Ayudar a visualizar la relación de mando y subordinación dentro de una organización.
     -- Usar un `CASE` en la consulta proporciona una mejor legibilidad al evitar valores de jefe vacíos y sustituirlos con una indicación clara (`No Tiene Jefe Asignado`). Esto optimiza la comprensión para quienes lean el reporte, haciéndolo más informativo y accesible.
     -- El concepto de "cascada" no se limita únicamente a los `JOIN` en SQL; aunque es más comúnmente utilizado en ese contexto para describir la relación jerárquica de datos en un conjunto de registros, también puede aplicarse en otros escenarios. Aquí hay una explicación más detallada:
     -- ### Cascada en SQL
@@ -167,9 +167,9 @@ WHERE
     --    - En la segunda consulta, se está buscando un empleado que sea jefe de otro empleado, lo que puede provocar que la relación no sea clara o que no se obtengan los registros esperados.
     -- ### Resultados Diferentes
     -- Debido a estas diferencias en cómo se establecen las relaciones a través de los `JOIN`, es probable que los resultados sean diferentes:
-    -- - **Primera Consulta**:
+    -- **Primera Consulta**:
     --   - Devuelve empleados que tienen un jefe directo asociado correctamente. El `LEFT JOIN` proporciona jefes que están efectivamente asignados según la estructura jerárquica.
-    -- - **Segunda Consulta**:
+    -- **Segunda Consulta**:
     --   - Podría devolver empleados que no tienen jefes directos definidos de manera correcta. Si la relación entre `JefeNivelUno` y `JefeNivelDos` no se establece adecuadamente, es posible que se obtengan registros que no cumplan con las condiciones esperadas.
     -- ### Conclusión
     -- **¿Cuál es la correcta?** La primera consulta es más probable que produzca resultados válidos y coherentes, ya que sigue la jerarquía adecuada desde el empleado hasta su jefe y luego al jefe de su jefe. La segunda consulta altera esta jerarquía al invertir las relaciones, lo que puede llevar a resultados no deseados o confusos.
@@ -190,7 +190,7 @@ WHERE
     -- - Intenta listar empleados que son subordinados de los jefes, pero puede no funcionar como se espera porque el primer `LEFT JOIN` se basa en la relación de jefe a empleado, lo que puede llevar a resultados que no muestren correctamente la jerarquía de empleados y sus jefes.
     -- ### Conclusión sobre la Segunda Consulta
     -- - En esencia, la segunda consulta se interpreta como un intento de listar los subordinados de los empleados, pero dado que el `JOIN` no está configurado correctamente, es probable que no obtenga el resultado deseado.
-    -- - **Subordinados** se refiere a los empleados que reportan a un jefe, mientras que en la primera consulta, estás enfocándote en los empleados desde su perspectiva hacia arriba en la jerarquía.
+    -- **Subordinados** se refiere a los empleados que reportan a un jefe, mientras que en la primera consulta, estás enfocándote en los empleados desde su perspectiva hacia arriba en la jerarquía.
     -- Si el objetivo es listar subordinados, la consulta tendría que estructurarse adecuadamente para reflejar esa relación de jefes a subordinados. En su forma actual, la segunda consulta podría llevar a confusión en cuanto a los resultados obtenidos.
     --     El concepto de "cascada" en el contexto de las uniones de tablas se refiere generalmente a la manera en que las relaciones se extienden a través de múltiples niveles en una estructura jerárquica, pero no está limitado a uniones dentro de una sola tabla. Aquí te explico con más detalle:
     -- ### Cascada en Joins de una Sola Tabla
@@ -220,6 +220,6 @@ WHERE
     -- LEFT JOIN departamento d ON e.codigo_departamento = d.codigo_departamento;
     -- ```
     -- ### Resumen
-    -- - **Cascada en Joins**: El término "cascada" se utiliza comúnmente para describir la forma en que los datos se extraen de una estructura jerárquica, ya sea en la misma tabla o entre tablas diferentes. Se refiere a cómo las uniones pueden extenderse a través de múltiples niveles de relaciones.
-    -- - **Uniones en Diferentes Tablas**: Las uniones pueden ser igualmente jerárquicas entre diferentes tablas, y el término cascada puede ser apropiado en esos contextos si estás siguiendo relaciones que se expanden a lo largo de una jerarquía organizativa o relacional.
+    -- **Cascada en Joins**: El término "cascada" se utiliza comúnmente para describir la forma en que los datos se extraen de una estructura jerárquica, ya sea en la misma tabla o entre tablas diferentes. Se refiere a cómo las uniones pueden extenderse a través de múltiples niveles de relaciones.
+    -- **Uniones en Diferentes Tablas**: Las uniones pueden ser igualmente jerárquicas entre diferentes tablas, y el término cascada puede ser apropiado en esos contextos si estás siguiendo relaciones que se expanden a lo largo de una jerarquía organizativa o relacional.
     -- En conclusión, el concepto de cascada puede aplicarse a uniones tanto en la misma tabla como entre diferentes tablas, dependiendo de cómo se estructuran las relaciones y se accede a los datos.

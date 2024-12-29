@@ -6,22 +6,22 @@
 VIEWS
 Una vista es una consulta guardada en la base de datos que se puede utilizar como si fuera una tabla. 
 Sirve para simplificar consultas complejas, restringir el acceso a ciertos datos y proporcionar una capa de seguridad adicional.
-Aquí se creará una vista `v_adult_users` que muestra solo los usuarios adultos (con edad >= 18) en la tabla `users`.
+Aquí se creará una vista `view_adult_users` que muestra solo los usuarios adultos (con edad >= 18) en la tabla `users`.
 */
 
 -- MySQL
--- En MySQL, se crea una vista `v_adult_users` seleccionando los nombres y edades de los usuarios adultos.
-CREATE VIEW v_adult_users AS
+-- En MySQL, se crea una vista `view_adult_users` seleccionando los nombres y edades de los usuarios adultos.
+CREATE VIEW view_adult_users AS
 SELECT name, age
 FROM users
 WHERE
     age >= 18;
 -- Muestra solo los usuarios mayores o iguales a 18 años
--- Consulta todos los registros de la vista `v_adult_users`
-SELECT * FROM v_adult_users;
+-- Consulta todos los registros de la vista `view_adult_users`
+SELECT * FROM view_adult_users;
 
--- Elimina la vista `v_adult_users` si ya no es necesaria
-DROP VIEW v_adult_users;
+-- Elimina la vista `view_adult_users` si ya no es necesaria
+DROP VIEW view_adult_users;
 
 /*
 En general, las vistas se utilizan para consultas y no para insertar datos directamente. Sin embargo, algunos sistemas de gestión de bases de datos permiten realizar inserciones, actualizaciones y eliminaciones en vistas **si cumplen ciertas condiciones**. A continuación, te explico cuándo y cómo es posible hacer esto en cada sistema, además de sus limitaciones:
@@ -38,13 +38,13 @@ Veamos cómo funcionan las inserciones en vistas en cada sistema:
 MySQL permite modificar vistas simples (sin `JOIN`, funciones de agregación o `GROUP BY`). Para vistas más complejas, se puede emplear la cláusula `WITH CHECK OPTION` para restringir la modificación a los datos que cumplen las condiciones de la vista.
 ```sql
 -- Ejemplo: Vista de usuarios adultos en MySQL
-CREATE VIEW v_adult_users AS
+CREATE VIEW view_adult_users AS
 SELECT user_id, name, age
 FROM users
 WHERE age >= 18
 WITH CHECK OPTION; -- Asegura que solo se pueden insertar o actualizar registros que cumplen la condición `age >= 18`
 -- Insertar en la vista (funcionará si se cumplen todas las restricciones)
-INSERT INTO v_adult_users (user_id, name, age) VALUES (101, 'Carlos', 20);
+INSERT INTO view_adult_users (user_id, name, age) VALUES (101, 'Carlos', 20);
 -- Si intentas insertar un usuario menor de 18 años, dará un error debido a `WITH CHECK OPTION`.
 ```
 ---
@@ -52,12 +52,12 @@ INSERT INTO v_adult_users (user_id, name, age) VALUES (101, 'Carlos', 20);
 PostgreSQL permite actualizar vistas **actualizables**, que son vistas simples que cumplen con las condiciones mencionadas. Si una vista no es actualizable, puedes crear un **trigger** `INSTEAD OF` para definir un comportamiento específico cuando se intente modificar la vista.
 ```sql
 -- Ejemplo: Vista de usuarios adultos en PostgreSQL
-CREATE VIEW v_adult_users AS
+CREATE VIEW view_adult_users AS
 SELECT user_id, name, age
 FROM users
 WHERE age >= 18;
 -- Intentar insertar en la vista (funcionará si cumple con las restricciones)
-INSERT INTO v_adult_users (user_id, name, age) VALUES (102, 'Ana', 25);
+INSERT INTO view_adult_users (user_id, name, age) VALUES (102, 'Ana', 25);
 -- Para vistas más complejas, puedes crear un trigger `INSTEAD OF` en la vista para manejar la inserción manualmente.
 ```
 ---
@@ -65,12 +65,12 @@ INSERT INTO v_adult_users (user_id, name, age) VALUES (102, 'Ana', 25);
 En SQL Server, solo las vistas simples son actualizables de forma directa. Para vistas más complejas, puedes usar un **trigger `INSTEAD OF`** que permita manipular los datos al intentar una inserción o actualización.
 ```sql
 -- Ejemplo: Vista de usuarios adultos en SQL Server
-CREATE VIEW v_adult_users AS
+CREATE VIEW view_adult_users AS
 SELECT user_id, name, age
 FROM users
 WHERE age >= 18;
 -- Insertar directamente en la vista (solo si cumple con las restricciones)
-INSERT INTO v_adult_users (user_id, name, age) VALUES (103, 'Luisa', 30);
+INSERT INTO view_adult_users (user_id, name, age) VALUES (103, 'Luisa', 30);
 -- Para vistas no actualizables, puedes definir un trigger `INSTEAD OF INSERT` para personalizar la operación.
 ```
 ---
@@ -78,12 +78,12 @@ INSERT INTO v_adult_users (user_id, name, age) VALUES (103, 'Luisa', 30);
 SQLite permite insertar datos en vistas solo si la vista es muy simple y cumple con todas las restricciones. Para vistas no actualizables, SQLite no soporta triggers `INSTEAD OF`, así que las vistas complejas no permiten modificación de datos.
 ```sql
 -- Ejemplo: Vista de usuarios adultos en SQLite
-CREATE VIEW v_adult_users AS
+CREATE VIEW view_adult_users AS
 SELECT user_id, name, age
 FROM users
 WHERE age >= 18;
 -- Intentar insertar en la vista (funcionará solo si cumple las restricciones y es una vista simple)
-INSERT INTO v_adult_users (user_id, name, age) VALUES (104, 'Miguel', 22);
+INSERT INTO view_adult_users (user_id, name, age) VALUES (104, 'Miguel', 22);
 -- SQLite no permite triggers `INSTEAD OF`, por lo que no puedes modificar vistas complejas.
 ```
 ---

@@ -81,7 +81,7 @@ FROM clientes;
 -- | 3              | Pedro López    | Sin contacto         |
 -- ### Explicación
 
--- - **Uso de `COALESCE`**: En la consulta, `COALESCE(telefono, email, 'Sin contacto')` revisa primero si `telefono` es nulo. Si no lo es, se utiliza ese valor. Si `telefono` es nulo, se revisa `email`. Si `email` también es nulo, devuelve `'Sin contacto'` como valor predeterminado.
--- - **Aplicaciones**: `COALESCE` es útil en informes y vistas, donde es posible que algunos datos no estén disponibles y desees presentar un valor que indique la falta de información en lugar de `NULL`.
+-- **Uso de `COALESCE`**: En la consulta, `COALESCE(telefono, email, 'Sin contacto')` revisa primero si `telefono` es nulo. Si no lo es, se utiliza ese valor. Si `telefono` es nulo, se revisa `email`. Si `email` también es nulo, devuelve `'Sin contacto'` como valor predeterminado.
+-- **Aplicaciones**: `COALESCE` es útil en informes y vistas, donde es posible que algunos datos no estén disponibles y desees presentar un valor que indique la falta de información en lugar de `NULL`.
 
 -- Este uso de `COALESCE` permite manejar de manera efectiva los datos nulos y proporciona una salida más clara y comprensible en tus consultas SQL.

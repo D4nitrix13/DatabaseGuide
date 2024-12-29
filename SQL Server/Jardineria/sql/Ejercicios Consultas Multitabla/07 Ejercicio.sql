@@ -97,8 +97,8 @@ ORDER BY
     --     LEFT JOIN empleado Jefe ON Jefe.codigo_jefe = e.codigo_empleado
     -- ORDER BY e.nombre ASC;
     -- ```
-    -- - **Condición de Unión**: `LEFT JOIN empleado Jefe ON Jefe.codigo_jefe = e.codigo_empleado`
-    -- - **Análisis**: Esta consulta busca a los empleados cuyo jefe es el actual (`e`). Esto resulta en que `Jefe` representa a los subordinados de `e`, no a sus jefes. Por tanto, la columna "Nombre Apellido Jefe" muestra incorrectamente a los subordinados en lugar de a los jefes.
+    -- **Condición de Unión**: `LEFT JOIN empleado Jefe ON Jefe.codigo_jefe = e.codigo_empleado`
+    -- **Análisis**: Esta consulta busca a los empleados cuyo jefe es el actual (`e`). Esto resulta en que `Jefe` representa a los subordinados de `e`, no a sus jefes. Por tanto, la columna "Nombre Apellido Jefe" muestra incorrectamente a los subordinados en lugar de a los jefes.
     -- #### Segunda Consulta
     -- ```sql
     -- SELECT
@@ -120,8 +120,8 @@ ORDER BY
     --     LEFT JOIN empleado Jefe ON e.codigo_jefe = Jefe.codigo_empleado
     -- ORDER BY e.nombre ASC;
     -- ```
-    -- - **Condición de Unión**: `LEFT JOIN empleado Jefe ON e.codigo_jefe = Jefe.codigo_empleado`
-    -- - **Análisis**: Aquí, la condición de unión establece que el `codigo_jefe` del empleado `e` se compara con el `codigo_empleado` del jefe. Esto vincula correctamente a cada empleado con su jefe directo, mostrando así los nombres de los jefes en la columna "Nombre Apellido Jefe".
+    -- **Condición de Unión**: `LEFT JOIN empleado Jefe ON e.codigo_jefe = Jefe.codigo_empleado`
+    -- **Análisis**: Aquí, la condición de unión establece que el `codigo_jefe` del empleado `e` se compara con el `codigo_empleado` del jefe. Esto vincula correctamente a cada empleado con su jefe directo, mostrando así los nombres de los jefes en la columna "Nombre Apellido Jefe".
     -- ### Conclusión: ¿Cuál es la Consulta Correcta?
     -- La **segunda consulta** es la correcta para mostrar al jefe de cada empleado, ya que establece la relación adecuada entre empleados y jefes. La primera consulta, al invertir la relación, genera un resultado incorrecto al mostrar subordinados en lugar de jefes.
     -- #### Concepto de Subordinados

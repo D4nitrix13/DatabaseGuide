@@ -140,9 +140,9 @@ WHERE
 
 -- ### Resumen
 
--- - **SQL Server**: Usa `CAST` y `CONVERT`.
--- - **MySQL**: Principalmente `CAST`.
--- - **PostgreSQL**: Usa `CAST` y `TO_CHAR` para formatear fechas.
--- - **SQLite**: Usa `CAST` como `TEXT` para convertir a texto.
+-- SQL Server: Usa `CAST` y `CONVERT`.
+-- MySQL: Principalmente `CAST`.
+-- PostgreSQL: Usa `CAST` y `TO_CHAR` para formatear fechas.
+-- SQLite: Usa `CAST` como `TEXT` para convertir a texto.
 
 -- Asegúrate de que los tipos de datos sean compatibles con la conversión para evitar errores en la ejecución de las consultas.

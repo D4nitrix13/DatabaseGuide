@@ -22,7 +22,7 @@ conn: sqlite3.Connection = sqlite3.connect(database="./Database.db")
 cursor: sqlite3.Cursor = conn.cursor()
 
 
-def p_all_users() -> List[Tuple[Any]]:
+def stored_procedure_all_users() -> List[Tuple[Any]]:
     """
     Simula el procedimiento almacenado `p_all_users` para obtener todos los usuarios.
 
@@ -33,7 +33,7 @@ def p_all_users() -> List[Tuple[Any]]:
     return cursor.fetchall()
 
 
-def p_age_users(age_param: int) -> List[Tuple[Any]]:
+def stored_procedure_age_users(age_param: int) -> List[Tuple[Any]]:
     """
     Simula el procedimiento almacenado `p_age_users` para obtener usuarios filtrados por edad.
 

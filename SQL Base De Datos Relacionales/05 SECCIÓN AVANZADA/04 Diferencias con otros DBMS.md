@@ -472,10 +472,10 @@ HAVING COUNT(*) > 10;
 
 ```sql
 -- Crear un índice común
-CREATE INDEX idx_categoria ON productos(categoria);
+CREATE INDEX index_categoria ON productos(categoria);
 
 -- Crear un índice único
-CREATE UNIQUE INDEX idx_codigo ON productos(codigo_producto);
+CREATE UNIQUE INDEX index_codigo ON productos(codigo_producto);
 ```
 
 **Diferencias:**  

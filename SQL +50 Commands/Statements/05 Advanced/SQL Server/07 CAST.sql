@@ -13,11 +13,11 @@ WHERE
     p.fecha_entrega > p.fecha_esperada
     OR p.fecha_entrega IS NULL;
 
--- ### SQL Server
+-- SQL Server
 
 -- En SQL Server, puedes usar `CAST` y `CONVERT` para convertir tipos de datos. Aquí están los ejemplos:
 
--- #### Usando `CAST`
+-- Usando `CAST`
 
 -- ```sql
 -- SELECT TOP 73
@@ -35,7 +35,7 @@ WHERE
 --     p.fecha_entrega > p.fecha_esperada OR p.fecha_entrega IS NULL;
 -- ```
 
--- #### Usando `CONVERT`
+-- Usando `CONVERT`
 
 -- ```sql
 -- SELECT TOP 73
@@ -53,12 +53,12 @@ WHERE
 --     p.fecha_entrega > p.fecha_esperada OR p.fecha_entrega IS NULL;
 -- ```
 
--- ### MySQL
+-- MySQL
 
 -- En MySQL, puedes usar `CAST` de manera similar. Sin embargo, no hay un equivalente directo para `CONVERT` que funcione como en SQL Server;
 
 -- `CAST` es más común para este propósito.
--- #### Usando `CAST`
+-- Usando `CAST`
 
 -- ```sql
 -- SELECT
@@ -76,11 +76,11 @@ WHERE
 --     p.fecha_entrega > p.fecha_esperada OR p.fecha_entrega IS NULL;
 -- ```
 
--- ### PostgreSQL
+-- PostgreSQL
 
 -- En PostgreSQL, `CAST` se usa con una sintaxis similar, y `TO_CHAR` es el método preferido para convertir fechas a texto.
 
--- #### Usando `CAST`
+-- Usando `CAST`
 
 -- ```sql
 -- SELECT
@@ -98,7 +98,7 @@ WHERE
 --     p.fecha_entrega > p.fecha_esperada OR p.fecha_entrega IS NULL;
 -- ```
 
--- #### Usando `TO_CHAR`
+-- Usando `TO_CHAR`
 
 -- ```sql
 -- SELECT
@@ -116,11 +116,11 @@ WHERE
 --     p.fecha_entrega > p.fecha_esperada OR p.fecha_entrega IS NULL;
 -- ```
 
--- ### SQLite3
+-- SQLite3
 
 -- En SQLite, puedes usar `CAST`, pero la conversión de fechas a cadenas se maneja un poco diferente.
 
--- #### Usando `CAST`
+-- Usando `CAST`
 
 -- ```sql
 -- SELECT
@@ -138,11 +138,11 @@ WHERE
 --     p.fecha_entrega > p.fecha_esperada OR p.fecha_entrega IS NULL;
 -- ```
 
--- ### Resumen
+-- Resumen
 
--- - **SQL Server**: Usa `CAST` y `CONVERT`.
--- - **MySQL**: Principalmente `CAST`.
--- - **PostgreSQL**: Usa `CAST` y `TO_CHAR` para formatear fechas.
--- - **SQLite**: Usa `CAST` como `TEXT` para convertir a texto.
+-- SQL Server: Usa `CAST` y `CONVERT`.
+-- MySQL: Principalmente `CAST`.
+-- PostgreSQL: Usa `CAST` y `TO_CHAR` para formatear fechas.
+-- SQLite: Usa `CAST` como `TEXT` para convertir a texto.
 
 -- Asegúrate de que los tipos de datos sean compatibles con la conversión para evitar errores en la ejecución de las consultas.

@@ -433,13 +433,13 @@ CREATE INDEX IX_Orders_CustomerID_OrderDate ON Orders (CustomerID, OrderDate);
 - *La nomenclatura comúnmente utilizada al crear índices incluye un prefijo que indica el tipo de índice, seguido del nombre de la tabla y la columna o columnas que se están indexando. Por ejemplo:*
 
 ```sql
-CREATE INDEX IDX_OrderDetails_Quantity ON OrderDetails(Quantity);
-CREATE INDEX IDX_Orders_OrderDate ON Orders(OrderDate);
+CREATE INDEX index_OrderDetails_Quantity ON OrderDetails(Quantity);
+CREATE INDEX index_Orders_OrderDate ON Orders(OrderDate);
 ```
 
 ```sql
-sqlite> CREATE INDEX IDX_OrderDetails_Quantity ON OrderDetails(Quantity);
-CREATE INDEX IDX_Orders_OrderDate ON Orders(OrderDate);
+sqlite> CREATE INDEX index_OrderDetails_Quantity ON OrderDetails(Quantity);
+CREATE INDEX index_Orders_OrderDate ON Orders(OrderDate);
 ```
 
 ### ***Notas sobre el Rendimiento***
@@ -452,13 +452,13 @@ CREATE INDEX IDX_Orders_OrderDate ON Orders(OrderDate);
 **Si se determina que un índice ya no es necesario o que está afectando negativamente el rendimiento, se puede eliminar utilizando:**
 
 ```sql
-DROP INDEX IDX_OrderDetails_Quantity;
-DROP INDEX IDX_Orders_OrderDate;
+DROP INDEX index_OrderDetails_Quantity;
+DROP INDEX index_Orders_OrderDate;
 ```
 
 ```sql
-sqlite> DROP INDEX IDX_OrderDetails_Quantity;
-DROP INDEX IDX_Orders_OrderDate;
+sqlite> DROP INDEX index_OrderDetails_Quantity;
+DROP INDEX index_Orders_OrderDate;
 ```
 
 ---

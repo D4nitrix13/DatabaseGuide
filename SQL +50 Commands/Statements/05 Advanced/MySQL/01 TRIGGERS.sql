@@ -27,9 +27,9 @@ CREATE TABLE `hello_mysql`.`email_history` (
 -- (por defecto es `;`), útil al definir bloques de código como triggers o procedimientos almacenados.
 DELIMITER / /
 
--- Crea un trigger llamado `tg_email` que se ejecutará automáticamente después de que se actualice un registro en `users`
+-- Crea un trigger llamado `trigger_email` que se ejecutará automáticamente después de que se actualice un registro en `users`
 -- `AFTER UPDATE ON users` indica que el trigger se ejecutará después de una actualización en la tabla `users`
-CREATE TRIGGER tg_email
+CREATE TRIGGER trigger_email
 AFTER UPDATE ON users
 FOR EACH ROW       -- Aplica el trigger a cada registro modificado en la tabla `users`
 BEGIN
@@ -54,7 +54,7 @@ Esto crea un índice único `VISIBLE` en `email_history_id`, que el optimizador 
 /*
 AFTER vs BEFORE:
 - `AFTER`: Indica que el trigger se ejecuta después de que ocurre el evento especificado (como una actualización).
-En nuestro ejemplo, el trigger `tg_email` con `AFTER UPDATE` se ejecuta tras la actualización del email en la tabla `users`.
+En nuestro ejemplo, el trigger `trigger_email` con `AFTER UPDATE` se ejecuta tras la actualización del email en la tabla `users`.
 - `BEFORE`: Por el contrario, si se define un trigger con `BEFORE`, este se ejecuta antes de que ocurra el evento.
 En una operación `BEFORE UPDATE`, podríamos verificar o modificar los valores antes de que se guarden en la tabla.
 Ejemplo de uso:
@@ -79,8 +79,8 @@ DELIMITER;
 -- En este caso, se cambia el email del usuario con ID `1` en la tabla `users`
 UPDATE users SET email = 'Daniel@gmail.com' WHERE user_id = 1;
 
--- Elimina el trigger `tg_email` de la base de datos
-DROP TRIGGER tg_email;
+-- Elimina el trigger `trigger_email` de la base de datos
+DROP TRIGGER trigger_email;
 
 /*
 La convención para nombrar triggers en SQL no está estrictamente definida y puede variar según las prácticas del equipo o la organización. Sin embargo, aquí hay algunas recomendaciones comunes sobre cómo nombrar triggers y ejemplos de convenciones de nomenclatura:

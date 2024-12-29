@@ -220,7 +220,7 @@ CREATE TABLE `invoices` (
   PRIMARY KEY (`id`),
   KEY `id` (`id`),
   KEY `id_2` (`id`),
-  KEY `fk_invoices_orders1_idx` (`order_id`),
+  KEY `fk_invoices_orders1_index` (`order_id`),
   CONSTRAINT `fk_invoices_orders1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -263,8 +263,8 @@ CREATE TABLE `order_details` (
   KEY `product_id_2` (`product_id`),
   KEY `purchase_order_id` (`purchase_order_id`),
   KEY `id_5` (`id`),
-  KEY `fk_order_details_orders1_idx` (`order_id`),
-  KEY `fk_order_details_order_details_status1_idx` (`status_id`),
+  KEY `fk_order_details_orders1_index` (`order_id`),
+  KEY `fk_order_details_order_details_status1_index` (`status_id`),
   CONSTRAINT `fk_order_details_order_details_status1` FOREIGN KEY (`status_id`) REFERENCES `order_details_status` (`id`),
   CONSTRAINT `fk_order_details_orders1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
   CONSTRAINT `fk_order_details_products1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)

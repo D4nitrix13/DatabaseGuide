@@ -415,7 +415,7 @@ CREATE TABLE IF NOT EXISTS `northwind`.`invoices` (
   PRIMARY KEY (`id`),
   INDEX `id` (`id` ASC),
   INDEX `id_2` (`id` ASC),
-  INDEX `fk_invoices_orders1_idx` (`order_id` ASC),
+  INDEX `fk_invoices_orders1_index` (`order_id` ASC),
   CONSTRAINT `fk_invoices_orders1`
     FOREIGN KEY (`order_id`)
     REFERENCES `northwind`.`orders` (`id`)
@@ -460,8 +460,8 @@ CREATE TABLE IF NOT EXISTS `northwind`.`order_details` (
   INDEX `product_id_2` (`product_id` ASC),
   INDEX `purchase_order_id` (`purchase_order_id` ASC),
   INDEX `id_5` (`id` ASC),
-  INDEX `fk_order_details_orders1_idx` (`order_id` ASC),
-  INDEX `fk_order_details_order_details_status1_idx` (`status_id` ASC),
+  INDEX `fk_order_details_orders1_index` (`order_id` ASC),
+  INDEX `fk_order_details_order_details_status1_index` (`status_id` ASC),
   CONSTRAINT `fk_order_details_orders1`
     FOREIGN KEY (`order_id`)
     REFERENCES `northwind`.`orders` (`id`)

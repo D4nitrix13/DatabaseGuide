@@ -339,7 +339,7 @@ CREATE TABLE IF NOT EXISTS `northwind`.`invoices` (
     PRIMARY KEY (`id`),
     INDEX `id` (`id` ASC),
     INDEX `id_2` (`id` ASC),
-    INDEX `fk_invoices_orders1_idx` (`order_id` ASC),
+    INDEX `fk_invoices_orders1_index` (`order_id` ASC),
     CONSTRAINT `fk_invoices_orders1` FOREIGN KEY (`order_id`) REFERENCES `northwind`.`orders` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 
@@ -376,8 +376,8 @@ CREATE TABLE IF NOT EXISTS `northwind`.`order_details` (
     INDEX `product_id_2` (`product_id` ASC),
     INDEX `purchase_order_id` (`purchase_order_id` ASC),
     INDEX `id_5` (`id` ASC),
-    INDEX `fk_order_details_orders1_idx` (`order_id` ASC),
-    INDEX `fk_order_details_order_details_status1_idx` (`status_id` ASC),
+    INDEX `fk_order_details_orders1_index` (`order_id` ASC),
+    INDEX `fk_order_details_order_details_status1_index` (`status_id` ASC),
     CONSTRAINT `fk_order_details_orders1` FOREIGN KEY (`order_id`) REFERENCES `northwind`.`orders` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
     CONSTRAINT `fk_order_details_products1` FOREIGN KEY (`product_id`) REFERENCES `northwind`.`products` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
     CONSTRAINT `fk_order_details_order_details_status1` FOREIGN KEY (`status_id`) REFERENCES `northwind`.`order_details_status` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION

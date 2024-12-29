@@ -22,12 +22,12 @@ CREATE TABLE email_history (
 );
 
 /*
-Crear un trigger `tg_email` que se ejecutará después de actualizar (`AFTER UPDATE`) un registro en la tabla `users`.
+Crear un trigger `trigger_email` que se ejecutará después de actualizar (`AFTER UPDATE`) un registro en la tabla `users`.
 - `AFTER UPDATE ON users` indica que el trigger se ejecutará después de una actualización en `users`.
 - `OLD` y `NEW` permiten acceder a los valores antiguos y nuevos de los campos respectivamente.
 */
 
-CREATE TRIGGER tg_email
+CREATE TRIGGER trigger_email
 AFTER UPDATE ON users
 FOR EACH ROW              -- Ejecuta el trigger para cada registro afectado en `users`
 BEGIN
@@ -39,15 +39,15 @@ END;
 
 /*
 Prueba el trigger actualizando el email de un usuario en la tabla `users`.
-Si el email cambia, se activará el trigger `tg_email` y registrará el email previo en `email_history`.
+Si el email cambia, se activará el trigger `trigger_email` y registrará el email previo en `email_history`.
 */
 UPDATE users SET email = 'Daniel@gmail.com' WHERE user_id = 1;
 
 /*
-Eliminar el trigger `tg_email` de la tabla `users` si ya no es necesario.
+Eliminar el trigger `trigger_email` de la tabla `users` si ya no es necesario.
 En SQLite, se utiliza `DROP TRIGGER` seguido del nombre del trigger.
 */
-DROP TRIGGER tg_email;
+DROP TRIGGER trigger_email;
 
 /*
 La convención para nombrar triggers en SQL no está estrictamente definida y puede variar según las prácticas del equipo o la organización. Sin embargo, aquí hay algunas recomendaciones comunes sobre cómo nombrar triggers y ejemplos de convenciones de nomenclatura:

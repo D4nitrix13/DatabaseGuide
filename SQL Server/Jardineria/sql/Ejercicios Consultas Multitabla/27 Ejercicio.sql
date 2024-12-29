@@ -36,21 +36,21 @@ WHERE
 
 
 SELECT
-    p_caro.codigo_producto AS [ID Producto Más Caro],
-    p_caro.nombre AS [Nombre Producto Más Caro],
-    p_caro.precio_venta AS [Precio Producto Más Caro],
-    p_barato.codigo_producto AS [ID Producto Más Barato],
-    p_barato.nombre AS [Nombre Producto Más Barato],
-    p_barato.precio_venta AS [Precio Producto Más Barato]
+    stored_procedure_caro.codigo_producto AS [ID Producto Más Caro],
+    stored_procedure_caro.nombre AS [Nombre Producto Más Caro],
+    stored_procedure_caro.precio_venta AS [Precio Producto Más Caro],
+    stored_procedure_barato.codigo_producto AS [ID Producto Más Barato],
+    stored_procedure_barato.nombre AS [Nombre Producto Más Barato],
+    stored_procedure_barato.precio_venta AS [Precio Producto Más Barato]
 FROM
-    producto p_caro
-    CROSS JOIN producto p_barato
+    producto stored_procedure_caro
+    CROSS JOIN producto stored_procedure_barato
 WHERE
-    p_caro.precio_venta = (
+    stored_procedure_caro.precio_venta = (
         SELECT MAX(precio_venta)
         FROM producto
     )
-    AND p_barato.precio_venta = (
+    AND stored_procedure_barato.precio_venta = (
         SELECT MIN(precio_venta)
         FROM producto
     );
