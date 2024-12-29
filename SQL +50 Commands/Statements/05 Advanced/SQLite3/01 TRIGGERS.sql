@@ -51,24 +51,32 @@ DROP TRIGGER trigger_email;
 
 /*
 La convención para nombrar triggers en SQL no está estrictamente definida y puede variar según las prácticas del equipo o la organización. Sin embargo, aquí hay algunas recomendaciones comunes sobre cómo nombrar triggers y ejemplos de convenciones de nomenclatura:
-### Recomendaciones para Nombrar Triggers
-1. **Usar Prefijos**: Comenzar el nombre del trigger con un prefijo que indique que es un trigger. Ejemplo: `trg_` o `trigger_`.
-2. **Incluir la Tabla Afectada**: Incluir el nombre de la tabla que el trigger afecta, lo que ayuda a identificar fácilmente su propósito.
-3. **Indicar la Acción**: Incluir una descripción de la acción que el trigger realiza, como `insert`, `update` o `delete`.
-4. **Uso de Notación**:
-- **Pascal Case**: Las palabras comienzan con mayúscula y no se utilizan guiones bajos. Ejemplo: `TrgOrdersInsert`.
-- **Snake Case**: Se utilizan guiones bajos para separar palabras. Ejemplo: `trg_orders_insert`.
-- **Camel Case**: Similar al Pascal Case, pero la primera palabra comienza en minúscula. Ejemplo: `trgOrdersInsert`.
-### Ejemplos de Nombres de Triggers
-- **Pascal Case**: 
-- `TrgOrdersInsert` (Un trigger que se activa en inserciones en la tabla `Orders`).
-- `TrgCustomersUpdate` (Un trigger que se activa en actualizaciones en la tabla `Customers`).
-- **Snake Case**: 
-- `trg_orders_insert` (Un trigger que se activa en inserciones en la tabla `orders`).
-- `trg_customers_update` (Un trigger que se activa en actualizaciones en la tabla `customers`).
-- **Camel Case**: 
-- `trgOrdersInsert` (Un trigger que se activa en inserciones en la tabla `Orders`).
-- `trgCustomersUpdate` (Un trigger que se activa en actualizaciones en la tabla `Customers`).
-### Conclusión
+
+Recomendaciones para Nombrar Triggers
+
+1. Usar Prefijos: Comenzar el nombre del trigger con un prefijo que indique que es un trigger. Ejemplo: `trg_` o `trigger_`.
+2. Incluir la Tabla Afectada: Incluir el nombre de la tabla que el trigger afecta, lo que ayuda a identificar fácilmente su propósito.
+3. Indicar la Acción: Incluir una descripción de la acción que el trigger realiza, como `insert`, `update` o `delete`.
+4. Uso de Notación:
+	- Pascal Case: Las palabras comienzan con mayúscula y no se utilizan guiones bajos. Ejemplo: `TrgOrdersInsert`.
+	- Snake Case: Se utilizan guiones bajos para separar palabras. Ejemplo: `trg_orders_insert`.
+	- Camel Case: Similar al Pascal Case, pero la primera palabra comienza en minúscula. Ejemplo: `trgOrdersInsert`.
+
+Ejemplos de Nombres de Triggers
+
+- Pascal Case: 
+	- `TrgOrdersInsert` (Un trigger que se activa en inserciones en la tabla `Orders`).
+	- `TrgCustomersUpdate` (Un trigger que se activa en actualizaciones en la tabla `Customers`).
+
+- Snake Case: 
+	- `trg_orders_insert` (Un trigger que se activa en inserciones en la tabla `orders`).
+	- `trg_customers_update` (Un trigger que se activa en actualizaciones en la tabla `customers`).
+
+- Camel Case: 
+	- `trgOrdersInsert` (Un trigger que se activa en inserciones en la tabla `Orders`).
+	- `trgCustomersUpdate` (Un trigger que se activa en actualizaciones en la tabla `Customers`).
+
+Conclusión
+
 La elección entre estas convenciones depende del estilo que prefieras seguir en tu proyecto o equipo. Lo más importante es ser consistente en la nomenclatura que elijas para que todos los desarrolladores puedan entender y trabajar con el código de manera eficiente.
 */

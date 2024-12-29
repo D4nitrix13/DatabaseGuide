@@ -100,9 +100,9 @@ FROM clientes;
 -- ```
 
 -- * * Resultado: * *
--- | CodigoCliente | NombreCliente | ContactoPrincipal  |
+-- | CodigoCliente  | NombreCliente  | ContactoPrincipal    |
 -- |----------------|----------------|----------------------|
--- | 1              | Daniel Pérez   | Daniel@email.com       |
+-- | 1              | Daniel Pérez   | Daniel@email.com     |
 -- | 2              | María Gómez    | 123456789            |
 -- | 3              | Pedro López    | Sin contacto         |
 
