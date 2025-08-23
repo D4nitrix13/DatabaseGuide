@@ -9,7 +9,7 @@
 
 ---
 
-# ***Componentes Claves del Diagrama:***
+## ***Componentes Claves del Diagrama:***
 
 1. **Entidades (Tablas):**
    - *Representan las tablas de la base de datos, que suelen estar descritas en recuadros.*
@@ -28,7 +28,7 @@
 
 ## ***Ejemplo de un Diagrama de Relación de Tablas:***
 
-![Image DiagramRelationTables](/Images/DiagramRelationTables.png "/Images/DiagramRelationTables.png")
+*![Image DiagramRelationTables](/Images/DiagramRelationTables.png "/Images/DiagramRelationTables.png")*
 
 **En este ejemplo, puedes observar:**
 

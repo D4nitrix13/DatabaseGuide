@@ -3,7 +3,7 @@
 <!-- GitLab: https://gitlab.com/D4nitrix13 -->
 <!-- Correo electrónico: danielperezdev@proton.me -->
 
-# Instalación del Gestor (DBMS) en WINDOWS
+# **Instalación del Gestor (DBMS) en WINDOWS**
 
 - *Para instalar el Gestor de Bases de Datos SQLite (DBMS) en tu sistema operativo, sigue los enlaces de descarga correspondientes:*
 
@@ -28,7 +28,7 @@
 
 **Para usuarios de macOS, utiliza el siguiente enlace:**
 
-- [Descargar SQLite para macOS (64-bit)](https://www.sqlite.org/2024/sqlite-tools-osx-x64-3460100.zip "https://www.sqlite.org/2024/sqlite-tools-osx-x64-3460100.zip")
+- *[Descargar SQLite para macOS (64-bit)](https://www.sqlite.org/2024/sqlite-tools-osx-x64-3460100.zip "https://www.sqlite.org/2024/sqlite-tools-osx-x64-3460100.zip")*
 
 ---
 
