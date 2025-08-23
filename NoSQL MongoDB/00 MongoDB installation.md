@@ -1,5 +1,6 @@
 <!-- Autor: Daniel Benjamin Perez Morales -->
 <!-- GitHub: https://github.com/D4nitrix13 -->
+<!-- GitLab: https://gitlab.com/D4nitrix13 -->
 <!-- Correo electrónico: danielperezdev@proton.me -->
 
 # ***`MongoDB` es una base de datos NoSQL orientada a documentos, diseñada para almacenar y consultar grandes volúmenes de datos no estructurados o semi-estructurados. A diferencia de las bases de datos relacionales, que almacenan datos en tablas, MongoDB almacena datos en **documentos JSON (o BSON)**, lo que facilita la representación de estructuras complejas y flexibles.***
