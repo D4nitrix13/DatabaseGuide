@@ -1,5 +1,5 @@
 -- Autor: Daniel Benjamin Perez Morales
--- GitHub: https://github.com/DanielPerezMoralesDev13
+-- GitHub: https://github.com/D4nitrix13
 -- Correo electrónico: danielperezdev@proton.me
 
 -- Este comando se utiliza para abrir una base de datos SQLite específica o crear una nueva si no existe.

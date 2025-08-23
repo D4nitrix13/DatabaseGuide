@@ -1,5 +1,5 @@
 <!-- Autor: Daniel Benjamin Perez Morales -->
-<!-- GitHub: https://github.com/DanielPerezMoralesDev13 -->
+<!-- GitHub: https://github.com/D4nitrix13 -->
 <!-- Correo electrónico: danielperezdev@proton.me -->
 
 # ***Ejercicios de Consultas SQL***
@@ -76,7 +76,7 @@ cat ./jardineria.sql | head --lines=+8
 
 ```sql
 -- Autor: Daniel Benjamin Perez Morales
--- GitHub: https://github.com/DanielPerezMoralesDev13
+-- GitHub: https://github.com/D4nitrix13
 -- Correo electrónico: danielperezdev@proton.me
 
 DROP DATABASE IF EXISTS jardineria;  -- Compatible en SQL Server 2016 y posteriores

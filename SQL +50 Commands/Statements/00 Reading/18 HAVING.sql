@@ -1,5 +1,5 @@
 -- Autor: Daniel Benjamin Perez Morales
--- GitHub: https://github.com/DanielPerezMoralesDev13
+-- GitHub: https://github.com/D4nitrix13
 -- Correo electrónico: danielperezdev@proton.me
 
 -- Cuenta cuantas filas contienen un dato no nulo en el campo edad de la tabla "users" mayor que 3

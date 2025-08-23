@@ -1,5 +1,5 @@
 -- Autor: Daniel Benjamin Perez Morales
--- GitHub: https://github.com/DanielPerezMoralesDev13
+-- GitHub: https://github.com/D4nitrix13
 -- Correo electrónico: danielperezdev@proton.me
 
 -- El comando 'SHOW TABLES;' en MySQL y MariaDB muestra una lista de todas las tablas en la base de datos actual.

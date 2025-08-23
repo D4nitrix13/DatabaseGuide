@@ -1,5 +1,5 @@
 -- Autor: Daniel Benjamin Perez Morales
--- GitHub: https://github.com/DanielPerezMoralesDev13
+-- GitHub: https://github.com/D4nitrix13
 -- Correo electrónico: danielperezdev@proton.me
 
 -- Crea una tabla llamada "persons" con nombre de columna (atributos) de tipo int, varchar y date

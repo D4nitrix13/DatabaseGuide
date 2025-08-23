@@ -1,5 +1,5 @@
 <!-- Autor: Daniel Benjamin Perez Morales -->
-<!-- GitHub: https://github.com/DanielPerezMoralesDev13 -->
+<!-- GitHub: https://github.com/D4nitrix13 -->
 <!-- Correo electrónico: danielperezdev@proton.me -->
 
 # ***Relaciones Uno a Uno y Atributos Compuestos***
@@ -39,7 +39,19 @@
 
 ---
 
-### ***Cardinalidad:***
+### ***¿Qué es la cardinalidad?:***
+
+*En modelado de datos (ER, UML), la **cardinalidad** describe **cuántas instancias de una entidad pueden (y deben) asociarse** con una instancia de otra entidad a través de una relación. Responde dos preguntas para cada lado de la relación:*
+
+- **Mínimo (participación):** *¿cuántas instancias como mínimo? (0 = opcional, 1 = obligatoria)*
+- **Máximo:** *¿cuántas instancias como máximo? (1, N, o un número fijo como 13)*
+
+## **Notaciones más usadas**
+
+- **Pies de cuervo (crow’s foot):** *0..1, 1..1, 0..*, 1..**
+- **Chen (min,max):** *(0,1), (1,1), (0,N), (1,N)*
+- **Simplificada:** *1:1, 1:N, M:N (o N:M)*
+- **Específicas:** *1:13, 2:5, etc. (rara vez se usan, pero existen)*
 
 - **La cardinalidad se deduce de la información proporcionada:**
   - **Cada vehículo solo puede ser utilizado al mismo tiempo por un taxista.**
@@ -60,7 +72,9 @@
 
 **Relación:**
 
-- **VEHICLE -> PARK -> PARKING**
+```bash
+VEHICLE -> PARK -> PARKING
+```
 
 ---
 

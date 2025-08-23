@@ -10,7 +10,7 @@
 
 
 # Autor: Daniel Benjamin Perez Morales
-# GitHub: https://github.com/DanielPerezMoralesDev13
+# GitHub: https://github.com/D4nitrix13
 # Correo electrónico: danielperezdev@proton.me
 
 import sqlite3  # Biblioteca para manejar bases de datos SQLite

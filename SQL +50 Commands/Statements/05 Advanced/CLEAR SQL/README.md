@@ -1,5 +1,5 @@
 <!-- Autor: Daniel Benjamin Perez Morales -->
-<!-- GitHub: https://github.com/DanielPerezMoralesDev13 -->
+<!-- GitHub: https://github.com/D4nitrix13 -->
 <!-- Correo electrónico: danielperezdev@proton.me -->
 
 # ***En la imagen oficial de MySQL en Docker, el comando `clear` no está disponible porque la imagen está diseñada para ser ligera y minimalista, enfocándose en ejecutar el servidor de base de datos y no en proporcionar herramientas de shell completas. Esto significa que no se incluyen muchos comandos de utilidad comunes que podrías encontrar en un entorno más completo, como en una instalación estándar de Linux.***

@@ -1,5 +1,6 @@
 <!-- Autor: Daniel Benjamin Perez Morales -->
-<!-- GitHub: https://github.com/DanielPerezMoralesDev13 -->
+<!-- GitHub: https://github.com/D4nitrix13 -->
+<!-- GitLab: https://gitlab.com/D4nitrix13 -->
 <!-- Correo electrónico: danielperezdev@proton.me -->
 
 # ***Guía Completa de SQL, NoSQL y Diseño de Bases de Datos***
@@ -161,5 +162,5 @@
 ## ***Autor***
 
 - **Autor:** *Daniel Benjamin Perez Morales*
-- **GitHub:** *[DanielPerezMoralesDev13](https://github.com/DanielPerezMoralesDev13 "https://github.com/DanielPerezMoralesDev13")*
+- **GitHub:** *[D4nitrix13](https://github.com/D4nitrix13 "https://github.com/D4nitrix13")*
 - **Correo electrónico:** *`danielperezdev@proton.me`*

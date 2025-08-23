@@ -1,5 +1,5 @@
 -- Autor: Daniel Benjamin Perez Morales
--- GitHub: https://github.com/DanielPerezMoralesDev13
+-- GitHub: https://github.com/D4nitrix13
 -- Correo electrónico: danielperezdev@proton.me
 
 -- Consulta en el foro: https://stackoverflow.com/questions/21616375/is-there-a-command-to-clear-screen-in-sqlite3

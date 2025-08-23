@@ -1,5 +1,5 @@
 <!-- Autor: Daniel Benjamin Perez Morales -->
-<!-- GitHub: https://github.com/DanielPerezMoralesDev13 -->
+<!-- GitHub: https://github.com/D4nitrix13 -->
 <!-- Correo electrónico: danielperezdev@proton.me -->
 
 # ***Claves Primarias (Primary Keys) y Claves Foráneas (Foreign Keys)***
@@ -27,14 +27,14 @@ SELECT * FROM usuarios;
 sqlite> SELECT * FROM usuarios;
 ```
 
-| id | nombre  | apellido             | edad |
-|----|---------|----------------------|------|
-| 1  | Danna   | Morales              | 16   |
-| 2  | Benjamin| Perez                | 19   |
-| 3  | Raquel  | Morales Gamboa       | 33   |
-| 4  | Matias  | Morales              | 21   |
-| 5  | Luna    | Morales              | 22   |
-| 6  | Daniel  | Perez Morales        | 18   |
+| id  | nombre   | apellido       | edad |
+| --- | -------- | -------------- | ---- |
+| 1   | Danna    | Morales        | 16   |
+| 2   | Benjamin | Perez          | 19   |
+| 3   | Raquel   | Morales Gamboa | 33   |
+| 4   | Matias   | Morales        | 21   |
+| 5   | Luna     | Morales        | 22   |
+| 6   | Daniel   | Perez Morales  | 18   |
 
 - *En esta tabla, el campo `id` es la clave primaria (PK) que identifica de manera única a cada usuario.*
 
@@ -61,10 +61,10 @@ SELECT * FROM turnos_medicos;
 sqlite> SELECT * FROM turnos_medicos;
 ```
 
-| id  | doctor      | usuario_id | motivo           | hora   |
-|-----|-------------|------------|------------------|--------|
-| 1   | Dr. Ramirez | 6          | Dolor de Panza    | 12:30 |
-| 2   | Dr. Ramirez | 3          | Dolor de Cabeza   | 11:30 |
+| id  | doctor      | usuario_id | motivo          | hora  |
+| --- | ----------- | ---------- | --------------- | ----- |
+| 1   | Dr. Ramirez | 6          | Dolor de Panza  | 12:30 |
+| 2   | Dr. Ramirez | 3          | Dolor de Cabeza | 11:30 |
 
 - *En esta tabla, el campo `usuario_id` es una clave foránea (FK) que hace referencia al campo `id` en la tabla `usuarios`. Esto significa que el usuario con `id = 6` (Daniel Perez Morales) tiene una cita con el Dr. Ramirez por "Dolor de Panza" a las 12:30.*
 

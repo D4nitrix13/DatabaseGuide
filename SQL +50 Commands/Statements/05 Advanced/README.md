@@ -1,5 +1,5 @@
 <!-- Autor: Daniel Benjamin Perez Morales -->
-<!-- GitHub: https://github.com/DanielPerezMoralesDev13 -->
+<!-- GitHub: https://github.com/D4nitrix13 -->
 <!-- Correo electrónico: danielperezdev@proton.me -->
 
 # ***Exportar la Base de Datos MySQL***
@@ -205,7 +205,7 @@ Aplicacion de volcado de la estructura `data` en formato JSON
 """
 
 # Autor: Daniel Benjamin Perez Morales
-# GitHub: https://github.com/DanielPerezMoralesDev13
+# GitHub: https://github.com/D4nitrix13
 # Correo electrónico: danielperezdev@proton.me
 
 import json

@@ -1,9 +1,9 @@
 <!-- Autor: Daniel Benjamin Perez Morales -->
-<!-- GitHub: https://github.com/DanielPerezMoralesDev13 -->
+<!-- GitHub: https://github.com/D4nitrix13 -->
 <!-- Correo electrónico: danielperezdev@proton.me -->
 # ***Licencia MIT***
 
-## ***Derechos de Autor (c) 2024 DanielPerezMoralesDev13***
+## ***Derechos de Autor (c) 2024 D4nitrix13***
 
 *Se concede permiso, de forma gratuita, a cualquier persona que obtenga una copia*
 *de este software y los ficheros de documentación asociados (el "Software"), para tratar*

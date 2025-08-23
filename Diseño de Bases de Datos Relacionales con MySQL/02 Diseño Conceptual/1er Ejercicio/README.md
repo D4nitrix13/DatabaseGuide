@@ -1,5 +1,5 @@
 <!-- Autor: Daniel Benjamin Perez Morales -->
-<!-- GitHub: https://github.com/DanielPerezMoralesDev13 -->
+<!-- GitHub: https://github.com/D4nitrix13 -->
 <!-- Correo electrónico: danielperezdev@proton.me -->
 
 # ***Entidades Relaciones y atributos***
@@ -35,9 +35,17 @@
    - **1:N (uno a muchos):** *Una instancia de la primera entidad puede relacionarse con varias instancias de la segunda.*
    - **M:N (muchos a muchos):** *Varias instancias de la primera entidad pueden relacionarse con varias instancias de la segunda.*
 
+5. **Notaciones No Tan Comunes**
+
+   - **0:N (cero a muchos):** *Indica que una instancia de la primera entidad puede no estar relacionada con ninguna instancia de la segunda, o bien estarlo con muchas.*
+     - *Ejemplo:* *Un cliente puede no tener ningún pedido (0), o puede tener varios pedidos (N).*
+
+   - **1:13 (Uno A Trece):** *Es una notación menos habitual que especifica un límite exacto o un rango máximo de relaciones. Aquí significa que una instancia de la primera entidad debe relacionarse con al menos **una** y como máximo con **trece** instancias de la segunda.*
+     *Ejemplo:* *Una selección de fútbol debe tener **como mínimo un jugador** y **como máximo trece jugadores inscritos** en una competencia.*
+
 *Cada una de estas notaciones tiene su utilidad en el diseño de diagramas de entidad-relación, y la elección de una sobre otra puede depender del contexto o de las preferencias del diseñador.*
 
-- *![Image CardinalidadExample](/Images/CardinalidadExample.jpg "/Images/CardinalidadExample.jpg")*
+*![Image CardinalidadExample](/Images/CardinalidadExample.jpg "/Images/CardinalidadExample.jpg")*
 
 ---
 
@@ -60,9 +68,9 @@
 
 ### ***Instalación de Draw.io***
 
-**GitHub:** *[https://github.com/jgraph/drawio-desktop](https://github.com/jgraph/drawio-desktop "https://github.com/jgraph/drawio-desktop")*
-**GitHub Release:** *[https://github.com/jgraph/drawio-desktop/releases/tag/v24.7.8](https://github.com/jgraph/drawio-desktop/releases/tag/v24.7.8 "https://github.com/jgraph/drawio-desktop/releases/tag/v24.7.8")*
-**Descarga de instalación:** *[drawio-amd64-24.7.8.deb](https://github.com/jgraph/drawio-desktop/releases/download/v24.7.8/drawio-amd64-24.7.8.deb "https://github.com/jgraph/drawio-desktop/releases/download/v24.7.8/drawio-amd64-24.7.8.deb")*
+- **GitHub:** *[https://github.com/jgraph/drawio-desktop](https://github.com/jgraph/drawio-desktop "https://github.com/jgraph/drawio-desktop")*
+- **GitHub Release:** *[https://github.com/jgraph/drawio-desktop/releases/tag/v24.7.8](https://github.com/jgraph/drawio-desktop/releases/tag/v24.7.8 "https://github.com/jgraph/drawio-desktop/releases/tag/v24.7.8")*
+- **Descarga de instalación:** *[drawio-amd64-24.7.8.deb](https://github.com/jgraph/drawio-desktop/releases/download/v24.7.8/drawio-amd64-24.7.8.deb "https://github.com/jgraph/drawio-desktop/releases/download/v24.7.8/drawio-amd64-24.7.8.deb")*
 
 **Para instalar, utiliza el siguiente comando en la terminal:**
 
@@ -146,8 +154,8 @@ sudo snap install drawio
 
 ### ***Explicación***
 
-- **Un usuario puede crear muchas tareas** (mínimo 0, máximo N). Esto indica que un usuario puede estar asociado a ninguna o muchas tareas.
-- **Cada tarea pertenece a un único usuario**, lo que implica que una tarea solo puede tener un creador, es decir, no puede estar asociada a más de un usuario.
+- **Un usuario puede crear muchas tareas** *(mínimo 0, máximo N). Esto indica que un usuario puede estar asociado a ninguna o muchas tareas.*
+- **Cada tarea pertenece a un único usuario,** *lo que implica que una tarea solo puede tener un creador, es decir, no puede estar asociada a más de un usuario.*
 
 - *Esto describe una relación **uno a muchos** (**1:N**), donde:*
 
