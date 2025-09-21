@@ -49,7 +49,7 @@
 
 ## **Notaciones más usadas**
 
-- **Pies de cuervo (crow’s foot):** *0..1, 1..1, 0..*, 1..**
+- **Pies de cuervo (crow’s foot):** *`0..1`, `1..1`, `0..*`, `1..*`*
 - **Chen (min,max):** *(0,1), (1,1), (0,N), (1,N)*
 - **Simplificada:** *1:1, 1:N, M:N (o N:M)*
 - **Específicas:** *1:13, 2:5, etc. (rara vez se usan, pero existen)*
