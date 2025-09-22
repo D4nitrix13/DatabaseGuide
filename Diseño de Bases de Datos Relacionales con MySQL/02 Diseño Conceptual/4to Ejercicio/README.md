@@ -46,28 +46,28 @@
 
 ---
 
-#### ***Entidad CLIENT***
+#### ***Entidad Client***
 
 - **Atributos:**
-  - **`Id_Document_Number`:** *Número de documento de identidad del cliente.*
-  - **`Name`:** *Nombre completo del cliente.*
+  - **`id_document_number`:** *Número de documento de identidad del cliente.*
+  - **`name`:** *Nombre completo del cliente.*
 
 ---
 
-#### ***Entidad INSURANCE***
+#### ***Entidad Insurance***
 
 - **Atributos:**
-  - **`ID`:** *Identificador único del seguro.*
-  - **`Percentage_Covered`:** *Porcentaje de cobertura seleccionado por el cliente.*
-  - **`Start_Date`:** *Fecha de inicio del seguro.*
-  - **`End_Date`:** *Fecha de finalización del seguro.*
-  - **`Annual_Cost`:** *Costo anual del seguro.*
+  - **`id`:** *Identificador único del seguro.*
+  - **`percentage_covered`:** *Porcentaje de cobertura seleccionado por el cliente.*
+  - **`start_date`:** *Fecha de inicio del seguro.*
+  - **`end_date`:** *Fecha de finalización del seguro.*
+  - **`annual_cost`:** *Costo anual del seguro.*
 
 ---
 
-#### ***Relación ACQUIRES (Cliente adquiere seguro)***
+#### ***Relación Acquires (Cliente adquiere seguro)***
 
-- **Relación entre** *`INSURANCE` y `CLIENT`.*
+- **Relación entre** *`Insurance` y `Client`.*
 - **Cardinalidad:**
   - *Un cliente puede adquirir 0 o más seguros. (0,n)*
   - *Cada seguro está vinculado a un único cliente. (1,1)*
@@ -77,27 +77,27 @@
 
 ### ***Jerarquía de Generalización***
 
-- *En este caso, los seguros pueden ser de **propiedad** o de **vehículos**, y ambos heredan de la entidad general `INSURANCE`.*
+- *En este caso, los seguros pueden ser de **propiedad** o de **vehículos**, y ambos heredan de la entidad general `Insurance`.*
 
 ---
 
-#### ***Subentidad PROPERTY***
+#### ***Subentidad Property***
 
 - **Atributos:**
-  - **`Area`:** *Metros cuadrados de la propiedad.*
-  - **`Address`:** *Dirección de la propiedad, compuesta por:*
-    - **`City`:** *Ciudad.*
-    - **`Street`:** *Calle.*
-    - **`Number`:** *Número (con cardinalidad 0,1, es decir, puede ser nulo).*
-    - **`Unit`:** *Unidad.*
+  - **`area`:** *Metros cuadrados de la propiedad.*
+  - **`address`:** *Dirección de la propiedad, compuesta por:*
+    - **`city`:** *Ciudad.*
+    - **`street`:** *Calle.*
+    - **`number`:** *Número (con cardinalidad 0,1, es decir, puede ser nulo).*
+    - **`unit`:** *Unidad.*
 
 ---
 
-#### ***Subentidad VEHICLE***
+#### ***Subentidad Vehicle***
 
 - **Atributos:**
-  - **`Plate_Number`:** *Número de matrícula del vehículo.*
-  - **`Price`:** *Precio de compra del vehículo.*
+  - **`plate_number`:** *Número de matrícula del vehículo.*
+  - **`price`:** *Precio de compra del vehículo.*
 
 ---
 
@@ -105,7 +105,7 @@
 
 ---
 
-#### ***Total vs. Parcial***
+#### ***`Total` vs `Parcial`***
 
 - *En una jerarquía de **generalización total** (T), cada instancia de la entidad general debe pertenecer a una de las subentidades. En este ejemplo, un seguro debe ser de propiedad o de vehículo, sin excepciones.*
 - *En una jerarquía de **generalización parcial** (P), no todas las instancias de la entidad general necesitan pertenecer a una subentidad. Un ejemplo sería si existieran seguros genéricos que no encajen en ninguna subentidad específica.*
@@ -132,9 +132,9 @@
 
 - *En muchos casos no es necesario que las subentidades tengan un identificador propio, ya que heredan el identificador de la entidad padre. Esto es un aspecto importante de las **jerarquías de generalización**.*
 
-*En una **jerarquía de generalización**, las **subentidades no necesitan un identificador propio** porque ya heredan el **ID** de la entidad padre (la superentidad). Esto sucede porque el identificador único de la entidad padre es suficiente para diferenciar instancias, ya que las subentidades son simplemente especializaciones de la entidad general.*
+*En una **jerarquía de generalización**, las **subentidades no necesitan un identificador propio** porque ya heredan el **id** de la entidad padre (la superentidad). Esto sucede porque el identificador único de la entidad padre es suficiente para diferenciar instancias, ya que las subentidades son simplemente especializaciones de la entidad general.*
 
-- *Por ejemplo, si tenemos una entidad general `INSURANCE` con un identificador `ID`, las subentidades `PROPERTY` y `VEHICLE` no necesitan tener un **ID** propio, ya que heredan el identificador de `INSURANCE`. Esto mantiene la consistencia de los datos y evita redundancias.*
+- *Por ejemplo, si tenemos una entidad general `Insurance` con un identificador `id`, las subentidades `Property` y `Vehicle` no necesitan tener un **id** propio, ya que heredan el identificador de `Insurance`. Esto mantiene la consistencia de los datos y evita redundancias.*
 
 - *En resumen, en una jerarquía de generalización, las subentidades suelen **no tener identificador propio**, ya que heredan el identificador de la entidad general, lo que simplifica el modelo y asegura que cada instancia sea única en todo el sistema.*
 

@@ -17,26 +17,26 @@
 
 ---
 
-### ***1. Entidad USER (Usuario)***
+### ***1. Entidad User (Usuario)***
 
 **Atributos:**
 
-- *ID*
-- *Nombre (Name)*
-- *Correo electrónico (Email)*
-- *Contraseña (Password)*
-- *Nombre de usuario (Username)*
+- *id*
+- *Nombre (name)*
+- *Correo electrónico (email)*
+- *Contraseña (password)*
+- *Nombre de usuario (username)*
 
 ---
 
-### ***2. Entidad ROOM (Sala)***
+### ***2. Entidad Room (Sala)***
 
 **Atributos:**
 
-- *ID*
-- *Privacidad (Is_Private)*
-- *Nombre (Name)*
-- *Descripción (Description)*
+- *id*
+- *Privacidad (is_private)*
+- *Nombre (name)*
+- *Descripción (description)*
 
 ---
 
@@ -44,7 +44,7 @@
 
 1. **Relación "Creates"** *(Crea)*
 
-    *Esta relación vincula la entidad `USER` con la entidad `ROOM`.*
+    *Esta relación vincula la entidad `User` con la entidad `Room`.*
 
     **Cardinalidad:**
 
@@ -53,7 +53,7 @@
 
 2. **Relación "Joins"** *(Se Une)*
 
-   - *Esta relación vincula la entidad `USER` con la entidad `ROOM`.*
+   - *Esta relación vincula la entidad `User` con la entidad `Room`.*
 
    **Cardinalidad:**
 
@@ -65,7 +65,7 @@
 
 3. **Relación "SendMessages"** *(Envía Mensajes)*
 
-   - *Esta relación vincula la entidad `USER` con la entidad `ROOM`.*
+   - *Esta relación vincula la entidad `User` con la entidad `Room`.*
 
    **Cardinalidad:**
 
@@ -74,8 +74,8 @@
 
    **Atributos de la relación "SendMessages":**
 
-   - *Contenido (Content)*
-   - *Fecha y hora (Date)*
+   - *Contenido (content)*
+   - *Fecha y hora (date)*
 
 4. **Relación "IsInvited"** *(Es Invitado)*
 
@@ -86,17 +86,17 @@
 
 **Atributo de la relación "IsInvited":**
 
-- *Enlace de invitación (Link)*
+- *Enlace de invitación (link)*
 
 ---
 
-### ***3. Entidad ROLE (Rol)***
+### ***3. Entidad Role (Rol)***
 
 **Atributos:**
 
-- *ID*
-- *Nombre (Name)*
-- *Descripción (Description)*
+- *id*
+- *Nombre (name)*
+- *Descripción (description)*
 
 ---
 
@@ -104,11 +104,11 @@
 
 1. **Relación "IsAssigned"** *(Se Asigna)*
 
-    *Esta relación vincula la entidad `USER` con la entidad `ROLE`.*
+    *Esta relación vincula la entidad `User` con la entidad `Role`.*
 
 2. **Relación "Has"** *(Tiene)*
 
-*Esta relación vincula la entidad `ROLE` con la entidad `ROOM`.*
+*Esta relación vincula la entidad `Role` con la entidad `Room`.*
 
 **Cardinalidad:**
 

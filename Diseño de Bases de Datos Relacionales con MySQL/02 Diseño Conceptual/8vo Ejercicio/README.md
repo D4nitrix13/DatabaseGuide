@@ -26,7 +26,7 @@
    - **Para las *cuentas normales*, no se requiere información adicional.**
    - **Para las *cuentas de empresa*, se almacenarán atributos adicionales:**
      - **Nombre de la empresa:** *Razón social de la empresa.*
-     - **Tax ID:** *Número de identificación fiscal de la empresa.*
+     - **Tax id:** *Número de identificación fiscal de la empresa.*
 
 3. **Transferencias entre Cuentas:**
    - *Los usuarios podrán realizar transferencias de dinero entre sus propias cuentas o hacia las cuentas de otros usuarios en la aplicación.*
@@ -61,80 +61,80 @@
 
 ---
 
-#### ***1. Entidad USER***
+#### ***1. Entidad User***
 
 - **Atributos:**
-  - **ID:** *Identificador único del usuario.*
-  - **Name:** *Nombre completo del usuario.*
-  - **Email:** *Correo electrónico del usuario (identificador).*
+  - **id:** *Identificador único del usuario.*
+  - **name:** *Nombre completo del usuario.*
+  - **email:** *Correo electrónico del usuario (identificador).*
 
    **Relación:**
 
-- **CREATES:** *Relaciona **USER** con **ACCOUNT**.*
+- **Creates:** *Relaciona **User** con **Account**.*
   - *Un usuario puede crear entre 0 y n cuentas: (0,n).*
   - *Una cuenta pertenece a un solo usuario: (1,1).*
 
 ---
 
-#### ***2. Entidad ACCOUNT***
+#### ***2. Entidad Account***
 
 - **Atributos:**
-  - **ID:** *Identificador único de la cuenta.*
-  - **Balance:** *Saldo actual en euros (€).*
-  - **Description:** *Descripción opcional de la cuenta.*
-  - **Name:** *Nombre de la cuenta.*
+  - **id:** *Identificador único de la cuenta.*
+  - **balance:** *Saldo actual en euros (€).*
+  - **description:** *Descripción opcional de la cuenta.*
+  - **name:** *Nombre de la cuenta.*
 
    **Relación:**
 
-- **TRANSFERS:** *Relaciona **ACCOUNT** con **ACCOUNT** para realizar transferencias entre cuentas de usuarios.*
+- **Transfers:** *Relaciona **Account** con **Account** para realizar transferencias entre cuentas de usuarios.*
   - *Un usuario puede hacer entre 0 y n transferencias desde su cuenta: (0,n).*
   - *Una cuenta puede recibir entre 0 y n transferencias: (0,n).*
 
-   **Atributos de la relación TRANSFERS:**
-  - **Amount:** *Cantidad transferida.*
-  - **Date:** *Fecha y hora de la transferencia.*
-  - **Status:** *Estado de la transferencia (pagado, reembolsado).*
+   **Atributos de la relación Transfers:**
+  - **amount:** *Cantidad transferida.*
+  - **date:** *Fecha y hora de la transferencia.*
+  - **status:** *Estado de la transferencia (pagado, reembolsado).*
 
 ---
 
-#### ***3. Entidad BANK_ACCOUNT***
+#### ***3. Entidad BankAccount***
 
 - **Atributos:**
-  - **Account_Number:** *Número de cuenta bancaria (identificador).*
+  - **account_number:** *Número de cuenta bancaria (identificador).*
 
    **Relación:**
 
-- **IS_ASSOCIATED:** *Relaciona **ACCOUNT** con **BANK_ACCOUNT**.*
+- **IsAssociated:** *Relaciona **Account** con **BankAccount**.*
   - *Una cuenta de la app puede estar asociada con varias cuentas bancarias: (0,n).*
   - *Una cuenta bancaria puede estar asociada con una sola cuenta de la app: (1,1).*
 
    **Relación:**
 
-- **TRANSFERS:** *Relaciona **ACCOUNT** con **BANK_ACCOUNT** para transferencias entre la app y el banco.*
+- **Transfers:** *Relaciona **Account** con **BankAccount** para transferencias entre la app y el banco.*
   - *Una cuenta de la app puede hacer entre 0 y n transferencias con el banco: (0,n).*
   - *Una cuenta bancaria puede recibir o enviar transferencias entre 0 y n veces: (0,n).*
 
-   **Atributos de la relación TRANSFERS:**
-  - **Start_Date:** *Fecha de inicio de la transferencia.*
-  - **End_Date:** *Fecha de finalización (completada o cancelada).*
-  - **Amount:** *Monto transferido.*
-  - **Status:** *Estado de la transferencia (procesando, completada, cancelada).*
-  - **Direction:** *Dirección de la transferencia (desde app a banco, desde banco a app).*
+   **Atributos de la relación Transfers:**
+  - **start_date:** *Fecha de inicio de la transferencia.*
+  - **end_date:** *Fecha de finalización (completada o cancelada).*
+  - **amount:** *Monto transferido.*
+  - **status:** *Estado de la transferencia (procesando, completada, cancelada).*
+  - **direction:** *Dirección de la transferencia (desde app a banco, desde banco a app).*
 
 ---
 
-#### ***4. Jerarquización: CORPORATE_ACCOUNT***
+#### ***4. Jerarquización: CorporateAccount***
 
-- *Este tipo de cuenta hereda de **ACCOUNT** pero tiene atributos adicionales específicos para empresas.*
+- *Este tipo de cuenta hereda de **Account** pero tiene atributos adicionales específicos para empresas.*
 
    **Atributos:**
 
-- **Name:** *Nombre de la empresa.*
-- **Tax_ID:** *Número de identificación fiscal de la empresa (NIF o CIF).*
+- **name:** *Nombre de la empresa.*
+- **tax_id:** *Número de identificación fiscal de la empresa (NIF o CIF).*
 
    **Jerarquía:**
 
-- *Relaciona una **CORPORATE_ACCOUNT** con **ACCOUNT**.*
+- *Relaciona una **CorporateAccount** con **Account**.*
   - *Una cuenta puede ser normal o corporativa, con atributos adicionales si es una cuenta de empresa.*
   - **La cardinalidad `(p, e)` en este contexto significa lo siguiente:**
 

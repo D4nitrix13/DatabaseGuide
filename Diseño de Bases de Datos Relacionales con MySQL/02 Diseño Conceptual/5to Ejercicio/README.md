@@ -20,7 +20,7 @@
 
 ---
 
-#### ***Entidad BUILDING (Edificio)***
+#### ***Entidad Building (Edificio)***
 
 - **Atributos:**
   - *`city` (Ciudad): Representa la ciudad donde está ubicado el edificio.*
@@ -28,18 +28,18 @@
 
 ---
 
-#### ***Entidad DEPARTMENT (Departamento)***
+#### ***Entidad Department (Departamento)***
 
 - **Atributos:**
-  - *`Number` (Número de Departamento): Identificador único del departamento.*
-  - *`Name` (Nombre del Departamento): Nombre único.*
-  - *`Annual_Budget` (Presupuesto Anual): El presupuesto anual asignado al departamento.*
+  - *`number` (Número de Departamento): Identificador único del departamento.*
+  - *`name` (Nombre del Departamento): Nombre único.*
+  - *`annual_budget` (Presupuesto Anual): El presupuesto anual asignado al departamento.*
 
 ---
 
-#### ***Relación IS_LOCATED** (Está ubicado en)*
+#### ***Relación IsLocated** (Está ubicado en)*
 
-- *Relaciona las entidades `BUILDING` y `DEPARTMENT`.*
+- *Relaciona las entidades `Building` y `Department`.*
 - **Cardinalidad:**
   - *Un edificio puede albergar **de 1 a n** departamentos. (1,n)*
   - *Un departamento está ubicado en **exactamente un edificio**. (1,1)*
@@ -47,16 +47,16 @@
 
 ---
 
-#### ***Entidad EMPLOYEE (Empleado)***
+#### ***Entidad Employee (Empleado)***
 
 - **Atributos:**
-  - *`Number` (Número de Empleado): Número único del empleado **dentro de su departamento**, pero este número puede repetirse en otros departamentos. El identificador de un empleado es un **identificador compuesto**, ya que se forma combinando el número del empleado con el identificador del departamento al que pertenece.*
+  - *`number` (Número de Empleado): Número único del empleado **dentro de su departamento**, pero este número puede repetirse en otros departamentos. El identificador de un empleado es un **identificador compuesto**, ya que se forma combinando el número del empleado con el identificador del departamento al que pertenece.*
 
 ---
 
 #### ***Relación WORKS** (Trabaja en)*
 
-- *Relaciona `EMPLOYEE` y `DEPARTMENT`.*
+- *Relaciona `Employee` y `Department`.*
 - **Cardinalidad:**
   - *Un departamento tiene **al menos 1 empleado y como máximo n empleados**. (1,n)*
   - *Un empleado trabaja **en un único departamento**. (1,1)*
@@ -66,9 +66,8 @@
 
 ### ***Concepto de Entidad Débil***
 
-- **Entidad débil:** *Es una entidad que no tiene un identificador propio y depende de otra entidad (su entidad fuerte) para ser identificada. En este caso, la entidad `EMPLOYEE` puede considerarse débil, ya que su identificador está compuesto por el número de empleado y el identificador del departamento. No puede identificarse por sí misma sin referencia a la entidad `DEPARTMENT`.*
-  
-- **Entidad fuerte:** *Es una entidad que puede identificarse por sí sola sin depender de otra. Un ejemplo es la entidad `DEPARTMENT`, ya que tiene su propio identificador (`Number` y `Name`), único y suficiente para distinguirla de otras.*
+- **Entidad débil:** *Es una entidad que no tiene un identificador propio y depende de otra entidad (su entidad fuerte) para ser identificada. En este caso, la entidad `Employee` puede considerarse débil, ya que su identificador está compuesto por el número de empleado y el identificador del departamento. No puede identificarse por sí misma sin referencia a la entidad `Department`.*
+- **Entidad fuerte:** *Es una entidad que puede identificarse por sí sola sin depender de otra. Un ejemplo es la entidad `Department`, ya que tiene su propio identificador (`number` y `name`), único y suficiente para distinguirla de otras.*
 
 ---
 
@@ -81,9 +80,9 @@
 
 ### ***Relación IS_IN_CHARGE_OF (Está a cargo de)***
 
-- *Esta relación conecta la entidad `EMPLOYEE` consigo misma, permitiendo modelar jerarquías de supervisión donde un empleado puede estar a cargo de otros empleados.*
+- *Esta relación conecta la entidad `Employee` consigo misma, permitiendo modelar jerarquías de supervisión donde un empleado puede estar a cargo de otros empleados.*
 
-- **Cardinalidad**:
+- **Cardinalidad:**
   - *Un empleado supervisor puede estar a cargo de **al menos 1 empleado y como máximo n empleados**. (1,n)*
   - *Un empleado solo puede ser supervisado por **un único supervisor**. (1,1)*
   - *Es una relación de **uno a muchos** (1:n).*
@@ -92,6 +91,45 @@
 
 ### ***Resumen Visual (Representación en Diagrama Chen)***
 
-- *En este diagrama, se muestra cómo las entidades `BUILDING`, `DEPARTMENT` y `EMPLOYEE` están relacionadas, destacando la **entidad débil** (`EMPLOYEE`) y las relaciones jerárquicas entre los empleados mediante la relación **IS_IN_CHARGE_OF**.*
+- *En este diagrama, se muestra cómo las entidades `Building`, `Department` y `Employee` están relacionadas, destacando la **entidad débil** (`Employee`) y las relaciones jerárquicas entre los empleados mediante la relación **IS_IN_CHARGE_OF**.*
 
-*![/Image EntidadesDébilesEIdentificadoresCompuestos](/Images/EntidadesDébilesEIdentificadoresCompuestos.png "/Images/EntidadesDébilesEIdentificadoresCompuestos.png")*
+*![Image EntidadesDébilesEIdentificadoresCompuestos](/Images/EntidadesDébilesEIdentificadoresCompuestos.png "/Images/EntidadesDébilesEIdentificadoresCompuestos.png")*
+
+---
+
+### ***Convenciones para Nombres de Relaciones***
+
+*En los diagramas ER y al implementar el modelo en bases de datos, se suelen usar dos estilos principales para nombrar **relaciones:***
+
+#### **1. PascalCase (más común en diagramas y UML):**
+
+- *Cada palabra inicia en mayúscula, sin guiones ni guiones bajos.*
+- *Ejemplos:*
+
+  - *`IsLocated`*
+  - *`Drives`*
+  - *`BelongsTo`*
+  - *`HasMany`*
+
+🔹 *Se usa cuando queremos mantener un estilo más cercano a programación orientada a objetos (clases, métodos).*
+
+---
+
+#### **2. SNAKE_CASE (muy usado en bases de datos):**
+
+- *Todo en mayúsculas, palabras separadas con guion bajo.*
+- *Ejemplos:*
+
+  - *`IsLocated`*
+  - *`DRIVES`*
+  - *`BELONGS_TO`*
+  - *`HAS_MANY`*
+
+🔹 *Se usa mucho en SQL y cuando queremos un estilo más técnico y estándar para nombres de tablas intermedias.*
+
+---
+
+### ***Recomendación Práctica***
+
+- *En **diagramas conceptuales** (como el tuyo) → usar **PascalCase** (`IsLocated`, `Drives`).*
+- *En **implementación física de la base de datos** (tablas de relaciones) → usar **SNAKE_CASE** (`IsLocated`, `DRIVES`).*

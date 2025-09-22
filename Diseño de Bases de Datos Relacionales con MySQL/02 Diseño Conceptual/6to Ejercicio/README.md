@@ -34,62 +34,62 @@
 
 ### ***Modelo de Datos***
 
-#### ***1. Entidad USER***
+#### ***1. Entidad User***
 
 - **Atributos:**
-  - **ID:** *Identificador único del usuario.*
-  - **Email:** *Correo electrónico del usuario.*
-  - **Name:** *Nombre real del usuario.*
-  - **Password:** *Contraseña del usuario.*
+  - **id:** *Identificador único del usuario.*
+  - **email:** *Correo electrónico del usuario.*
+  - **name:** *Nombre real del usuario.*
+  - **password:** *Contraseña del usuario.*
 
-#### ***2. Entidad PROFILE***
+#### ***2. Entidad Profile***
 
 - **Atributos:**
-  - **ID:** *Identificador único del perfil.*
-  - **Username:** *Nombre de usuario (único).*
-  - **Profile_Picture:** *Imagen de perfil (opcional).*
+  - **id:** *Identificador único del perfil.*
+  - **username:** *Nombre de usuario (único).*
+  - **profile_picture:** *Imagen de perfil (opcional).*
 
     **Relación:**
 
-- **HAS:** *Relación entre* **USER** *y* **PROFILE.**
+- **Has:** *Relación entre* **User** *y* **Profile.**
   - *Un usuario tiene como máximo y mínimo un perfil: (1,1).*
   - *Un perfil pertenece exclusivamente a un usuario: (1,1).*
 
 ---
 
-#### ***3. Entidad POST***
+#### ***3. Entidad Post***
 
 - **Atributos:**
-  - **ID:** *Identificador único del post.*
-  - **Description:** *Descripción del post (opcional).*
-  - **Date:** *Fecha de creación del post.*
-  - **Images:** *Lista de imágenes (mínimo 1 y máximo 10).*
+  - **id:** *Identificador único del post.*
+  - **description:** *Descripción del post (opcional).*
+  - **date:** *Fecha de creación del post.*
+  - **images:** *Lista de imágenes (mínimo 1 y máximo 10).*
 
    **Relación:**  
 
-- **UPLOADS:** *Relación entre* **PROFILE** *y* **POST.**
+- **Uploads:** *Relación entre* **Profile** *y* **Post.**
   - *Un perfil puede subir 0 a n posts: (0,n).*
   - *Un post solo puede ser subido por un único perfil: (1,1).*
 
 ---
 
-#### ***4. Relación FOLLOWS***
+#### ***4. Relación Follows***
 
-- *Relación entre* **PROFILE** *y* **PROFILE.**
+- *Relación entre* **Profile** *y* **Profile.**
   - *Un perfil puede seguir entre 0 y n perfiles: (0,n).*
   - *Un perfil puede ser seguido por entre 0 y n perfiles: (0,n).*
 
 ---
 
-#### ***5. Relación POST_COMMENT***
+#### ***5. Relación PostComment***
 
 - **Atributos:**
-  - **Date:** *Fecha del comentario.*
+  - **date:** *Fecha del comentario.*
   - **Content:** *Contenido del comentario.*
 
    **Relación:**  
 
-- *Relación entre* **PROFILE** *y* **POST.**
+- *Relación entre* **Profile** *y* **Post.**
   - *Un perfil puede comentar entre 0 y n posts: (0,n).*
   - *Un post puede recibir comentarios de 0 a n perfiles: (0,n).*
 

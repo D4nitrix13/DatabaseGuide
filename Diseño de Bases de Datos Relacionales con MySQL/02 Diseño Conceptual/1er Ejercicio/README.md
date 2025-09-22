@@ -99,45 +99,51 @@ drawio --version
 drawio >/dev/null 2>&1 &
 ```
 
-**Para Arch Linux:**
-
-- *Consulta el recurso en Snapcraft: [https://snapcraft.io/install/drawio/arch](https://snapcraft.io/install/drawio/arch "https://snapcraft.io/install/drawio/arch")*
-
-**Para instalar desde AUR, sigue estos pasos:**
-
-```bash
-git clone https://aur.archlinux.org/snapd.git --depth=1
-cd ./snapd
-makepkg -si
-
-sudo systemctl enable --now snapd.socket
-sudo systemctl enable --now snapd.apparmor.service
-sudo ln -s /var/lib/snapd/snap /snap
-sudo snap install drawio
-```
-
 ---
 
 ### ***Ejercicio 1: Lista de Tareas***
 
-**Objetivo:** *Crear una aplicación donde cada usuario tenga una lista para añadir tareas y marcarlas como completadas. Los usuarios se registrarán mediante correo electrónico y contraseña, y se almacenará su nombre completo.*
+**Objetivo:** *Diseñar una aplicación en la que los usuarios puedan crear y gestionar tareas personales. Cada usuario se registra mediante correo electrónico y contraseña, y puede tener varias tareas asignadas, cada una con título, descripción, estado y fecha límite.*
+
+---
 
 #### ***Entidades y Relaciones:***
 
 1. **Entidades:**
-   - *Usuario: atributos como correo electrónico, contraseña, nombre completo.*
-   - *Tarea: atributos como título, descripción, estado (completada/no completada), y fecha límite.*
 
-2. **Relaciones:**
-   - *Un usuario puede tener **uno a muchos** (1:N) tareas.*
-   - *Cada tarea pertenece a **un único usuario**.*
-   - *Una tarea puede ser creada por **un solo usuario**.*
+   - **Usuario (User):**
+     *Representa a cada persona que se registra en la aplicación.*
+
+     - *`id`: Identificador único del usuario (clave primaria).*
+     - *`name`: Nombre completo del usuario.*
+     - *`email`: Correo electrónico del usuario (dato único para registro).*
+     - *`password`: Contraseña cifrada del usuario para acceder al sistema.*
+   - **Tarea (Task):**
+     *Representa una actividad que el usuario debe realizar.*
+
+     - *`id`: Identificador único de la tarea (clave primaria).*
+     - *`title`: Título breve de la tarea.*
+     - *`description`: Descripción detallada de lo que debe hacerse en la tarea.*
+     - *`status`: Estado de la tarea (ejemplo: *pendiente*, *en progreso*, *completada*).*
+     - *`due_date`: Fecha límite para completar la tarea.*
+
+2. **Relación:**
+
+   - **Crear (Create):**
+     *Define la relación entre un usuario y las tareas que este genera.*
+
+     - **Cardinalidad:**
+
+       - *Un **usuario** puede crear de `cero a muchas` tareas (0..n).*
+       - *Cada **tarea** debe ser creada por un único usuario (1..1).*
+     - **Significado: *Un usuario crea una o varias tareas, pero una tarea no puede existir sin pertenecer a un usuario.***
 
 ---
 
 #### ***Atributos Únicos:***
 
-- *Identificadores como `id` deben ser únicos.*
+- *`id` en **User** y en **Task** → Sirven como claves primarias, identifican de forma única cada registro.*
+- *`email` en **User** → No puede repetirse, ya que es el medio principal de autenticación.*
 
 ---
 
@@ -160,8 +166,8 @@ sudo snap install drawio
 
 - *Esto describe una relación **uno a muchos** (**1:N**), donde:*
 
-- **Usuario (1)** *→ Puede crear muchas tareas (**N**).*
-- **Tarea (N)** *→ Pertenece a un único usuario (**1**).*
+- **Usuario -> User (1)** *→ Puede crear muchas tareas (**N**).*
+- **Tarea -> Task (N)** *→ Pertenece a un único usuario (**1**).*
 
 - *Es decir, cada usuario puede tener múltiples tareas, pero cada tarea solo puede tener un único usuario como creador.*
 
@@ -172,7 +178,6 @@ sudo snap install drawio
 ### ***Combinación de Atributos para Identificadores Únicos***
 
 - *En ocasiones, la combinación de dos o más atributos puede generar un identificador único para una entidad. Este enfoque es útil cuando ningún atributo individual es lo suficientemente distintivo por sí solo. Al fusionar los valores de estos atributos, se crea un identificador que garantiza la unicidad, permitiendo así una identificación precisa de cada registro en una base de datos.*
-
 - *Por ejemplo, en una tabla de usuarios, la combinación de los atributos "nombre" y "apellido" podría formar un identificador único, siempre que no existan duplicados. Esto es especialmente valioso en situaciones donde los identificadores naturales no son adecuados por sí mismos.*
 
 ---
@@ -180,7 +185,6 @@ sudo snap install drawio
 ### ***Notas sobre los Ficheros Generados por Draw.io***
 
 - **`.bkp`:** *Este tipo de fichero representa una copia de seguridad (backup) del diagrama. Se utiliza para restaurar el estado anterior del fichero en caso de que se necesite recuperar información perdida o revertir cambios no deseados.*
-
 - **`.dtmp`:** *Este fichero es un fichero temporal creado por Draw.io durante el proceso de edición. Su propósito es almacenar información provisional mientras trabajas en el diagrama. Normalmente, estos ficheros se eliminan automáticamente al cerrar la aplicación, pero pueden ser útiles en caso de un cierre inesperado o error.*
 
 ---
@@ -199,10 +203,10 @@ sudo snap install drawio
 
 ---
 
-### ***Relación **muchos a uno (N:1)** en el ejemplo***
+### ***Relación muchos a uno `(N:1)`***
 
-- **Tareas (N):** *Muchas tareas pueden ser creadas por un solo usuario.*
-- **Usuario (1):** *Un único usuario puede ser el creador de muchas tareas.*
+- **Tareas -> Task (N):** *Muchas tareas pueden ser creadas por un solo usuario.*
+- **Usuario -> User (1):** *Un único usuario puede ser el creador de muchas tareas.*
 
 > [!IMPORTANT]
 > **Ambas descripciones son correctas y solo varían en cómo se describe la relación: si se enfoca desde el usuario hacia las tareas o desde las tareas hacia el usuario.**
@@ -213,3 +217,64 @@ sudo snap install drawio
 - **N:1 (muchos a uno):** *Muchas tareas pertenecen a un único usuario.*
 
 - *Ambas expresan lo mismo, solo cambia la perspectiva.*
+
+---
+
+### ***Recomendaciones de Nomenclatura***
+
+*En el modelado de bases de datos y desarrollo de aplicaciones es importante mantener una convención clara y consistente para los nombres de entidades, atributos y relaciones. Generalmente se recomienda lo siguiente:*
+
+#### **1. Entidades (Tablas / Clases) → PascalCase**
+
+- *Se escriben en **PascalCase** (cada palabra inicia con mayúscula, sin guiones ni guiones bajos).*
+- *Ejemplos:*
+
+  - *`User`*
+  - *`Task`*
+  - *`OrderDetail`*
+
+🔹 *Motivo:* **Se diferencian claramente de los atributos y son fáciles de identificar como objetos principales en el modelo.**
+
+---
+
+#### **2. Atributos (Columnas / Campos) → snake_case**
+
+- *Se escriben en **snake_case** (todo en minúscula, palabras separadas con guion bajo).*
+- **Ejemplos:**
+
+  - *`id`*
+  - *`full_name`*
+  - *`email_address`*
+  - *`due_date`*
+
+🔹 *Motivo:* **Es el estándar más usado en SQL y facilita la lectura, sobre todo en nombres largos.**
+
+---
+
+#### **3. Relaciones → verbo en PascalCase o snake_case**
+
+- *Si se representan como entidades intermedias (tablas puente), se suelen usar en **PascalCase**.*
+- *Ejemplo en tu caso: `Create`.*
+- *Alternativamente, en bases de datos más complejas se recomienda snake_case: `user_task`.*
+
+---
+
+#### **4. Otras buenas prácticas:**
+
+- *Usar nombres descriptivos pero no demasiado largos.*
+- *Evitar acentos, eñes o caracteres especiales.*
+- *Los booleanos suelen empezar con `is_`, `has_` o `status`. Ejemplo: `is_active`.*
+- *Las claves primarias casi siempre se llaman `id`.*
+- *Las claves foráneas se nombran como `<entidad>_id`. Ejemplo: `user_id`, `task_id`.*
+
+---
+
+## **Aplicando a tu modelo:**
+
+- *Entidades: `User`, `Task`.*
+- *Relación: `Create`.*
+- *Atributos:*
+
+  - *En `User`: `id`, `name`, `email`, `password`.*
+  - *En `Task`: `id`, `title`, `description`, `status`, `due_date`.*
+  - *En relación: `user_id`, `task_id` (si se materializa como tabla puente).*

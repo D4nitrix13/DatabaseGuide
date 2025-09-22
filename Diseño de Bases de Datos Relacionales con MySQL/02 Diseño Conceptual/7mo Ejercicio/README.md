@@ -24,7 +24,7 @@
    **Atributos de los productos:**
    - **Nombre:** **Nombre único dentro de la tienda.**
    - **Descripción:** **Texto que describe el producto.**
-   - **Stock:** **Cantidad disponible en inventario.**
+   - **stock:** **Cantidad disponible en inventario.**
    - **Precio:** **Precio actual del producto.**
    - **Descuento:** **Porcentaje de descuento aplicado al precio.**
    - **Tamaño y color (opcional):** **Algunos productos pueden tener variantes de *tamaño* (ej. diferentes pulgadas) o *color*.**
@@ -60,100 +60,100 @@
 
 ---
 
-#### ***1. Entidad USER***
+#### ***1. Entidad User***
 
 - **Atributos:**
-  - **ID:** **Identificador único del usuario.**
-  - **Name:** **Nombre completo del usuario.**
-  - **Email:** **Correo electrónico (también será su identificador).**
-  - **Password:** **Contraseña.**
+  - **id:** **Identificador único del usuario.**
+  - **name:** **Nombre completo del usuario.**
+  - **email:** **Correo electrónico (también será su identificador).**
+  - **password:** **Contraseña.**
 
    **Relación:**
 
-- **MAKES:** **Relaciona `USER` con `ORDER`.**
+- **Makes:** **Relaciona `User` con `Order`.**
   - *Un usuario puede hacer entre 0 y n pedidos: (0,n).*
   - *Un pedido pertenece a un solo usuario: (1,1).*
 
 ---
 
-#### ***2. Entidad STORE***
+#### ***2. Entidad Store***
 
 - **Atributos:**
-  - **ID:** **Identificador único de la tienda.**
-  - **Name:** **Nombre de la tienda.**
+  - **id:** **Identificador único de la tienda.**
+  - **name:** **Nombre de la tienda.**
 
    **Relación:**
 
-- **CREATES:** **Relaciona `USER` con `STORE`.**
+- **Creates:** **Relaciona `User` con `Store`.**
   - *Un usuario puede crear entre 0 y n tiendas: (0,n).*
   - *Una tienda debe ser creada por un solo usuario: (1,1).*
 
 ---
 
-#### ***3. Entidad PRODUCT***
+#### ***3. Entidad Product***
 
 - **Atributos:**
-  - **ID:** **Identificador único del producto.**
-  - **Name:** **Nombre del producto.**
-  - **Description:** **Descripción del producto.**
-  - **Stock:** **Cantidad disponible en inventario.**
-  - **Price:** **Precio actual.**
-  - **Discount:** **Descuento actual (porcentaje).**
-  - **Size:** **Tamaño opcional (ej. pulgadas o dimensiones).**
-  - **Color:** **Color opcional (ej. negro, blanco).**
+  - **id:** **Identificador único del producto.**
+  - **name:** **Nombre del producto.**
+  - **description:** **Descripción del producto.**
+  - **stock:** **Cantidad disponible en inventario.**
+  - **price:** **Precio actual.**
+  - **discount:** **Descuento actual (porcentaje).**
+  - **size:** **Tamaño opcional (ej. pulgadas o dimensiones).**
+  - **color:** **Color opcional (ej. negro, blanco).**
   - **Images:** **Una o más imágenes del producto (1,n).**
 
    **Relación:**
 
-- **SELLS:** **Relaciona `STORE` con `PRODUCT`.**
+- **Sells:** **Relaciona `Store` con `Product`.**
   - *Una tienda puede vender entre 0 y n productos: (0,n).*
   - *Un producto solo puede ser vendido por una tienda: (1,1).*
 
 ---
 
-#### **4. Entidad ORDER**
+#### **4. Entidad Order**
 
 - **Atributos:**
-  - **ID:** **Identificador único del pedido.**
+  - **id:** **Identificador único del pedido.**
   - **Status:** **Estado del pedido (procesando, enviado, entregado, cancelado).**
-  - **Total_Price:** **Precio total del pedido.**
-  - **Invoice_Number:** **Número de factura.**
+  - **total_price:** **Precio total del pedido.**
+  - **invoice_number:** **Número de factura.**
 
    **Relación:**
 
-- **INCLUDES:** **Relaciona `ORDER` con `PRODUCT`.**
+- **Includes:** **Relaciona `Order` con `Product`.**
   - *Un pedido puede incluir entre 1 y n productos: (1,n).*
   - *Un producto puede estar en 0 a n pedidos: (0,n).*
 
-   **Atributos de la relación INCLUDES:**
-  - **Quantity:** **Cantidad de productos comprados.**
-  - **Price:** **Precio del producto al momento de la compra.**
-  - **Discount:** **Descuento aplicado en la compra.**
-  - **Size:** **Tamaño del producto (si aplica).**
-  - **Color:** **Color del producto (si aplica).**
+   **Atributos de la relación Includes:**
+  - **quantity:** **Cantidad de productos comprados.**
+  - **price:** **Precio del producto al momento de la compra.**
+  - **discount:** **Descuento aplicado en la compra.**
+  - **size:** **Tamaño del producto (si aplica).**
+  - **color:** **color del producto (si aplica).**
 
 ---
 
-#### ***5. Entidad ADDRESS***
+#### ***5. Entidad Address***
 
 - **Atributos:**
-  - **ID:** **Identificador único de la dirección.**
+  - **id:** **Identificador único de la dirección.**
   - **Country:** **País.**
-  - **Province:** **Provincia o estado.**
-  - **City:** **Ciudad.**
-  - **Street:** **Calle.**
-  - **Number:** **Número de la dirección.**
-  - **Unit:** **Unidad (opcional).**
+  - **province:** **Provincia o estado.**
+  - **city:** **Ciudad.**
+  - **street:** **Calle.**
+  - **number:** **Número de la dirección.**
+  - **unit:** **Unidad (opcional).**
 
    **Relación:**
 
-- **HAS:** **Relaciona `USER` con `ADDRESS`.**
+- **Has:** **Relaciona `User` con `Address`.**
   - *Un usuario puede tener entre 0 y n direcciones: (0,n).*
   - *Cada dirección pertenece a un único usuario: (1,1).*
 
    **Relación:**
 
-- **SHIPS_TO:** **Relaciona `ORDER` con `ADDRESS`.**
+- **ShipsTo:** **Relaciona `Order` con `Address`.**
   - *Un pedido puede tener una dirección de envío: (1,1).*
   - *Una dirección puede estar asociada con varios pedidos: (0,n).*
 
